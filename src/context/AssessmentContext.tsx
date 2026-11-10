@@ -62,8 +62,8 @@ export function AssessmentProvider({ assessmentId, children }: { assessmentId: s
       role, isInternal, canEditInternal, isLead: role === "engagement_lead",
       canViewCommercials: !!m?.can_view_commercials && isInternal,
       readOnly: role === "customer_reviewer" || role === "internal_viewer" || !role,
-      canAnswer: (qid) => canEditInternal || (role === "customer_contributor" && !["B07", "T08"].includes(qid) && (m!.assigned_modules.includes(qid[0]) || m!.assigned_modules.includes(qid))),
-      canWriteRegister: (t) => canEditInternal || (role === "customer_contributor" && m!.assigned_registers.includes(t)),
+      canAnswer: (qid) => canEditInternal || (role === "customer_contributor" && !["B07", "T08"].includes(qid) && ((m?.assigned_modules ?? []).includes(qid[0]) || (m?.assigned_modules ?? []).includes(qid))),
+      canWriteRegister: (t) => canEditInternal || (role === "customer_contributor" && (m?.assigned_registers ?? []).includes(t)),
     };
     const rows = answersQ.data ?? [];
     const answers: AnswerMap = {};
