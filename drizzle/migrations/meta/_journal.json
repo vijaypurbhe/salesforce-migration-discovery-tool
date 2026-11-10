@@ -8,6 +8,13 @@
       "when": 1794345228860,
       "tag": "0000_deprecate_axion_tables",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794345328660,
+      "tag": "0001_discovery_studio_core",
+      "breakpoints": true
     }
   ]
 }

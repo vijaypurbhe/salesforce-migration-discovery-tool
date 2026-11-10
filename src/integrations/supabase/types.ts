@@ -494,6 +494,164 @@ export type Database = {
         }
         Relationships: []
       }
+      answer_revisions: {
+        Row: {
+          answer_id: string
+          assessment_id: string
+          changed_at: string
+          changed_by: string
+          confidence: string
+          id: string
+          na_reason: string | null
+          notes: string | null
+          project_id: string
+          question_id: string
+          review_status: string
+          row_version: number
+          state: string
+          value: Json | null
+        }
+        Insert: {
+          answer_id: string
+          assessment_id: string
+          changed_at?: string
+          changed_by: string
+          confidence: string
+          id?: string
+          na_reason?: string | null
+          notes?: string | null
+          project_id: string
+          question_id: string
+          review_status: string
+          row_version: number
+          state: string
+          value?: Json | null
+        }
+        Update: {
+          answer_id?: string
+          assessment_id?: string
+          changed_at?: string
+          changed_by?: string
+          confidence?: string
+          id?: string
+          na_reason?: string | null
+          notes?: string | null
+          project_id?: string
+          question_id?: string
+          review_status?: string
+          row_version?: number
+          state?: string
+          value?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "answer_revisions_answer_id_fkey"
+            columns: ["answer_id"]
+            isOneToOne: false
+            referencedRelation: "answers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "answer_revisions_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
+      answers: {
+        Row: {
+          assessment_id: string
+          confidence: string
+          created_at: string
+          due_date: string | null
+          id: string
+          instance_key: string
+          na_reason: string | null
+          needs_revalidation: boolean
+          notes: string | null
+          owner_label: string | null
+          project_id: string
+          question_id: string
+          review_status: string
+          row_version: number
+          state: string
+          updated_at: string
+          updated_by: string
+          value: Json | null
+        }
+        Insert: {
+          assessment_id: string
+          confidence?: string
+          created_at?: string
+          due_date?: string | null
+          id?: string
+          instance_key?: string
+          na_reason?: string | null
+          needs_revalidation?: boolean
+          notes?: string | null
+          owner_label?: string | null
+          project_id: string
+          question_id: string
+          review_status?: string
+          row_version?: number
+          state: string
+          updated_at?: string
+          updated_by: string
+          value?: Json | null
+        }
+        Update: {
+          assessment_id?: string
+          confidence?: string
+          created_at?: string
+          due_date?: string | null
+          id?: string
+          instance_key?: string
+          na_reason?: string | null
+          needs_revalidation?: boolean
+          notes?: string | null
+          owner_label?: string | null
+          project_id?: string
+          question_id?: string
+          review_status?: string
+          row_version?: number
+          state?: string
+          updated_at?: string
+          updated_by?: string
+          value?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "answers_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
+      app_user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["studio_app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["studio_app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["studio_app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
       approval_requests: {
         Row: {
           agent_id: string
@@ -534,6 +692,121 @@ export type Database = {
             columns: ["agent_id"]
             isOneToOne: false
             referencedRelation: "agents"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      assessments: {
+        Row: {
+          bulk_na: Json
+          code: string
+          created_at: string
+          created_by: string
+          decision_weights: Json
+          entitlement_notes: string
+          id: string
+          locale: string
+          name: string
+          project_id: string
+          rubric_version: string
+          rule_version: string
+          stage: string
+          target_product_name: string
+          target_release: string
+          template_version: string
+          timezone: string
+          updated_at: string
+        }
+        Insert: {
+          bulk_na?: Json
+          code?: string
+          created_at?: string
+          created_by?: string
+          decision_weights?: Json
+          entitlement_notes?: string
+          id?: string
+          locale?: string
+          name: string
+          project_id: string
+          rubric_version?: string
+          rule_version?: string
+          stage?: string
+          target_product_name?: string
+          target_release?: string
+          template_version?: string
+          timezone?: string
+          updated_at?: string
+        }
+        Update: {
+          bulk_na?: Json
+          code?: string
+          created_at?: string
+          created_by?: string
+          decision_weights?: Json
+          entitlement_notes?: string
+          id?: string
+          locale?: string
+          name?: string
+          project_id?: string
+          rubric_version?: string
+          rule_version?: string
+          stage?: string
+          target_product_name?: string
+          target_release?: string
+          template_version?: string
+          timezone?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "assessments_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      audit_events: {
+        Row: {
+          action: string
+          actor: string | null
+          assessment_id: string | null
+          created_at: string
+          id: string
+          object_id: string
+          object_type: string
+          project_id: string
+          summary: string
+        }
+        Insert: {
+          action: string
+          actor?: string | null
+          assessment_id?: string | null
+          created_at?: string
+          id?: string
+          object_id: string
+          object_type: string
+          project_id: string
+          summary?: string
+        }
+        Update: {
+          action?: string
+          actor?: string | null
+          assessment_id?: string | null
+          created_at?: string
+          id?: string
+          object_id?: string
+          object_type?: string
+          project_id?: string
+          summary?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "audit_events_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
             referencedColumns: ["id"]
           },
         ]
@@ -638,6 +911,48 @@ export type Database = {
           is_demo?: boolean
           name?: string
           status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      customers: {
+        Row: {
+          archived: boolean
+          code: string
+          created_at: string
+          created_by: string
+          description: string
+          id: string
+          industry: string
+          is_demo: boolean
+          name: string
+          region: string
+          updated_at: string
+        }
+        Insert: {
+          archived?: boolean
+          code?: string
+          created_at?: string
+          created_by?: string
+          description?: string
+          id?: string
+          industry?: string
+          is_demo?: boolean
+          name: string
+          region?: string
+          updated_at?: string
+        }
+        Update: {
+          archived?: boolean
+          code?: string
+          created_at?: string
+          created_by?: string
+          description?: string
+          id?: string
+          industry?: string
+          is_demo?: boolean
+          name?: string
+          region?: string
           updated_at?: string
         }
         Relationships: []
@@ -752,6 +1067,132 @@ export type Database = {
         }
         Relationships: []
       }
+      project_members: {
+        Row: {
+          added_by: string | null
+          assigned_modules: string[]
+          assigned_registers: string[]
+          can_view_commercials: boolean
+          created_at: string
+          id: string
+          project_id: string
+          role: Database["public"]["Enums"]["project_role"]
+          user_id: string
+        }
+        Insert: {
+          added_by?: string | null
+          assigned_modules?: string[]
+          assigned_registers?: string[]
+          can_view_commercials?: boolean
+          created_at?: string
+          id?: string
+          project_id: string
+          role: Database["public"]["Enums"]["project_role"]
+          user_id: string
+        }
+        Update: {
+          added_by?: string | null
+          assigned_modules?: string[]
+          assigned_registers?: string[]
+          can_view_commercials?: boolean
+          created_at?: string
+          id?: string
+          project_id?: string
+          role?: Database["public"]["Enums"]["project_role"]
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_members_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      projects: {
+        Row: {
+          ai_processing_enabled: boolean
+          archived: boolean
+          code: string
+          created_at: string
+          created_by: string
+          customer_id: string
+          id: string
+          is_demo: boolean
+          name: string
+          retention_note: string
+          updated_at: string
+        }
+        Insert: {
+          ai_processing_enabled?: boolean
+          archived?: boolean
+          code?: string
+          created_at?: string
+          created_by?: string
+          customer_id: string
+          id?: string
+          is_demo?: boolean
+          name: string
+          retention_note?: string
+          updated_at?: string
+        }
+        Update: {
+          ai_processing_enabled?: boolean
+          archived?: boolean
+          code?: string
+          created_at?: string
+          created_by?: string
+          customer_id?: string
+          id?: string
+          is_demo?: boolean
+          name?: string
+          retention_note?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "projects_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_assessment_state: {
+        Row: {
+          assessment_id: string
+          last_question_id: string | null
+          last_view: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          assessment_id: string
+          last_question_id?: string | null
+          last_view?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Update: {
+          assessment_id?: string
+          last_question_id?: string | null
+          last_view?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_assessment_state_assessment_id_fkey"
+            columns: ["assessment_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_onboarding: {
         Row: {
           checklist_dismissed: boolean
@@ -782,6 +1223,33 @@ export type Database = {
           user_id?: string
           wizard_complete?: boolean
           wizard_step?: number
+        }
+        Relationships: []
+      }
+      user_profiles: {
+        Row: {
+          created_at: string
+          display_name: string
+          email: string
+          id: string
+          organisation: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string
+          email: string
+          id: string
+          organisation?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string
+          email?: string
+          id?: string
+          organisation?: string
+          updated_at?: string
         }
         Relationships: []
       }
@@ -858,13 +1326,38 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      add_project_member: {
+        Args: {
+          p_commercials: boolean
+          p_email: string
+          p_modules: string[]
+          p_project: string
+          p_registers: string[]
+          p_role: Database["public"]["Enums"]["project_role"]
+        }
+        Returns: Json
+      }
+      can_access_customer: { Args: { _customer: string }; Returns: boolean }
+      can_edit_internal: { Args: { _project: string }; Returns: boolean }
+      can_view_commercials: { Args: { _project: string }; Returns: boolean }
       current_user_email: { Args: never; Returns: string }
       ensure_axion_access: {
         Args: { _display_name: string; _persona: string }
         Returns: boolean
       }
       ensure_login_report_admin: { Args: never; Returns: boolean }
+      flag_answers_revalidation: {
+        Args: { p_assessment: string; p_questions: string[] }
+        Returns: undefined
+      }
       has_agent_access: { Args: { _agent_id: string }; Returns: boolean }
+      has_app_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["studio_app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
       has_axion_role: {
         Args: {
           _role: Database["public"]["Enums"]["axion_role"]
@@ -888,7 +1381,43 @@ export type Database = {
         Returns: boolean
       }
       is_client_admin: { Args: { _client_id: string }; Returns: boolean }
+      is_internal_member: { Args: { _project: string }; Returns: boolean }
+      is_project_lead: { Args: { _project: string }; Returns: boolean }
+      is_project_member: { Args: { _project: string }; Returns: boolean }
       is_techmahindra_user: { Args: never; Returns: boolean }
+      project_role_of: {
+        Args: { _project: string }
+        Returns: Database["public"]["Enums"]["project_role"]
+      }
+      remove_project_member: {
+        Args: { p_project: string; p_user: string }
+        Returns: undefined
+      }
+      save_answer: {
+        Args: {
+          p_assessment: string
+          p_confidence: string
+          p_due?: string
+          p_expected_version: number
+          p_instance: string
+          p_na_reason: string
+          p_notes: string
+          p_owner?: string
+          p_question: string
+          p_state: string
+          p_value: Json
+        }
+        Returns: Json
+      }
+      set_answer_review: {
+        Args: { p_answer: string; p_status: string }
+        Returns: undefined
+      }
+      set_internal_staff: {
+        Args: { p_email: string; p_enabled: boolean }
+        Returns: Json
+      }
+      shares_project_with: { Args: { _other: string }; Returns: boolean }
     }
     Enums: {
       app_role: "login_report_admin"
@@ -899,6 +1428,13 @@ export type Database = {
         | "data-steward"
         | "data-engineer"
         | "agentforce-architect"
+      project_role:
+        | "engagement_lead"
+        | "solution_architect"
+        | "customer_contributor"
+        | "customer_reviewer"
+        | "internal_viewer"
+      studio_app_role: "workspace_admin" | "internal_staff"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -1035,6 +1571,14 @@ export const Constants = {
         "data-engineer",
         "agentforce-architect",
       ],
+      project_role: [
+        "engagement_lead",
+        "solution_architect",
+        "customer_contributor",
+        "customer_reviewer",
+        "internal_viewer",
+      ],
+      studio_app_role: ["workspace_admin", "internal_staff"],
     },
   },
 } as const
