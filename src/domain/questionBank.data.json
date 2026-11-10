@@ -1845,9 +1845,18 @@
    "axis": 3,
    "label": "Which pricing precision and currency rules apply?",
    "detail": "Multi-currency YN, currency list, conversion owner, FX date policy, decimal precision, tax-inclusive/exclusive, rounding at unit/line/total.",
-   "control": "text",
-   "optionSet": null,
-   "options": [],
+   "control": "single",
+   "optionSet": "YN",
+   "options": [
+    {
+     "value": "yes",
+     "label": "Yes"
+    },
+    {
+     "value": "no",
+     "label": "No"
+    }
+   ],
    "subfields": [
     {
      "key": "multi_currency_yn",
