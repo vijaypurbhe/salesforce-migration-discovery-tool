@@ -23,7 +23,7 @@ export async function buildPack(assessmentId: string, audience: Audience, includ
   const pack: Record<string, any> = {
     generated_at: new Date().toISOString(), audience,
     assessment: { code: assessment.code, name: assessment.name, stage: assessment.stage, template_version: assessment.template_version, rubric_version: assessment.rubric_version, rule_version: assessment.rule_version, target_product: assessment.target_product_name, target_release: assessment.target_release },
-    answers: (cust ? answers.filter((a) => !INTERNAL_QUESTION_IDS.includes(a.question_id)) : answers).map((a) => ({ question_id: a.question_id, question: QUESTION_BY_ID[a.question_id]?.text ?? "", instance: a.instance_key, state: a.state, value: a.value, confidence: a.confidence, review_status: a.review_status, revision: a.row_version })),
+    answers: (cust ? answers.filter((a) => !INTERNAL_QUESTION_IDS.includes(a.question_id)) : answers).map((a) => ({ question_id: a.question_id, question: QUESTION_BY_ID[a.question_id]?.label ?? "", instance: a.instance_key, state: a.state, value: a.value, confidence: a.confidence, review_status: a.review_status, revision: a.row_version })),
     registers: vis(regs), requirements: vis(reqs), mappings: vis(maps),
     findings: cust ? strip(vis(findings), ["internal_wording"]) : findings,
     complexity: cx, readiness: gates, strategies: strat, work_packages: vis(wps),
