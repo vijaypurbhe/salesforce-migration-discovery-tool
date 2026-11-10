@@ -1,0 +1,22 @@
+
+COMMENT ON TABLE public.activity_log IS 'DEPRECATED: legacy Axion app, replaced by Discovery Studio';
+COMMENT ON TABLE public.agent_actions IS 'DEPRECATED: legacy Axion app';
+COMMENT ON TABLE public.agent_boundaries IS 'DEPRECATED: legacy Axion app';
+COMMENT ON TABLE public.agent_escalations IS 'DEPRECATED: legacy Axion app';
+COMMENT ON TABLE public.agent_grounding IS 'DEPRECATED: legacy Axion app';
+COMMENT ON TABLE public.agent_guardrails IS 'DEPRECATED: legacy Axion app';
+COMMENT ON TABLE public.agent_reviews IS 'DEPRECATED: legacy Axion app';
+COMMENT ON TABLE public.agent_suggestion_decisions IS 'DEPRECATED: legacy Axion app';
+COMMENT ON TABLE public.agent_topics IS 'DEPRECATED: legacy Axion app';
+COMMENT ON TABLE public.agent_versions IS 'DEPRECATED: legacy Axion app';
+COMMENT ON TABLE public.agents IS 'DEPRECATED: legacy Axion app';
+COMMENT ON TABLE public.approval_requests IS 'DEPRECATED: legacy Axion app';
+COMMENT ON TABLE public.axion_user_roles IS 'DEPRECATED: legacy Axion app';
+COMMENT ON TABLE public.client_members IS 'DEPRECATED: legacy Axion app';
+COMMENT ON TABLE public.clients IS 'DEPRECATED: legacy Axion app';
+COMMENT ON TABLE public.export_jobs IS 'DEPRECATED: legacy Axion app';
+COMMENT ON TABLE public.login_audit_log IS 'DEPRECATED: legacy Axion app';
+COMMENT ON TABLE public.profiles IS 'DEPRECATED: replaced by user_profiles';
+COMMENT ON TABLE public.user_onboarding IS 'DEPRECATED: legacy Axion app';
+COMMENT ON TABLE public.user_roles IS 'DEPRECATED: replaced by app_user_roles';
+COMMENT ON TABLE public.workspace_records IS 'DEPRECATED: legacy Axion app';
