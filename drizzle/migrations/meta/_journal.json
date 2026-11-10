@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794345228860,
+      "tag": "0000_deprecate_axion_tables",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794345328660,
+      "tag": "0001_discovery_studio_core",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794345441741,
+      "tag": "0002_discovery_studio_analysis",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794346667472,
+      "tag": "0003_proposal_sections",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1794346803702,
+      "tag": "0004_per_user_demo",
+      "breakpoints": true
+    }
+  ]
+}

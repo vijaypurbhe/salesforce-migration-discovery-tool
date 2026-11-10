@@ -494,6 +494,229 @@ export type Database = {
         }
         Relationships: []
       }
+      analysis_runs: {
+        Row: {
+          assessment_id: string
+          created_at: string
+          created_by: string
+          created_count: number
+          flagged_count: number
+          id: string
+          input_hash: string
+          project_id: string
+          rule_version: string
+          updated_count: number
+        }
+        Insert: {
+          assessment_id: string
+          created_at?: string
+          created_by?: string
+          created_count?: number
+          flagged_count?: number
+          id?: string
+          input_hash: string
+          project_id: string
+          rule_version: string
+          updated_count?: number
+        }
+        Update: {
+          assessment_id?: string
+          created_at?: string
+          created_by?: string
+          created_count?: number
+          flagged_count?: number
+          id?: string
+          input_hash?: string
+          project_id?: string
+          rule_version?: string
+          updated_count?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "analysis_runs_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
+      answer_revisions: {
+        Row: {
+          answer_id: string
+          assessment_id: string
+          changed_at: string
+          changed_by: string
+          confidence: string
+          id: string
+          na_reason: string | null
+          notes: string | null
+          project_id: string
+          question_id: string
+          review_status: string
+          row_version: number
+          state: string
+          value: Json | null
+        }
+        Insert: {
+          answer_id: string
+          assessment_id: string
+          changed_at?: string
+          changed_by: string
+          confidence: string
+          id?: string
+          na_reason?: string | null
+          notes?: string | null
+          project_id: string
+          question_id: string
+          review_status: string
+          row_version: number
+          state: string
+          value?: Json | null
+        }
+        Update: {
+          answer_id?: string
+          assessment_id?: string
+          changed_at?: string
+          changed_by?: string
+          confidence?: string
+          id?: string
+          na_reason?: string | null
+          notes?: string | null
+          project_id?: string
+          question_id?: string
+          review_status?: string
+          row_version?: number
+          state?: string
+          value?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "answer_revisions_answer_id_fkey"
+            columns: ["answer_id"]
+            isOneToOne: false
+            referencedRelation: "answers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "answer_revisions_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
+      answers: {
+        Row: {
+          assessment_id: string
+          confidence: string
+          created_at: string
+          due_date: string | null
+          id: string
+          instance_key: string
+          na_reason: string | null
+          needs_revalidation: boolean
+          notes: string | null
+          owner_label: string | null
+          project_id: string
+          question_id: string
+          review_status: string
+          row_version: number
+          state: string
+          updated_at: string
+          updated_by: string
+          value: Json | null
+        }
+        Insert: {
+          assessment_id: string
+          confidence?: string
+          created_at?: string
+          due_date?: string | null
+          id?: string
+          instance_key?: string
+          na_reason?: string | null
+          needs_revalidation?: boolean
+          notes?: string | null
+          owner_label?: string | null
+          project_id: string
+          question_id: string
+          review_status?: string
+          row_version?: number
+          state: string
+          updated_at?: string
+          updated_by: string
+          value?: Json | null
+        }
+        Update: {
+          assessment_id?: string
+          confidence?: string
+          created_at?: string
+          due_date?: string | null
+          id?: string
+          instance_key?: string
+          na_reason?: string | null
+          needs_revalidation?: boolean
+          notes?: string | null
+          owner_label?: string | null
+          project_id?: string
+          question_id?: string
+          review_status?: string
+          row_version?: number
+          state?: string
+          updated_at?: string
+          updated_by?: string
+          value?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "answers_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
+      app_settings: {
+        Row: {
+          key: string
+          updated_at: string
+          value: Json
+        }
+        Insert: {
+          key: string
+          updated_at?: string
+          value: Json
+        }
+        Update: {
+          key?: string
+          updated_at?: string
+          value?: Json
+        }
+        Relationships: []
+      }
+      app_user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["studio_app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["studio_app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["studio_app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
       approval_requests: {
         Row: {
           agent_id: string
@@ -534,6 +757,177 @@ export type Database = {
             columns: ["agent_id"]
             isOneToOne: false
             referencedRelation: "agents"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      assessments: {
+        Row: {
+          bulk_na: Json
+          code: string
+          created_at: string
+          created_by: string
+          decision_weights: Json
+          entitlement_notes: string
+          id: string
+          locale: string
+          name: string
+          project_id: string
+          rubric_version: string
+          rule_version: string
+          stage: string
+          target_product_name: string
+          target_release: string
+          template_version: string
+          timezone: string
+          updated_at: string
+        }
+        Insert: {
+          bulk_na?: Json
+          code?: string
+          created_at?: string
+          created_by?: string
+          decision_weights?: Json
+          entitlement_notes?: string
+          id?: string
+          locale?: string
+          name: string
+          project_id: string
+          rubric_version?: string
+          rule_version?: string
+          stage?: string
+          target_product_name?: string
+          target_release?: string
+          template_version?: string
+          timezone?: string
+          updated_at?: string
+        }
+        Update: {
+          bulk_na?: Json
+          code?: string
+          created_at?: string
+          created_by?: string
+          decision_weights?: Json
+          entitlement_notes?: string
+          id?: string
+          locale?: string
+          name?: string
+          project_id?: string
+          rubric_version?: string
+          rule_version?: string
+          stage?: string
+          target_product_name?: string
+          target_release?: string
+          template_version?: string
+          timezone?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "assessments_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      assignments: {
+        Row: {
+          assessment_id: string
+          assignee_id: string | null
+          assignee_label: string
+          created_at: string
+          created_by: string
+          due_date: string | null
+          id: string
+          kind: string
+          note: string
+          project_id: string
+          question_id: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          assessment_id: string
+          assignee_id?: string | null
+          assignee_label?: string
+          created_at?: string
+          created_by?: string
+          due_date?: string | null
+          id?: string
+          kind: string
+          note?: string
+          project_id: string
+          question_id?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          assessment_id?: string
+          assignee_id?: string | null
+          assignee_label?: string
+          created_at?: string
+          created_by?: string
+          due_date?: string | null
+          id?: string
+          kind?: string
+          note?: string
+          project_id?: string
+          question_id?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "assignments_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
+      audit_events: {
+        Row: {
+          action: string
+          actor: string | null
+          assessment_id: string | null
+          created_at: string
+          id: string
+          object_id: string
+          object_type: string
+          project_id: string
+          summary: string
+        }
+        Insert: {
+          action: string
+          actor?: string | null
+          assessment_id?: string | null
+          created_at?: string
+          id?: string
+          object_id: string
+          object_type: string
+          project_id: string
+          summary?: string
+        }
+        Update: {
+          action?: string
+          actor?: string | null
+          assessment_id?: string | null
+          created_at?: string
+          id?: string
+          object_id?: string
+          object_type?: string
+          project_id?: string
+          summary?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "audit_events_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
             referencedColumns: ["id"]
           },
         ]
@@ -642,6 +1036,411 @@ export type Database = {
         }
         Relationships: []
       }
+      comments: {
+        Row: {
+          assessment_id: string
+          author: string
+          body: string
+          created_at: string
+          id: string
+          project_id: string
+          target_id: string
+          target_type: string
+          visibility: string
+        }
+        Insert: {
+          assessment_id: string
+          author?: string
+          body: string
+          created_at?: string
+          id?: string
+          project_id: string
+          target_id: string
+          target_type: string
+          visibility?: string
+        }
+        Update: {
+          assessment_id?: string
+          author?: string
+          body?: string
+          created_at?: string
+          id?: string
+          project_id?: string
+          target_id?: string
+          target_type?: string
+          visibility?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "comments_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
+      commercial_inputs: {
+        Row: {
+          assessment_id: string
+          contingency_model: string
+          contingency_pct: number | null
+          currency: string | null
+          customer_sme_capacity: string
+          expenses_note: string
+          hours_per_person_week: number | null
+          id: string
+          margin_note: string
+          project_id: string
+          risk_hours_high: number | null
+          risk_hours_likely: number | null
+          risk_hours_low: number | null
+          role_rates: Json
+          role_split: Json
+          rom_basis: string
+          rom_selected: boolean
+          target_weeks: number | null
+          updated_at: string
+        }
+        Insert: {
+          assessment_id: string
+          contingency_model?: string
+          contingency_pct?: number | null
+          currency?: string | null
+          customer_sme_capacity?: string
+          expenses_note?: string
+          hours_per_person_week?: number | null
+          id?: string
+          margin_note?: string
+          project_id: string
+          risk_hours_high?: number | null
+          risk_hours_likely?: number | null
+          risk_hours_low?: number | null
+          role_rates?: Json
+          role_split?: Json
+          rom_basis?: string
+          rom_selected?: boolean
+          target_weeks?: number | null
+          updated_at?: string
+        }
+        Update: {
+          assessment_id?: string
+          contingency_model?: string
+          contingency_pct?: number | null
+          currency?: string | null
+          customer_sme_capacity?: string
+          expenses_note?: string
+          hours_per_person_week?: number | null
+          id?: string
+          margin_note?: string
+          project_id?: string
+          risk_hours_high?: number | null
+          risk_hours_likely?: number | null
+          risk_hours_low?: number | null
+          role_rates?: Json
+          role_split?: Json
+          rom_basis?: string
+          rom_selected?: boolean
+          target_weeks?: number | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "commercial_inputs_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
+      complexity_scores: {
+        Row: {
+          assessment_id: string
+          axis: number
+          id: string
+          project_id: string
+          rationale: string
+          reviewed: boolean
+          reviewed_by: string | null
+          score: number | null
+          uncertainty: boolean
+          updated_at: string
+        }
+        Insert: {
+          assessment_id: string
+          axis: number
+          id?: string
+          project_id: string
+          rationale?: string
+          reviewed?: boolean
+          reviewed_by?: string | null
+          score?: number | null
+          uncertainty?: boolean
+          updated_at?: string
+        }
+        Update: {
+          assessment_id?: string
+          axis?: number
+          id?: string
+          project_id?: string
+          rationale?: string
+          reviewed?: boolean
+          reviewed_by?: string | null
+          score?: number | null
+          uncertainty?: boolean
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "complexity_scores_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
+      customers: {
+        Row: {
+          archived: boolean
+          code: string
+          created_at: string
+          created_by: string
+          description: string
+          id: string
+          industry: string
+          is_demo: boolean
+          name: string
+          region: string
+          updated_at: string
+        }
+        Insert: {
+          archived?: boolean
+          code?: string
+          created_at?: string
+          created_by?: string
+          description?: string
+          id?: string
+          industry?: string
+          is_demo?: boolean
+          name: string
+          region?: string
+          updated_at?: string
+        }
+        Update: {
+          archived?: boolean
+          code?: string
+          created_at?: string
+          created_by?: string
+          description?: string
+          id?: string
+          industry?: string
+          is_demo?: boolean
+          name?: string
+          region?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      effort_catalog: {
+        Row: {
+          benchmark_ref: string
+          hours_high: number | null
+          hours_likely: number | null
+          hours_low: number | null
+          id: string
+          is_demo: boolean
+          label: string
+          unit_type: string
+          updated_at: string
+          updated_by: string | null
+          version: string
+        }
+        Insert: {
+          benchmark_ref?: string
+          hours_high?: number | null
+          hours_likely?: number | null
+          hours_low?: number | null
+          id?: string
+          is_demo?: boolean
+          label: string
+          unit_type: string
+          updated_at?: string
+          updated_by?: string | null
+          version?: string
+        }
+        Update: {
+          benchmark_ref?: string
+          hours_high?: number | null
+          hours_likely?: number | null
+          hours_low?: number | null
+          id?: string
+          is_demo?: boolean
+          label?: string
+          unit_type?: string
+          updated_at?: string
+          updated_by?: string | null
+          version?: string
+        }
+        Relationships: []
+      }
+      estimate_lines: {
+        Row: {
+          allocation_pct: number
+          assessment_id: string
+          basis: string
+          created_at: string
+          description: string
+          hours_high: number | null
+          hours_likely: number | null
+          hours_low: number | null
+          id: string
+          is_fixed_task: boolean
+          project_id: string
+          qty_high: number | null
+          qty_likely: number | null
+          qty_low: number | null
+          quantity_mode: string
+          unit_type: string
+          updated_at: string
+          work_package_id: string
+        }
+        Insert: {
+          allocation_pct?: number
+          assessment_id: string
+          basis?: string
+          created_at?: string
+          description?: string
+          hours_high?: number | null
+          hours_likely?: number | null
+          hours_low?: number | null
+          id?: string
+          is_fixed_task?: boolean
+          project_id: string
+          qty_high?: number | null
+          qty_likely?: number | null
+          qty_low?: number | null
+          quantity_mode?: string
+          unit_type: string
+          updated_at?: string
+          work_package_id: string
+        }
+        Update: {
+          allocation_pct?: number
+          assessment_id?: string
+          basis?: string
+          created_at?: string
+          description?: string
+          hours_high?: number | null
+          hours_likely?: number | null
+          hours_low?: number | null
+          id?: string
+          is_fixed_task?: boolean
+          project_id?: string
+          qty_high?: number | null
+          qty_likely?: number | null
+          qty_low?: number | null
+          quantity_mode?: string
+          unit_type?: string
+          updated_at?: string
+          work_package_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "estimate_lines_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+          {
+            foreignKeyName: "estimate_lines_work_package_id_fkey"
+            columns: ["work_package_id"]
+            isOneToOne: false
+            referencedRelation: "work_packages"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      evidence_files: {
+        Row: {
+          assessment_id: string
+          checksum: string
+          classification: string
+          created_at: string
+          description: string
+          id: string
+          mime_type: string
+          original_filename: string
+          project_id: string
+          question_id: string | null
+          replaces_id: string | null
+          size_bytes: number
+          status: string
+          storage_path: string
+          target_id: string | null
+          target_type: string | null
+          uploaded_by: string
+          version: number
+        }
+        Insert: {
+          assessment_id: string
+          checksum: string
+          classification?: string
+          created_at?: string
+          description?: string
+          id?: string
+          mime_type: string
+          original_filename: string
+          project_id: string
+          question_id?: string | null
+          replaces_id?: string | null
+          size_bytes: number
+          status?: string
+          storage_path: string
+          target_id?: string | null
+          target_type?: string | null
+          uploaded_by?: string
+          version?: number
+        }
+        Update: {
+          assessment_id?: string
+          checksum?: string
+          classification?: string
+          created_at?: string
+          description?: string
+          id?: string
+          mime_type?: string
+          original_filename?: string
+          project_id?: string
+          question_id?: string | null
+          replaces_id?: string | null
+          size_bytes?: number
+          status?: string
+          storage_path?: string
+          target_id?: string | null
+          target_type?: string | null
+          uploaded_by?: string
+          version?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "evidence_files_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+          {
+            foreignKeyName: "evidence_files_replaces_id_fkey"
+            columns: ["replaces_id"]
+            isOneToOne: false
+            referencedRelation: "evidence_files"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       export_jobs: {
         Row: {
           agent_id: string
@@ -692,6 +1491,187 @@ export type Database = {
           },
         ]
       }
+      findings: {
+        Row: {
+          acceptance_criterion: string
+          analysis_run_id: string | null
+          assessment_id: string
+          categories: string[]
+          code: string
+          confidence: string
+          created_at: string
+          created_by: string
+          current_state: string
+          decision: string
+          decision_rationale: string
+          delivery_risk: number | null
+          delta_type: string
+          dependency_criticality: number | null
+          domain: string
+          due_date: string | null
+          evidence_note: string
+          finding_key: string
+          fit_status: string
+          id: string
+          impact: number | null
+          internal_wording: string
+          is_blocker: boolean
+          kinds: string[]
+          linked_question_ids: string[]
+          manual: boolean
+          needs_review: boolean
+          owner_label: string
+          project_id: string
+          proposed_treatment: string
+          required_state: string
+          rule_id: string
+          rule_version: string
+          source_answer_versions: Json
+          status: string
+          title: string
+          updated_at: string
+          urgency: number | null
+          validation_task: string
+          visibility: string
+          work_package_id: string | null
+        }
+        Insert: {
+          acceptance_criterion?: string
+          analysis_run_id?: string | null
+          assessment_id: string
+          categories?: string[]
+          code: string
+          confidence?: string
+          created_at?: string
+          created_by?: string
+          current_state?: string
+          decision?: string
+          decision_rationale?: string
+          delivery_risk?: number | null
+          delta_type?: string
+          dependency_criticality?: number | null
+          domain?: string
+          due_date?: string | null
+          evidence_note?: string
+          finding_key?: string
+          fit_status?: string
+          id?: string
+          impact?: number | null
+          internal_wording?: string
+          is_blocker?: boolean
+          kinds?: string[]
+          linked_question_ids?: string[]
+          manual?: boolean
+          needs_review?: boolean
+          owner_label?: string
+          project_id: string
+          proposed_treatment?: string
+          required_state?: string
+          rule_id: string
+          rule_version?: string
+          source_answer_versions?: Json
+          status?: string
+          title: string
+          updated_at?: string
+          urgency?: number | null
+          validation_task?: string
+          visibility?: string
+          work_package_id?: string | null
+        }
+        Update: {
+          acceptance_criterion?: string
+          analysis_run_id?: string | null
+          assessment_id?: string
+          categories?: string[]
+          code?: string
+          confidence?: string
+          created_at?: string
+          created_by?: string
+          current_state?: string
+          decision?: string
+          decision_rationale?: string
+          delivery_risk?: number | null
+          delta_type?: string
+          dependency_criticality?: number | null
+          domain?: string
+          due_date?: string | null
+          evidence_note?: string
+          finding_key?: string
+          fit_status?: string
+          id?: string
+          impact?: number | null
+          internal_wording?: string
+          is_blocker?: boolean
+          kinds?: string[]
+          linked_question_ids?: string[]
+          manual?: boolean
+          needs_review?: boolean
+          owner_label?: string
+          project_id?: string
+          proposed_treatment?: string
+          required_state?: string
+          rule_id?: string
+          rule_version?: string
+          source_answer_versions?: Json
+          status?: string
+          title?: string
+          updated_at?: string
+          urgency?: number | null
+          validation_task?: string
+          visibility?: string
+          work_package_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "findings_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
+      internal_notes: {
+        Row: {
+          assessment_id: string
+          author: string
+          body: string
+          created_at: string
+          id: string
+          project_id: string
+          target_id: string
+          target_type: string
+        }
+        Insert: {
+          assessment_id: string
+          author?: string
+          body: string
+          created_at?: string
+          id?: string
+          project_id: string
+          target_id: string
+          target_type: string
+        }
+        Update: {
+          assessment_id?: string
+          author?: string
+          body?: string
+          created_at?: string
+          id?: string
+          project_id?: string
+          target_id?: string
+          target_type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "internal_notes_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
       login_audit_log: {
         Row: {
           email: string
@@ -725,6 +1705,119 @@ export type Database = {
         }
         Relationships: []
       }
+      mappings: {
+        Row: {
+          api_names_validated: boolean
+          architect_rationale: string
+          archived: boolean
+          artifact_ids: string[]
+          assessment_id: string
+          business_impact: string
+          candidate_target: string
+          code: string
+          created_at: string
+          created_by: string
+          discovery_proof: string
+          disposition: string
+          domain: string
+          entitlement_status: string
+          fit_status: string
+          gap_category: string
+          id: string
+          is_seed_prompt: boolean
+          legacy_area: string
+          linked_question_ids: string[]
+          poc_result: string
+          project_id: string
+          release_availability: string
+          requirement_ids: string[]
+          scenario_ids: string[]
+          target_api_names: string
+          updated_at: string
+          validation_date: string | null
+          verified_at: string | null
+          verified_by: string | null
+          visibility: string
+          work_package_id: string | null
+        }
+        Insert: {
+          api_names_validated?: boolean
+          architect_rationale?: string
+          archived?: boolean
+          artifact_ids?: string[]
+          assessment_id: string
+          business_impact?: string
+          candidate_target?: string
+          code: string
+          created_at?: string
+          created_by?: string
+          discovery_proof?: string
+          disposition?: string
+          domain?: string
+          entitlement_status?: string
+          fit_status?: string
+          gap_category?: string
+          id?: string
+          is_seed_prompt?: boolean
+          legacy_area: string
+          linked_question_ids?: string[]
+          poc_result?: string
+          project_id: string
+          release_availability?: string
+          requirement_ids?: string[]
+          scenario_ids?: string[]
+          target_api_names?: string
+          updated_at?: string
+          validation_date?: string | null
+          verified_at?: string | null
+          verified_by?: string | null
+          visibility?: string
+          work_package_id?: string | null
+        }
+        Update: {
+          api_names_validated?: boolean
+          architect_rationale?: string
+          archived?: boolean
+          artifact_ids?: string[]
+          assessment_id?: string
+          business_impact?: string
+          candidate_target?: string
+          code?: string
+          created_at?: string
+          created_by?: string
+          discovery_proof?: string
+          disposition?: string
+          domain?: string
+          entitlement_status?: string
+          fit_status?: string
+          gap_category?: string
+          id?: string
+          is_seed_prompt?: boolean
+          legacy_area?: string
+          linked_question_ids?: string[]
+          poc_result?: string
+          project_id?: string
+          release_availability?: string
+          requirement_ids?: string[]
+          scenario_ids?: string[]
+          target_api_names?: string
+          updated_at?: string
+          validation_date?: string | null
+          verified_at?: string | null
+          verified_by?: string | null
+          visibility?: string
+          work_package_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mappings_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           created_at: string
@@ -751,6 +1844,546 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      project_members: {
+        Row: {
+          added_by: string | null
+          assigned_modules: string[]
+          assigned_registers: string[]
+          can_view_commercials: boolean
+          created_at: string
+          id: string
+          project_id: string
+          role: Database["public"]["Enums"]["project_role"]
+          user_id: string
+        }
+        Insert: {
+          added_by?: string | null
+          assigned_modules?: string[]
+          assigned_registers?: string[]
+          can_view_commercials?: boolean
+          created_at?: string
+          id?: string
+          project_id: string
+          role: Database["public"]["Enums"]["project_role"]
+          user_id: string
+        }
+        Update: {
+          added_by?: string | null
+          assigned_modules?: string[]
+          assigned_registers?: string[]
+          can_view_commercials?: boolean
+          created_at?: string
+          id?: string
+          project_id?: string
+          role?: Database["public"]["Enums"]["project_role"]
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_members_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      projects: {
+        Row: {
+          ai_processing_enabled: boolean
+          archived: boolean
+          code: string
+          created_at: string
+          created_by: string
+          customer_id: string
+          id: string
+          is_demo: boolean
+          name: string
+          retention_note: string
+          updated_at: string
+        }
+        Insert: {
+          ai_processing_enabled?: boolean
+          archived?: boolean
+          code?: string
+          created_at?: string
+          created_by?: string
+          customer_id: string
+          id?: string
+          is_demo?: boolean
+          name: string
+          retention_note?: string
+          updated_at?: string
+        }
+        Update: {
+          ai_processing_enabled?: boolean
+          archived?: boolean
+          code?: string
+          created_at?: string
+          created_by?: string
+          customer_id?: string
+          id?: string
+          is_demo?: boolean
+          name?: string
+          retention_note?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "projects_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      proposal_sections: {
+        Row: {
+          approved: boolean
+          assessment_id: string
+          body: string
+          id: string
+          internal_only: boolean
+          project_id: string
+          section_no: number
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          approved?: boolean
+          assessment_id: string
+          body?: string
+          id?: string
+          internal_only?: boolean
+          project_id: string
+          section_no: number
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          approved?: boolean
+          assessment_id?: string
+          body?: string
+          id?: string
+          internal_only?: boolean
+          project_id?: string
+          section_no?: number
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "proposal_sections_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
+      readiness_gates: {
+        Row: {
+          applicable: boolean
+          assessed: boolean
+          assessment_id: string
+          evidence_note: string
+          gate_no: number
+          id: string
+          na_reason: string
+          na_reviewed: boolean
+          project_id: string
+          state: number
+          updated_at: string
+        }
+        Insert: {
+          applicable?: boolean
+          assessed?: boolean
+          assessment_id: string
+          evidence_note?: string
+          gate_no: number
+          id?: string
+          na_reason?: string
+          na_reviewed?: boolean
+          project_id: string
+          state?: number
+          updated_at?: string
+        }
+        Update: {
+          applicable?: boolean
+          assessed?: boolean
+          assessment_id?: string
+          evidence_note?: string
+          gate_no?: number
+          id?: string
+          na_reason?: string
+          na_reviewed?: boolean
+          project_id?: string
+          state?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "readiness_gates_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
+      register_items: {
+        Row: {
+          archived: boolean
+          assessment_id: string
+          code: string
+          created_at: string
+          created_by: string
+          data: Json
+          id: string
+          linked_question_ids: string[]
+          project_id: string
+          register_type: string
+          review_status: string
+          row_version: number
+          status: string
+          title: string
+          updated_at: string
+          updated_by: string | null
+          visibility: string
+        }
+        Insert: {
+          archived?: boolean
+          assessment_id: string
+          code: string
+          created_at?: string
+          created_by?: string
+          data?: Json
+          id?: string
+          linked_question_ids?: string[]
+          project_id: string
+          register_type: string
+          review_status?: string
+          row_version?: number
+          status?: string
+          title: string
+          updated_at?: string
+          updated_by?: string | null
+          visibility?: string
+        }
+        Update: {
+          archived?: boolean
+          assessment_id?: string
+          code?: string
+          created_at?: string
+          created_by?: string
+          data?: Json
+          id?: string
+          linked_question_ids?: string[]
+          project_id?: string
+          register_type?: string
+          review_status?: string
+          row_version?: number
+          status?: string
+          title?: string
+          updated_at?: string
+          updated_by?: string | null
+          visibility?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "register_items_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
+      requirements: {
+        Row: {
+          acceptance_criteria: string
+          applicability: string
+          archived: boolean
+          assessment_id: string
+          axis: number
+          code: string
+          created_at: string
+          created_by: string
+          critical: boolean
+          current_behavior: string
+          current_score: number | null
+          future_behavior: string
+          id: string
+          linked_question_ids: string[]
+          priority: string
+          project_id: string
+          proposed_coverage: number | null
+          requirement_type: string
+          reviewed_by: string | null
+          scope: string
+          score_rationale: string
+          score_reviewed: boolean
+          target_score: number | null
+          title: string
+          updated_at: string
+          visibility: string
+          wave: string
+        }
+        Insert: {
+          acceptance_criteria?: string
+          applicability?: string
+          archived?: boolean
+          assessment_id: string
+          axis: number
+          code: string
+          created_at?: string
+          created_by?: string
+          critical?: boolean
+          current_behavior?: string
+          current_score?: number | null
+          future_behavior?: string
+          id?: string
+          linked_question_ids?: string[]
+          priority?: string
+          project_id: string
+          proposed_coverage?: number | null
+          requirement_type?: string
+          reviewed_by?: string | null
+          scope?: string
+          score_rationale?: string
+          score_reviewed?: boolean
+          target_score?: number | null
+          title: string
+          updated_at?: string
+          visibility?: string
+          wave?: string
+        }
+        Update: {
+          acceptance_criteria?: string
+          applicability?: string
+          archived?: boolean
+          assessment_id?: string
+          axis?: number
+          code?: string
+          created_at?: string
+          created_by?: string
+          critical?: boolean
+          current_behavior?: string
+          current_score?: number | null
+          future_behavior?: string
+          id?: string
+          linked_question_ids?: string[]
+          priority?: string
+          project_id?: string
+          proposed_coverage?: number | null
+          requirement_type?: string
+          reviewed_by?: string | null
+          scope?: string
+          score_rationale?: string
+          score_reviewed?: boolean
+          target_score?: number | null
+          title?: string
+          updated_at?: string
+          visibility?: string
+          wave?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "requirements_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
+      snapshots: {
+        Row: {
+          approved: boolean
+          assessment_id: string
+          created_at: string
+          created_by: string
+          id: string
+          kind: string
+          name: string
+          payload: Json
+          payload_hash: string
+          project_id: string
+          rubric_version: string
+          rule_version: string
+          template_version: string
+        }
+        Insert: {
+          approved?: boolean
+          assessment_id: string
+          created_at?: string
+          created_by?: string
+          id?: string
+          kind: string
+          name: string
+          payload: Json
+          payload_hash: string
+          project_id: string
+          rubric_version: string
+          rule_version: string
+          template_version: string
+        }
+        Update: {
+          approved?: boolean
+          assessment_id?: string
+          created_at?: string
+          created_by?: string
+          id?: string
+          kind?: string
+          name?: string
+          payload?: Json
+          payload_hash?: string
+          project_id?: string
+          rubric_version?: string
+          rule_version?: string
+          template_version?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "snapshots_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
+      source_references: {
+        Row: {
+          capability_tags: string[]
+          checked_date: string
+          guidance: string
+          id: string
+          provider: string
+          title: string
+          updated_at: string
+          url: string
+        }
+        Insert: {
+          capability_tags?: string[]
+          checked_date: string
+          guidance?: string
+          id: string
+          provider: string
+          title: string
+          updated_at?: string
+          url: string
+        }
+        Update: {
+          capability_tags?: string[]
+          checked_date?: string
+          guidance?: string
+          id?: string
+          provider?: string
+          title?: string
+          updated_at?: string
+          url?: string
+        }
+        Relationships: []
+      }
+      strategy_scenarios: {
+        Row: {
+          approved_at: string | null
+          approved_by: string | null
+          assessment_id: string
+          created_at: string
+          created_by: string
+          criteria_scores: Json
+          deployment_model: string
+          design_strategy: string
+          details: Json
+          id: string
+          is_recommended: boolean
+          name: string
+          project_id: string
+          recommendation_rationale: string
+          rollout_pattern: string
+          updated_at: string
+        }
+        Insert: {
+          approved_at?: string | null
+          approved_by?: string | null
+          assessment_id: string
+          created_at?: string
+          created_by?: string
+          criteria_scores?: Json
+          deployment_model?: string
+          design_strategy: string
+          details?: Json
+          id?: string
+          is_recommended?: boolean
+          name: string
+          project_id: string
+          recommendation_rationale?: string
+          rollout_pattern?: string
+          updated_at?: string
+        }
+        Update: {
+          approved_at?: string | null
+          approved_by?: string | null
+          assessment_id?: string
+          created_at?: string
+          created_by?: string
+          criteria_scores?: Json
+          deployment_model?: string
+          design_strategy?: string
+          details?: Json
+          id?: string
+          is_recommended?: boolean
+          name?: string
+          project_id?: string
+          recommendation_rationale?: string
+          rollout_pattern?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "strategy_scenarios_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
+      user_assessment_state: {
+        Row: {
+          assessment_id: string
+          last_question_id: string | null
+          last_view: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          assessment_id: string
+          last_question_id?: string | null
+          last_view?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Update: {
+          assessment_id?: string
+          last_question_id?: string | null
+          last_view?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_assessment_state_assessment_id_fkey"
+            columns: ["assessment_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_onboarding: {
         Row: {
@@ -785,6 +2418,33 @@ export type Database = {
         }
         Relationships: []
       }
+      user_profiles: {
+        Row: {
+          created_at: string
+          display_name: string
+          email: string
+          id: string
+          organisation: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string
+          email: string
+          id: string
+          organisation?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string
+          email?: string
+          id?: string
+          organisation?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -805,6 +2465,89 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      work_packages: {
+        Row: {
+          acceptance_criteria: string
+          archived: boolean
+          assessment_id: string
+          assumptions: string
+          code: string
+          conditional: boolean
+          created_at: string
+          created_by: string
+          customer_responsibilities: string
+          deliverables: string
+          dependencies: string
+          finding_ids: string[]
+          id: string
+          name: string
+          project_id: string
+          required: boolean
+          requirement_ids: string[]
+          role_mix: Json
+          updated_at: string
+          visibility: string
+          wave: string
+          workstream: string
+        }
+        Insert: {
+          acceptance_criteria?: string
+          archived?: boolean
+          assessment_id: string
+          assumptions?: string
+          code: string
+          conditional?: boolean
+          created_at?: string
+          created_by?: string
+          customer_responsibilities?: string
+          deliverables?: string
+          dependencies?: string
+          finding_ids?: string[]
+          id?: string
+          name: string
+          project_id: string
+          required?: boolean
+          requirement_ids?: string[]
+          role_mix?: Json
+          updated_at?: string
+          visibility?: string
+          wave?: string
+          workstream: string
+        }
+        Update: {
+          acceptance_criteria?: string
+          archived?: boolean
+          assessment_id?: string
+          assumptions?: string
+          code?: string
+          conditional?: boolean
+          created_at?: string
+          created_by?: string
+          customer_responsibilities?: string
+          deliverables?: string
+          dependencies?: string
+          finding_ids?: string[]
+          id?: string
+          name?: string
+          project_id?: string
+          required?: boolean
+          requirement_ids?: string[]
+          role_mix?: Json
+          updated_at?: string
+          visibility?: string
+          wave?: string
+          workstream?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "work_packages_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
       }
       workspace_records: {
         Row: {
@@ -858,13 +2601,42 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      add_project_member: {
+        Args: {
+          p_commercials: boolean
+          p_email: string
+          p_modules: string[]
+          p_project: string
+          p_registers: string[]
+          p_role: Database["public"]["Enums"]["project_role"]
+        }
+        Returns: Json
+      }
+      can_access_customer: { Args: { _customer: string }; Returns: boolean }
+      can_edit_internal: { Args: { _project: string }; Returns: boolean }
+      can_view_commercials: { Args: { _project: string }; Returns: boolean }
+      can_write_register: {
+        Args: { _project: string; _type: string }
+        Returns: boolean
+      }
       current_user_email: { Args: never; Returns: string }
       ensure_axion_access: {
         Args: { _display_name: string; _persona: string }
         Returns: boolean
       }
       ensure_login_report_admin: { Args: never; Returns: boolean }
+      flag_answers_revalidation: {
+        Args: { p_assessment: string; p_questions: string[] }
+        Returns: undefined
+      }
       has_agent_access: { Args: { _agent_id: string }; Returns: boolean }
+      has_app_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["studio_app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
       has_axion_role: {
         Args: {
           _role: Database["public"]["Enums"]["axion_role"]
@@ -888,7 +2660,45 @@ export type Database = {
         Returns: boolean
       }
       is_client_admin: { Args: { _client_id: string }; Returns: boolean }
+      is_internal_member: { Args: { _project: string }; Returns: boolean }
+      is_project_lead: { Args: { _project: string }; Returns: boolean }
+      is_project_member: { Args: { _project: string }; Returns: boolean }
       is_techmahindra_user: { Args: never; Returns: boolean }
+      join_demo_project: { Args: never; Returns: Json }
+      project_role_of: {
+        Args: { _project: string }
+        Returns: Database["public"]["Enums"]["project_role"]
+      }
+      remove_project_member: {
+        Args: { p_project: string; p_user: string }
+        Returns: undefined
+      }
+      reset_demo_project: { Args: { p_project: string }; Returns: undefined }
+      save_answer: {
+        Args: {
+          p_assessment: string
+          p_confidence: string
+          p_due?: string
+          p_expected_version: number
+          p_instance: string
+          p_na_reason: string
+          p_notes: string
+          p_owner?: string
+          p_question: string
+          p_state: string
+          p_value: Json
+        }
+        Returns: Json
+      }
+      set_answer_review: {
+        Args: { p_answer: string; p_status: string }
+        Returns: undefined
+      }
+      set_internal_staff: {
+        Args: { p_email: string; p_enabled: boolean }
+        Returns: Json
+      }
+      shares_project_with: { Args: { _other: string }; Returns: boolean }
     }
     Enums: {
       app_role: "login_report_admin"
@@ -899,6 +2709,13 @@ export type Database = {
         | "data-steward"
         | "data-engineer"
         | "agentforce-architect"
+      project_role:
+        | "engagement_lead"
+        | "solution_architect"
+        | "customer_contributor"
+        | "customer_reviewer"
+        | "internal_viewer"
+      studio_app_role: "workspace_admin" | "internal_staff"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -1035,6 +2852,14 @@ export const Constants = {
         "data-engineer",
         "agentforce-architect",
       ],
+      project_role: [
+        "engagement_lead",
+        "solution_architect",
+        "customer_contributor",
+        "customer_reviewer",
+        "internal_viewer",
+      ],
+      studio_app_role: ["workspace_admin", "internal_staff"],
     },
   },
 } as const

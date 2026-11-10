@@ -1,235 +1,82 @@
-/**
- * Axion core domain model.
- * Hierarchy: Tenant/Client -> Program/Initiative -> Domain/Workstream -> Use Case -> Release/Version
- */
+export type ControlType = "single" | "multi" | "count" | "number" | "date" | "dateRange" | "text" | "repeatable" | "table";
+export type AnswerState = "known" | "unknown" | "needs_validation" | "not_applicable";
+export type Confidence = "self_reported" | "documented" | "tested";
+export type ReviewStatus = "draft" | "submitted" | "reviewed" | "disputed";
 
-export type Industry = "BFSI" | "MFG" | "AUTO" | "HLS" | "RCPG";
+export interface Option { value: string; label: string }
+export interface SubField { key: string; label: string; type?: "text" | "number" | "date" | "select" | "textarea"; options?: Option[] }
 
-export type PersonaId =
-  | "executive-sponsor"
-  | "enterprise-architect"
-  | "data360-architect"
-  | "data-steward"
-  | "data-engineer"
-  | "agentforce-architect";
-
-export type LifecycleStageId =
-  | "discover"
-  | "assess"
-  | "design"
-  | "configure"
-  | "validate"
-  | "approve"
-  | "deploy"
-  | "monitor"
-  | "improve";
-
-export type MaturityLevel = 1 | 2 | 3 | 4 | 5;
-
-export type EntityStatus = "not-started" | "in-progress" | "in-review" | "approved" | "blocked";
-
-export interface Persona {
-  readonly id: PersonaId;
-  readonly name: string;
-  readonly summary: string;
-  /** Lifecycle stages this persona is primarily accountable for. */
-  readonly stages: readonly LifecycleStageId[];
+export interface QuestionDefinition {
+  id: string;
+  templateVersion: string;
+  module: string;
+  axis: number;
+  label: string;
+  detail: string;
+  help: string;
+  whyItMatters: string;
+  example: string;
+  control: ControlType;
+  optionSet?: string | null;
+  options: Option[];
+  subfields: SubField[];
+  perOption?: { label: string; options: Option[] };
+  requiredWhenApplicable: boolean;
+  visibilityRule?: Rule;
+  evidenceRequired: boolean;
+  defaultOwnerRole: string;
+  criticality: "normal" | "high" | "gate";
+  customerVisible: boolean;
+  quickStart: boolean;
+  noneExclusive: boolean;
+  rank: boolean;
 }
 
-export interface LifecycleStage {
-  readonly id: LifecycleStageId;
-  readonly order: number;
-  readonly name: string;
-  readonly purpose: string;
-  /** Phase of the Axion roadmap that delivers this stage's functionality. */
-  readonly deliveredInPhase: number;
+export interface ModuleDefinition { code: string; name: string; owner: string; axisText: string; axis: number; visibilityRule?: Rule }
+
+export type Rule =
+  | { op: "equals"; q: string; value: string }
+  | { op: "in"; q: string; values: string[] }
+  | { op: "contains"; q: string; values: string[] }
+  | { op: "greater_than"; q: string; value: number }
+  | { op: "known"; q: string }
+  | { op: "confirmed_not_applicable"; q: string }
+  | { op: "not"; rule: Rule }
+  | { op: "any"; rules: Rule[] }
+  | { op: "all"; rules: Rule[] };
+
+export interface CountValue { mode: "exact" | "estimate" | "band"; exact?: number | null; band?: string | null; min?: number | null; max?: number | null }
+export interface AnswerValue {
+  selected?: string | string[];
+  other?: string;
+  ranks?: string[];
+  perOption?: Record<string, string>;
+  details?: Record<string, string>;
+  count?: CountValue;
+  metrics?: Record<string, { value: number | null; status: "exact" | "estimated" }>;
+  start?: string; end?: string; reason?: string;
+  items?: { id: string; fields: Record<string, string> }[];
+  text?: string;
 }
 
-export type SalesforceProductId =
-  | "data-360"
-  | "agentforce"
-  | "sales-cloud"
-  | "service-cloud"
-  | "marketing-cloud"
-  | "financial-services-cloud"
-  | "manufacturing-cloud"
-  | "automotive-cloud"
-  | "field-service"
-  | "revenue-cloud"
-  | "health-cloud"
-  | "consumer-goods-cloud"
-  | "loyalty-management"
-  | "tableau"
-  | "shield";
-
-export interface SalesforceProduct {
-  readonly id: SalesforceProductId;
-  readonly name: string;
-  readonly category: "data" | "agent" | "crm" | "engagement" | "analytics" | "security";
-  readonly industries: readonly Industry[];
+export interface AnswerRow {
+  id: string;
+  assessment_id: string;
+  project_id: string;
+  question_id: string;
+  instance_key: string;
+  state: AnswerState;
+  value: AnswerValue | null;
+  notes: string | null;
+  na_reason: string | null;
+  confidence: Confidence;
+  review_status: ReviewStatus;
+  owner_label: string | null;
+  due_date: string | null;
+  needs_revalidation: boolean;
+  row_version: number;
+  updated_by: string;
+  updated_at: string;
 }
 
-export interface ExcludedProduct {
-  readonly id: string;
-  readonly name: string;
-  readonly reason: string;
-}
-
-export type SourcePlatformId =
-  | "salesforce"
-  | "snowflake"
-  | "databricks"
-  | "aws"
-  | "azure"
-  | "sap"
-  | "oracle"
-  | "core-banking"
-  | "commerce"
-  | "loyalty"
-  | "mes"
-  | "scada-historian"
-  | "plm"
-  | "eam-cmms"
-  | "iot-platform"
-  | "telematics"
-  | "dealer-management"
-  | "warranty"
-  | "parts-catalog"
-  | "supplier-portal";
-
-export type IngestionPattern = "physical" | "zero-copy" | "cached-acceleration" | "streaming";
-
-export interface SourcePlatform {
-  readonly id: SourcePlatformId;
-  readonly name: string;
-  readonly category: "crm" | "lakehouse" | "cloud" | "erp" | "industry" | "engagement";
-  readonly supportedPatterns: readonly IngestionPattern[];
-}
-
-export type ConceptGroup =
-  | "blueprinting"
-  | "modeling"
-  | "integration"
-  | "identity"
-  | "activation"
-  | "agent"
-  | "governance"
-  | "release"
-  | "operations";
-
-export interface PlatformConcept {
-  readonly id: string;
-  readonly name: string;
-  readonly group: ConceptGroup;
-  readonly description: string;
-  readonly stages: readonly LifecycleStageId[];
-}
-
-/* ---------------------------------- Tenancy --------------------------------- */
-
-export interface Tenant {
-  readonly id: string;
-  readonly name: string;
-  readonly industry: Industry;
-  readonly region: string;
-  readonly segment: string;
-  readonly createdAt: string;
-}
-
-export interface Program {
-  readonly id: string;
-  readonly tenantId: string;
-  readonly name: string;
-  readonly objective: string;
-  readonly executiveSponsor: string;
-  readonly status: EntityStatus;
-  readonly currentStage: LifecycleStageId;
-  readonly startDate: string;
-  readonly targetGoLive: string;
-}
-
-export interface Workstream {
-  readonly id: string;
-  readonly tenantId: string;
-  readonly programId: string;
-  readonly name: string;
-  readonly domain: string;
-  readonly owner: PersonaId;
-  readonly status: EntityStatus;
-}
-
-export interface UseCase {
-  readonly id: string;
-  readonly tenantId: string;
-  readonly programId: string;
-  readonly workstreamId: string;
-  readonly name: string;
-  readonly outcome: string;
-  readonly products: readonly SalesforceProductId[];
-  readonly status: EntityStatus;
-  readonly businessValue: "high" | "medium" | "low";
-  readonly complexity: "high" | "medium" | "low";
-}
-
-export interface Release {
-  readonly id: string;
-  readonly tenantId: string;
-  readonly programId: string;
-  readonly version: string;
-  readonly name: string;
-  readonly status: EntityStatus;
-  readonly plannedDate: string;
-  readonly useCaseIds: readonly string[];
-}
-
-/* ------------------------------ AI + audit core ----------------------------- */
-
-export type AiSuggestionStatus = "pending" | "accepted" | "edited" | "rejected";
-
-export interface AiSuggestion<TValue = unknown> {
-  readonly id: string;
-  readonly tenantId: string;
-  /** Entity the suggestion applies to, e.g. "use-case:uc-001". */
-  readonly targetRef: string;
-  readonly stage: LifecycleStageId;
-  readonly title: string;
-  readonly value: TValue;
-  readonly rationale: string;
-  /** 0-1; omitted when the model does not express calibrated confidence. */
-  readonly confidence?: number;
-  readonly status: AiSuggestionStatus;
-  readonly createdAt: string;
-  readonly decidedAt?: string;
-  readonly decidedBy?: PersonaId;
-}
-
-export type AuditAction =
-  | "ai.suggestion.accepted"
-  | "ai.suggestion.edited"
-  | "ai.suggestion.rejected"
-  | "entity.created"
-  | "entity.updated"
-  | "session.signed-in"
-  | "session.signed-out";
-
-export interface AuditEntry {
-  readonly id: string;
-  readonly tenantId: string;
-  readonly actor: string;
-  readonly persona: PersonaId;
-  readonly action: AuditAction;
-  readonly entityRef: string;
-  readonly summary: string;
-  readonly before?: string;
-  readonly after?: string;
-  readonly timestamp: string;
-}
-
-/* --------------------------------- Session ---------------------------------- */
-
-export interface Session {
-  readonly email: string;
-  readonly displayName: string;
-  readonly persona: PersonaId;
-  readonly signedInAt: string;
-}
+export type AnswerMap = Record<string, Pick<AnswerRow, "state" | "value" | "row_version" | "review_status"> & Partial<AnswerRow>>;
