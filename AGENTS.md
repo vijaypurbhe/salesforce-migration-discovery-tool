@@ -1,0 +1,1 @@
+Email labels must not be used as authorization: private assessment access requires server-validated identity or an independent secure access token.
