@@ -15,6 +15,13 @@
       "when": 1794345328660,
       "tag": "0001_discovery_studio_core",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794345441741,
+      "tag": "0002_discovery_studio_analysis",
+      "breakpoints": true
     }
   ]
 }
