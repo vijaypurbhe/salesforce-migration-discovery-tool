@@ -1939,6 +1939,50 @@ export type Database = {
           },
         ]
       }
+      proposal_sections: {
+        Row: {
+          approved: boolean
+          assessment_id: string
+          body: string
+          id: string
+          internal_only: boolean
+          project_id: string
+          section_no: number
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          approved?: boolean
+          assessment_id: string
+          body?: string
+          id?: string
+          internal_only?: boolean
+          project_id: string
+          section_no: number
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          approved?: boolean
+          assessment_id?: string
+          body?: string
+          id?: string
+          internal_only?: boolean
+          project_id?: string
+          section_no?: number
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "proposal_sections_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
       readiness_gates: {
         Row: {
           applicable: boolean

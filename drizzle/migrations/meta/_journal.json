@@ -22,6 +22,13 @@
       "when": 1794345441741,
       "tag": "0002_discovery_studio_analysis",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794346667472,
+      "tag": "0003_proposal_sections",
+      "breakpoints": true
     }
   ]
 }
