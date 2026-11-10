@@ -5,7 +5,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider, useAuth } from "@/context/AuthContext";
 import AppShell from "@/components/app/AppShell";
 import AuthPage from "@/pages/AuthPage";
-import ResetPassword from "@/pages/ResetPassword";
 import Portfolio from "@/pages/Portfolio";
 import CustomerPage from "@/pages/CustomerPage";
 import AssessmentLayout from "@/pages/assessment/AssessmentLayout";
@@ -41,7 +40,7 @@ export default function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/auth" element={<AuthPage />} />
-              <Route path="/reset-password" element={<ResetPassword />} />
+              <Route path="/reset-password" element={<Navigate to="/auth" replace />} />
               <Route element={<Protected><AppShell /></Protected>}>
                 <Route path="/" element={<Portfolio />} />
                 <Route path="/customers/:customerId" element={<CustomerPage />} />

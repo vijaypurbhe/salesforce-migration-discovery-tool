@@ -38,7 +38,7 @@ export default function AppShell() {
                   <div className="text-xs text-muted-foreground mt-1">{isAdmin ? "Workspace administrator" : isInternal ? "Internal team" : "Customer user"}</div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={signOut}><LogOut className="h-4 w-4 mr-2" />Sign out</DropdownMenuItem>
+                <DropdownMenuItem onClick={signOut}><LogOut className="h-4 w-4 mr-2" />Leave workspace</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
