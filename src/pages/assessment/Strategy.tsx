@@ -50,7 +50,7 @@ export default function StrategyPage() {
   };
   const setWeight = async (k: string, v: number) => {
     const { error } = await db.from("assessments").update({ decision_weights: { ...weights, [k]: v } }).eq("id", assessment.id);
-    if (error) toast.error(error.message); else qc.invalidateQueries({ queryKey: ["assessment-bundle", assessment.id] });
+    if (error) toast.error(error.message); else qc.invalidateQueries({ queryKey: ["assessment", assessment.id] });
   };
   const score = async (s: Strategy, k: string, v: string) => {
     const cs = { ...s.criteria_scores }; if (v === "none") delete cs[k]; else cs[k] = Number(v);
