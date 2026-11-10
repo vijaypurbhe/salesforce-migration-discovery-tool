@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,192 +6,118 @@
 
 @layer base {
   :root {
-    /* TECH MAHINDRA AXION — white canvas, red accent, charcoal/slate typography */
     --background: 0 0% 100%;
-    --foreground: 215 20% 16%;
-
+    --foreground: 218 45% 14%;
     --card: 0 0% 100%;
-    --card-foreground: 215 20% 16%;
-
+    --card-foreground: 218 45% 14%;
     --popover: 0 0% 100%;
-    --popover-foreground: 215 20% 16%;
+    --popover-foreground: 218 45% 14%;
 
-    /* Tech Mahindra red #E23125 */
-    --primary: 3 78% 52%;
+    /* Navy */
+    --primary: 218 62% 22%;
     --primary-foreground: 0 0% 100%;
-
-    /* Restrained architectural blue-grey #40587A */
-    --brand-blue: 217 30% 36%;
-    --brand-blue-foreground: 0 0% 100%;
-
-    /* Slate accent */
-    --teal: 213 22% 46%;
+    /* Teal */
+    --teal: 178 62% 32%;
     --teal-foreground: 0 0% 100%;
+    --teal-soft: 176 45% 94%;
+    --teal-soft-foreground: 178 62% 22%;
 
-    --teal-soft: 213 30% 95%;
-    --teal-soft-foreground: 217 30% 30%;
+    --secondary: 214 32% 96%;
+    --secondary-foreground: 218 45% 18%;
+    --muted: 214 30% 96%;
+    --muted-foreground: 216 16% 42%;
+    --accent: 176 45% 94%;
+    --accent-foreground: 178 62% 22%;
 
-    --secondary: 214 20% 97%;
-    --secondary-foreground: 215 22% 22%;
-
-    --muted: 214 20% 97%;
-    --muted-foreground: 215 14% 42%;
-
-    --accent: 213 30% 95%;
-    --accent-foreground: 217 30% 30%;
-
-    --destructive: 0 72% 46%;
+    --destructive: 356 70% 46%;
     --destructive-foreground: 0 0% 100%;
-
-    --warning: 33 82% 48%;
-    --warning-foreground: 30 45% 14%;
-
-    --success: 158 64% 32%;
+    --warning: 36 90% 45%;
+    --warning-foreground: 30 60% 12%;
+    --warning-soft: 42 95% 93%;
+    --success: 152 58% 31%;
     --success-foreground: 0 0% 100%;
-
-    --info: 217 30% 36%;
+    --success-soft: 145 45% 93%;
+    --info: 208 70% 42%;
     --info-foreground: 0 0% 100%;
+    --info-soft: 208 80% 95%;
+    --danger-soft: 356 80% 96%;
+    --demo: 280 45% 45%;
+    --demo-soft: 280 50% 95%;
 
-    --border: 214 22% 89%;
-    --input: 214 22% 89%;
-    --ring: 3 78% 52%;
+    --border: 216 26% 89%;
+    --input: 216 26% 86%;
+    --ring: 178 62% 32%;
+    --radius: 0.75rem;
 
-    --radius: 0.5rem;
+    /* Chart series */
+    --chart-current: 208 70% 42%;
+    --chart-target: 218 62% 22%;
+    --chart-proposed: 178 62% 32%;
+    --chart-complexity: 22 85% 50%;
 
-    --surface: 214 22% 97%;
-    --surface-foreground: 215 20% 16%;
-
-    --chart-1: 3 78% 52%;
-    --chart-2: 217 30% 36%;
-    --chart-3: 213 22% 56%;
-    --chart-4: 158 64% 32%;
-    --chart-5: 33 82% 48%;
-    --chart-6: 215 20% 26%;
-
-    --shadow-card: 0 1px 2px 0 hsl(215 20% 16% / 0.04), 0 1px 3px 0 hsl(215 20% 16% / 0.06);
-    --shadow-raised: 0 2px 6px -1px hsl(215 20% 16% / 0.08), 0 10px 24px -12px hsl(217 30% 36% / 0.2);
-    --shadow-panel: 0 24px 60px -28px hsl(217 30% 36% / 0.28);
-
-    /* Light architectural sidebar */
-    --sidebar-background: 214 24% 98%;
-    --sidebar-foreground: 215 20% 26%;
-    --sidebar-primary: 3 78% 52%;
+    --sidebar-background: 218 50% 98%;
+    --sidebar-foreground: 218 45% 18%;
+    --sidebar-primary: 218 62% 22%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 3 78% 52%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 214 22% 90%;
-    --sidebar-ring: 3 78% 52%;
+    --sidebar-accent: 214 32% 94%;
+    --sidebar-accent-foreground: 218 45% 18%;
+    --sidebar-border: 216 26% 89%;
+    --sidebar-ring: 178 62% 32%;
+
+    --shadow-card: 0 1px 2px hsl(218 45% 14% / 0.04), 0 4px 16px -6px hsl(218 45% 14% / 0.08);
   }
 
   .dark {
-    --background: 215 24% 9%;
-    --foreground: 210 22% 92%;
-
-    --card: 215 22% 12%;
-    --card-foreground: 210 22% 92%;
-
-    --popover: 215 22% 12%;
-    --popover-foreground: 210 22% 92%;
-
-    --primary: 3 78% 58%;
-    --primary-foreground: 0 0% 100%;
-
-    --brand-blue: 213 40% 62%;
-    --brand-blue-foreground: 215 24% 9%;
-
-    --teal: 213 26% 60%;
-    --teal-foreground: 215 24% 9%;
-
-    --teal-soft: 215 20% 20%;
-    --teal-soft-foreground: 210 22% 92%;
-
-    --secondary: 215 18% 17%;
-    --secondary-foreground: 210 22% 92%;
-
-    --muted: 215 18% 17%;
-    --muted-foreground: 213 14% 66%;
-
-    --accent: 215 18% 20%;
-    --accent-foreground: 210 22% 92%;
-
-    --destructive: 0 68% 56%;
+    --background: 220 40% 8%;
+    --foreground: 210 30% 94%;
+    --card: 220 36% 11%;
+    --card-foreground: 210 30% 94%;
+    --popover: 220 36% 11%;
+    --popover-foreground: 210 30% 94%;
+    --primary: 210 70% 70%;
+    --primary-foreground: 220 40% 10%;
+    --teal: 176 55% 48%;
+    --teal-foreground: 220 40% 8%;
+    --teal-soft: 178 40% 16%;
+    --teal-soft-foreground: 176 55% 75%;
+    --secondary: 220 28% 17%;
+    --secondary-foreground: 210 30% 94%;
+    --muted: 220 28% 17%;
+    --muted-foreground: 215 18% 65%;
+    --accent: 178 40% 16%;
+    --accent-foreground: 176 55% 75%;
+    --destructive: 356 70% 58%;
     --destructive-foreground: 0 0% 100%;
-
-    --warning: 33 76% 58%;
-    --warning-foreground: 30 45% 10%;
-
-    --success: 158 50% 46%;
-    --success-foreground: 215 24% 9%;
-
-    --info: 213 40% 62%;
-    --info-foreground: 215 24% 9%;
-
-    --border: 215 16% 24%;
-    --input: 215 16% 26%;
-    --ring: 3 78% 58%;
-
-    --surface: 215 20% 14%;
-    --surface-foreground: 210 22% 92%;
-
-    --chart-1: 3 78% 58%;
-    --chart-2: 213 40% 62%;
-    --chart-3: 213 26% 60%;
-    --chart-4: 158 50% 46%;
-    --chart-5: 33 76% 58%;
-    --chart-6: 210 16% 76%;
-
-    --shadow-card: 0 1px 2px 0 hsl(0 0% 0% / 0.3);
-    --shadow-raised: 0 10px 30px -14px hsl(0 0% 0% / 0.6);
-    --shadow-panel: 0 28px 70px -30px hsl(0 0% 0% / 0.8);
-
-    --sidebar-background: 215 24% 11%;
-    --sidebar-foreground: 210 18% 82%;
-    --sidebar-primary: 3 78% 58%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 3 78% 58%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 215 16% 20%;
-    --sidebar-ring: 3 78% 58%;
+    --warning-soft: 36 50% 16%;
+    --success-soft: 152 35% 15%;
+    --info-soft: 208 45% 17%;
+    --danger-soft: 356 45% 17%;
+    --demo-soft: 280 30% 18%;
+    --border: 220 24% 20%;
+    --input: 220 24% 24%;
+    --ring: 176 55% 48%;
+    --sidebar-background: 220 38% 10%;
+    --sidebar-foreground: 210 30% 90%;
+    --sidebar-accent: 220 28% 17%;
+    --sidebar-accent-foreground: 210 30% 94%;
+    --sidebar-border: 220 24% 20%;
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground font-sans antialiased; font-feature-settings: "tnum" 1; }
+  h1, h2, h3, h4 { @apply font-display tracking-tight; }
+  :focus-visible { @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background; }
+}
 
-  html {
-    -webkit-font-smoothing: antialiased;
-  }
+@layer components {
+  .card-elevated { @apply rounded-xl border bg-card; box-shadow: var(--shadow-card); }
+  .kicker { @apply text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground; }
+}
 
-  body {
-    @apply bg-background text-foreground antialiased;
-    font-feature-settings: "cv02", "cv03", "cv04";
-  }
-
-  :focus-visible {
-    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
-  }
-
-  h1, h2, h3, h4 {
-    @apply tracking-[-0.016em];
-  }
-
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: hsl(var(--foreground) / 0.18);
-    border: 3px solid transparent;
-    background-clip: content-box;
-    border-radius: 999px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--foreground) / 0.3);
-    background-clip: content-box;
-  }
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+  .print-break { page-break-before: always; }
 }
