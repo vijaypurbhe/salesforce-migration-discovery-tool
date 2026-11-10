@@ -1,0 +1,6999 @@
+{
+ "templateVersion": "cpq-rc-1.0",
+ "modules": [
+  {
+   "code": "B",
+   "name": "Business goals, scope and governance",
+   "owner": "engagement lead",
+   "axisText": "strategy and governance",
+   "axis": 1
+  },
+  {
+   "code": "L",
+   "name": "Source verification, licensing and org strategy",
+   "owner": "Salesforce platform owner",
+   "axisText": "strategy and governance",
+   "axis": 1
+  },
+  {
+   "code": "C",
+   "name": "Product catalog and configuration",
+   "owner": "product/catalog SME",
+   "axisText": "catalog and configuration",
+   "axis": 2
+  },
+  {
+   "code": "P",
+   "name": "Pricing, discounting and calculation logic",
+   "owner": "pricing architect/SME",
+   "axisText": "pricing and monetization",
+   "axis": 3
+  },
+  {
+   "code": "Q",
+   "name": "Quoting, seller experience and approvals",
+   "owner": "sales operations",
+   "axisText": "quoting and seller experience",
+   "axis": 4
+  },
+  {
+   "code": "K",
+   "name": "Documents, contracts and signature",
+   "owner": "legal/sales operations",
+   "axisText": "documents, contracts and approvals. Q06\u2013Q07 also contribute to this axis",
+   "axis": 5
+  },
+  {
+   "code": "A",
+   "name": "Subscriptions, assets, amendments and renewals",
+   "owner": "subscription/revenue operations",
+   "axisText": "assets and commercial lifecycle. Show detailed module when recurring products, assets or lifecycle processing exist; otherwise record justified N/A",
+   "axis": 6
+  },
+  {
+   "code": "O",
+   "name": "Orders, fulfillment and orchestration",
+   "owner": "order management",
+   "axisText": "orders, billing and downstream processes",
+   "axis": 7
+  },
+  {
+   "code": "U",
+   "name": "Usage, billing, tax and finance dependencies",
+   "owner": "finance/billing architect",
+   "axisText": "orders, billing and downstream processes. Keep routing questions available even if billing replacement is excluded",
+   "axis": 7
+  },
+  {
+   "code": "I",
+   "name": "Integrations and external applications",
+   "owner": "integration architect",
+   "axisText": "integrations and channels",
+   "axis": 8
+  },
+  {
+   "code": "X",
+   "name": "Customization, automation and deployment",
+   "owner": "technical architect",
+   "axisText": "customization and engineering",
+   "axis": 9
+  },
+  {
+   "code": "D",
+   "name": "Data migration and quality",
+   "owner": "data architect",
+   "axisText": "data migration and quality",
+   "axis": 10
+  },
+  {
+   "code": "R",
+   "name": "Reporting and analytics",
+   "owner": "revenue operations/BI",
+   "axisText": "reporting and insights",
+   "axis": 11
+  },
+  {
+   "code": "S",
+   "name": "Security, access and nonfunctional requirements",
+   "owner": "security/platform owner",
+   "axisText": "security and operational resilience",
+   "axis": 12
+  },
+  {
+   "code": "T",
+   "name": "Testing, rollout, change and proposal readiness",
+   "owner": "program/test lead",
+   "axisText": "testing, cutover and adoption",
+   "axis": 12
+  }
+ ],
+ "questions": [
+  {
+   "id": "B01",
+   "module": "B",
+   "axis": 1,
+   "label": "What is driving the migration?",
+   "detail": "Multi: sales productivity; pricing agility; new monetization; partner/self-service; technical debt; data quality; acquisition/consolidation; lifecycle automation; current product strategy; other. Rank top three.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "sales_productivity",
+     "label": "Sales productivity"
+    },
+    {
+     "value": "pricing_agility",
+     "label": "Pricing agility"
+    },
+    {
+     "value": "new_monetization",
+     "label": "New monetization"
+    },
+    {
+     "value": "partner_self_service",
+     "label": "Partner/self-service"
+    },
+    {
+     "value": "technical_debt",
+     "label": "Technical debt"
+    },
+    {
+     "value": "data_quality",
+     "label": "Data quality"
+    },
+    {
+     "value": "acquisition_consolidation",
+     "label": "Acquisition/consolidation"
+    },
+    {
+     "value": "lifecycle_automation",
+     "label": "Lifecycle automation"
+    },
+    {
+     "value": "current_product_strategy",
+     "label": "Current product strategy"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "rank_top_three",
+     "label": "Rank top three"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "engagement lead",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": false,
+   "rank": true
+  },
+  {
+   "id": "B02",
+   "module": "B",
+   "axis": 1,
+   "label": "What outcomes will make this successful?",
+   "detail": "Repeatable KPI: quote turnaround; quote error rate; approval turnaround; discount leakage; renewal timeliness; seller adoption; other. Capture baseline, unit, measurement source, target, target date, owner. Do not invent baselines.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "quote_turnaround",
+     "label": "Quote turnaround"
+    },
+    {
+     "key": "quote_error_rate",
+     "label": "Quote error rate"
+    },
+    {
+     "key": "approval_turnaround",
+     "label": "Approval turnaround"
+    },
+    {
+     "key": "discount_leakage",
+     "label": "Discount leakage"
+    },
+    {
+     "key": "renewal_timeliness",
+     "label": "Renewal timeliness"
+    },
+    {
+     "key": "seller_adoption",
+     "label": "Seller adoption"
+    },
+    {
+     "key": "other",
+     "label": "Other"
+    },
+    {
+     "key": "baseline",
+     "label": "Baseline"
+    },
+    {
+     "key": "unit",
+     "label": "Unit"
+    },
+    {
+     "key": "measurement_source",
+     "label": "Measurement source"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "engagement lead",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "B03",
+   "module": "B",
+   "axis": 1,
+   "label": "What is the intended implementation boundary?",
+   "detail": "Multi: configure/price/quote; approvals; documents; contracts; orders; assets/subscriptions; amendments/renewals; integrations; reporting; billing; usage; revenue recognition; portals; orchestration; Agentforce. Apply SCOPE separately to each.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "configure_price_quote",
+     "label": "Configure/price/quote"
+    },
+    {
+     "value": "approvals",
+     "label": "Approvals"
+    },
+    {
+     "value": "documents",
+     "label": "Documents"
+    },
+    {
+     "value": "contracts",
+     "label": "Contracts"
+    },
+    {
+     "value": "orders",
+     "label": "Orders"
+    },
+    {
+     "value": "assets_subscriptions",
+     "label": "Assets/subscriptions"
+    },
+    {
+     "value": "amendments_renewals",
+     "label": "Amendments/renewals"
+    },
+    {
+     "value": "integrations",
+     "label": "Integrations"
+    },
+    {
+     "value": "reporting",
+     "label": "Reporting"
+    },
+    {
+     "value": "billing",
+     "label": "Billing"
+    },
+    {
+     "value": "usage",
+     "label": "Usage"
+    },
+    {
+     "value": "revenue_recognition",
+     "label": "Revenue recognition"
+    },
+    {
+     "value": "portals",
+     "label": "Portals"
+    },
+    {
+     "value": "orchestration",
+     "label": "Orchestration"
+    },
+    {
+     "value": "agentforce",
+     "label": "Agentforce"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "apply_scope_separately_to_each",
+     "label": "Apply SCOPE separately to each"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "engagement lead",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "B04",
+   "module": "B",
+   "axis": 1,
+   "label": "Which business units and legal entities are involved?",
+   "detail": "Repeatable entity/BU with sponsor, region, currency, country and intended rollout wave.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "entity_bu_with_sponsor",
+     "label": "Entity/BU with sponsor"
+    },
+    {
+     "key": "region",
+     "label": "Region"
+    },
+    {
+     "key": "currency",
+     "label": "Currency"
+    },
+    {
+     "key": "country",
+     "label": "Country"
+    },
+    {
+     "key": "intended_rollout_wave",
+     "label": "Intended rollout wave"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "engagement lead",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "B05",
+   "module": "B",
+   "axis": 1,
+   "label": "Who will use quoting and who will approve the design?",
+   "detail": "Repeatable persona: direct seller; partner seller; sales ops; pricing; finance; legal; product; support; admin. Count active users, peak concurrency, named SME and design authority.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "direct_seller",
+     "label": "Direct seller"
+    },
+    {
+     "key": "partner_seller",
+     "label": "Partner seller"
+    },
+    {
+     "key": "sales_ops",
+     "label": "Sales ops"
+    },
+    {
+     "key": "pricing",
+     "label": "Pricing"
+    },
+    {
+     "key": "finance",
+     "label": "Finance"
+    },
+    {
+     "key": "legal",
+     "label": "Legal"
+    },
+    {
+     "key": "product",
+     "label": "Product"
+    },
+    {
+     "key": "support",
+     "label": "Support"
+    },
+    {
+     "key": "admin",
+     "label": "Admin"
+    },
+    {
+     "key": "count_active_users",
+     "label": "Count active users"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "engagement lead",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "B06",
+   "module": "B",
+   "axis": 1,
+   "label": "What deadlines or business events constrain delivery?",
+   "detail": "Date/range + reason: renewal; peak season; launch; contract commitment; fiscal close; other. Hard/target deadline; decision authority; blackout windows.",
+   "control": "dateRange",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "renewal",
+     "label": "Renewal"
+    },
+    {
+     "value": "peak_season",
+     "label": "Peak season"
+    },
+    {
+     "value": "launch",
+     "label": "Launch"
+    },
+    {
+     "value": "contract_commitment",
+     "label": "Contract commitment"
+    },
+    {
+     "value": "fiscal_close",
+     "label": "Fiscal close"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "hard_or_target_deadline",
+     "label": "Hard or target deadline"
+    },
+    {
+     "key": "decision_authority",
+     "label": "Decision authority"
+    },
+    {
+     "key": "blackout_windows",
+     "label": "Blackout windows"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "engagement lead",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "B07",
+   "module": "B",
+   "axis": 1,
+   "label": "What budget information can the internal team use?",
+   "detail": "Internal-only, optional: not established; indicative range; approved envelope. Currency and low/high amount; services/license split if available.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "not_established",
+     "label": "Not established"
+    },
+    {
+     "value": "indicative_range",
+     "label": "Indicative range"
+    },
+    {
+     "value": "approved_envelope",
+     "label": "Approved envelope"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "currency",
+     "label": "Currency"
+    },
+    {
+     "key": "low_amount",
+     "label": "Low amount"
+    },
+    {
+     "key": "high_amount",
+     "label": "High amount"
+    },
+    {
+     "key": "services_license_split",
+     "label": "Services/license split"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "engagement lead",
+   "criticality": "normal",
+   "customerVisible": false,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "B08",
+   "module": "B",
+   "axis": 1,
+   "label": "What level of process change is acceptable?",
+   "detail": "Single: preserve outcomes with minimal user change; simplify selected processes; redesign end-to-end; undecided. Record non-negotiable business outcomes.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "preserve_outcomes_with_minimal_user_change",
+     "label": "Preserve outcomes with minimal user change"
+    },
+    {
+     "value": "simplify_selected_processes",
+     "label": "Simplify selected processes"
+    },
+    {
+     "value": "redesign_end_to_end",
+     "label": "Redesign end-to-end"
+    },
+    {
+     "value": "undecided",
+     "label": "Undecided"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "non_negotiable_business_outcomes",
+     "label": "Non-negotiable business outcomes"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "engagement lead",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "B09",
+   "module": "B",
+   "axis": 1,
+   "label": "Who owns decisions and customer dependencies?",
+   "detail": "Repeatable RACI by workstream, escalation route, weekly SME availability and approval turnaround.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "raci_by_workstream",
+     "label": "RACI by workstream"
+    },
+    {
+     "key": "escalation_route",
+     "label": "Escalation route"
+    },
+    {
+     "key": "weekly_sme_availability",
+     "label": "Weekly SME availability"
+    },
+    {
+     "key": "approval_turnaround",
+     "label": "Approval turnaround"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "engagement lead",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "B10",
+   "module": "B",
+   "axis": 1,
+   "label": "What is explicitly excluded?",
+   "detail": "Repeatable exclusion: capability/system/BU; reason; retained owner; interface responsibility; revisit trigger.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "capability_system_bu",
+     "label": "Capability/system/BU"
+    },
+    {
+     "key": "reason",
+     "label": "Reason"
+    },
+    {
+     "key": "retained_owner",
+     "label": "Retained owner"
+    },
+    {
+     "key": "interface_responsibility",
+     "label": "Interface responsibility"
+    },
+    {
+     "key": "revisit_trigger",
+     "label": "Revisit trigger"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "engagement lead",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "L01",
+   "module": "L",
+   "axis": 1,
+   "label": "Which source product is actually installed?",
+   "detail": "Multi: Salesforce CPQ/SBQQ; Salesforce Billing/blng; Industries CPQ; custom quoting; other. Package version, verification date, evidence. Multiple paths trigger architect review.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "salesforce_cpq_sbqq",
+     "label": "Salesforce CPQ/SBQQ"
+    },
+    {
+     "value": "salesforce_billing_blng",
+     "label": "Salesforce Billing/blng"
+    },
+    {
+     "value": "industries_cpq",
+     "label": "Industries CPQ"
+    },
+    {
+     "value": "custom_quoting",
+     "label": "Custom quoting"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "package_version",
+     "label": "Package version"
+    },
+    {
+     "key": "verification_date",
+     "label": "Verification date"
+    },
+    {
+     "key": "evidence",
+     "label": "Evidence"
+    },
+    {
+     "key": "multiple_paths_trigger_architect_review",
+     "label": "Multiple paths trigger architect review"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "Salesforce platform owner",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "L02",
+   "module": "L",
+   "axis": 1,
+   "label": "What is the source landscape?",
+   "detail": "Repeatable org: production/sandbox; org alias, edition, release, region, BU, system owner. Do not ask for credentials.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "production_sandbox",
+     "label": "Production/sandbox"
+    },
+    {
+     "key": "org_alias",
+     "label": "Org alias"
+    },
+    {
+     "key": "edition",
+     "label": "Edition"
+    },
+    {
+     "key": "release",
+     "label": "Release"
+    },
+    {
+     "key": "region",
+     "label": "Region"
+    },
+    {
+     "key": "system_owner",
+     "label": "System owner"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "Salesforce platform owner",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "L03",
+   "module": "L",
+   "axis": 1,
+   "label": "Which target licenses and features are confirmed?",
+   "detail": "Repeatable target product/SKU, entitlement status: purchased; quoted; under evaluation; unavailable. Feature permissions, user counts, usage limits if known, supporting order form/reference, validation owner/date.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "target_product_sku",
+     "label": "Target product/SKU"
+    },
+    {
+     "key": "entitlement_status_purchased",
+     "label": "Entitlement status: purchased"
+    },
+    {
+     "key": "quoted",
+     "label": "Quoted"
+    },
+    {
+     "key": "under_evaluation",
+     "label": "Under evaluation"
+    },
+    {
+     "key": "unavailable",
+     "label": "Unavailable"
+    },
+    {
+     "key": "feature_permissions",
+     "label": "Feature permissions"
+    },
+    {
+     "key": "user_counts",
+     "label": "User counts"
+    },
+    {
+     "key": "usage_limits_if_known",
+     "label": "Usage limits if known"
+    },
+    {
+     "key": "supporting_order_form_reference",
+     "label": "Supporting order form/reference"
+    },
+    {
+     "key": "validation_owner_date",
+     "label": "Validation owner/date"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "Salesforce platform owner",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "L04",
+   "module": "L",
+   "axis": 1,
+   "label": "What is the deployment model?",
+   "detail": "Same production org; existing different org; new org; undecided. Capture wider org-strategy decision and affected clouds.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "same_production_org",
+     "label": "Same production org"
+    },
+    {
+     "value": "existing_different_org",
+     "label": "Existing different org"
+    },
+    {
+     "value": "new_org",
+     "label": "New org"
+    },
+    {
+     "value": "undecided",
+     "label": "Undecided"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "wider_org_strategy_decision",
+     "label": "Wider org-strategy decision"
+    },
+    {
+     "key": "affected_clouds",
+     "label": "Affected clouds"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "Salesforce platform owner",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "L05",
+   "module": "L",
+   "axis": 1,
+   "label": "Will legacy CPQ and the new solution run concurrently?",
+   "detail": "YN + expected duration, split by BU/product/channel, shared Account/Product2/price book governance and transaction routing owner.",
+   "control": "single",
+   "optionSet": "YN",
+   "options": [
+    {
+     "value": "yes",
+     "label": "Yes"
+    },
+    {
+     "value": "no",
+     "label": "No"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "expected_duration",
+     "label": "Expected duration"
+    },
+    {
+     "key": "split_by_bu_product_channel",
+     "label": "Split by BU/product/channel"
+    },
+    {
+     "key": "shared_account_product2_price_book_governance",
+     "label": "Shared Account/Product2/price book governance"
+    },
+    {
+     "key": "transaction_routing_owner",
+     "label": "Transaction routing owner"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "Salesforce platform owner",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "L06",
+   "module": "L",
+   "axis": 1,
+   "label": "Where does billing run today and what will change?",
+   "detail": "Source: Salesforce Billing; ERP; external subscription platform; custom/manual; mixed. Target per system: retain; migrate; dependency only; undecided.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "salesforce_billing",
+     "label": "Salesforce Billing"
+    },
+    {
+     "value": "erp",
+     "label": "ERP"
+    },
+    {
+     "value": "external_subscription_platform",
+     "label": "External subscription platform"
+    },
+    {
+     "value": "custom_manual",
+     "label": "Custom/manual"
+    },
+    {
+     "value": "mixed",
+     "label": "Mixed"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "systems_affected",
+     "label": "Systems affected"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "Salesforce platform owner",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "L07",
+   "module": "L",
+   "axis": 1,
+   "label": "What other Salesforce capabilities share the org?",
+   "detail": "Multi: Sales; Service; Experience; Field Service; industry cloud; other. Shared automation, data and permission dependencies.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "sales",
+     "label": "Sales"
+    },
+    {
+     "value": "service",
+     "label": "Service"
+    },
+    {
+     "value": "experience",
+     "label": "Experience"
+    },
+    {
+     "value": "field_service",
+     "label": "Field Service"
+    },
+    {
+     "value": "industry_cloud",
+     "label": "Industry cloud"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "shared_automation",
+     "label": "Shared automation"
+    },
+    {
+     "key": "data",
+     "label": "Data"
+    },
+    {
+     "key": "permission_dependencies",
+     "label": "Permission dependencies"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "Salesforce platform owner",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "L08",
+   "module": "L",
+   "axis": 1,
+   "label": "Are suitable environments available?",
+   "detail": "Repeatable dev/test/UAT/performance/training/preprod; target feature provisioning, refresh cadence, data masking, owner and readiness date.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "dev_test_uat_performance_training_preprod",
+     "label": "Dev/test/UAT/performance/training/preprod"
+    },
+    {
+     "key": "target_feature_provisioning",
+     "label": "Target feature provisioning"
+    },
+    {
+     "key": "refresh_cadence",
+     "label": "Refresh cadence"
+    },
+    {
+     "key": "data_masking",
+     "label": "Data masking"
+    },
+    {
+     "key": "owner",
+     "label": "Owner"
+    },
+    {
+     "key": "readiness_date",
+     "label": "Readiness date"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "Salesforce platform owner",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "L09",
+   "module": "L",
+   "axis": 1,
+   "label": "What licensing and coexistence questions need Salesforce confirmation?",
+   "detail": "Repeatable question, release/SKU, requested decision, owner, due date, answer/source. Do not fabricate entitlement or overlap-cost assurances.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "question",
+     "label": "Question"
+    },
+    {
+     "key": "release_sku",
+     "label": "Release/SKU"
+    },
+    {
+     "key": "requested_decision",
+     "label": "Requested decision"
+    },
+    {
+     "key": "owner",
+     "label": "Owner"
+    },
+    {
+     "key": "due_date",
+     "label": "Due date"
+    },
+    {
+     "key": "answer_source",
+     "label": "Answer/source"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "Salesforce platform owner",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "C01",
+   "module": "C",
+   "axis": 2,
+   "label": "How large is the active and historical product catalog?",
+   "detail": "COUNT for active, inactive and sold-in-last-12-months products; families and source system; date of measurement.",
+   "control": "count",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "for_active",
+     "label": "For active"
+    },
+    {
+     "key": "inactive",
+     "label": "Inactive"
+    },
+    {
+     "key": "sold_in_last_12_months_products",
+     "label": "Sold-in-last-12-months products"
+    },
+    {
+     "key": "families",
+     "label": "Families"
+    },
+    {
+     "key": "source_system",
+     "label": "Source system"
+    },
+    {
+     "key": "date_of_measurement",
+     "label": "Date of measurement"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "product/catalog SME",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "C02",
+   "module": "C",
+   "axis": 2,
+   "label": "Which products and selling models are used?",
+   "detail": "Multi: one-time; recurring; perpetual; services; hardware; usage; hybrid; ramped/multi-period. Selling term, UOM, provisioning type per family.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "one_time",
+     "label": "One-time"
+    },
+    {
+     "value": "recurring",
+     "label": "Recurring"
+    },
+    {
+     "value": "perpetual",
+     "label": "Perpetual"
+    },
+    {
+     "value": "services",
+     "label": "Services"
+    },
+    {
+     "value": "hardware",
+     "label": "Hardware"
+    },
+    {
+     "value": "usage",
+     "label": "Usage"
+    },
+    {
+     "value": "hybrid",
+     "label": "Hybrid"
+    },
+    {
+     "value": "ramped_multi_period",
+     "label": "Ramped/multi-period"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "selling_term",
+     "label": "Selling term"
+    },
+    {
+     "key": "uom",
+     "label": "UOM"
+    },
+    {
+     "key": "provisioning_type_per_family",
+     "label": "Provisioning type per family"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "product/catalog SME",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "C03",
+   "module": "C",
+   "axis": 2,
+   "label": "What bundle structures are used?",
+   "detail": "Multi: standalone; static bundle; configurable bundle; nested bundle; dynamic bundle. Bundle count, maximum depth, min/max options and inter-bundle dependency inventory.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "standalone",
+     "label": "Standalone"
+    },
+    {
+     "value": "static_bundle",
+     "label": "Static bundle"
+    },
+    {
+     "value": "configurable_bundle",
+     "label": "Configurable bundle"
+    },
+    {
+     "value": "nested_bundle",
+     "label": "Nested bundle"
+    },
+    {
+     "value": "dynamic_bundle",
+     "label": "Dynamic bundle"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "bundle_count",
+     "label": "Bundle count"
+    },
+    {
+     "key": "maximum_depth",
+     "label": "Maximum depth"
+    },
+    {
+     "key": "min_max_options",
+     "label": "Min/max options"
+    },
+    {
+     "key": "inter_bundle_dependency_inventory",
+     "label": "Inter-bundle dependency inventory"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "product/catalog SME",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "C04",
+   "module": "C",
+   "axis": 2,
+   "label": "Which attributes drive product selection?",
+   "detail": "Repeatable: attribute; datatype; allowed values; variant/SKU implication; commercial/technical purpose; owner; source of truth.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "attribute",
+     "label": ": attribute"
+    },
+    {
+     "key": "datatype",
+     "label": "Datatype"
+    },
+    {
+     "key": "allowed_values",
+     "label": "Allowed values"
+    },
+    {
+     "key": "variant_sku_implication",
+     "label": "Variant/SKU implication"
+    },
+    {
+     "key": "commercial_technical_purpose",
+     "label": "Commercial/technical purpose"
+    },
+    {
+     "key": "owner",
+     "label": "Owner"
+    },
+    {
+     "key": "source_of_truth",
+     "label": "Source of truth"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "product/catalog SME",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "C05",
+   "module": "C",
+   "axis": 2,
+   "label": "What configuration rules must be preserved?",
+   "detail": "Multi: selection; validation; filtering; alerts; inclusion/exclusion; quantity dependencies; compatibility. Inventory active/inactive counts, evaluation scope/order, rule examples and business purpose.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "selection",
+     "label": "Selection"
+    },
+    {
+     "value": "validation",
+     "label": "Validation"
+    },
+    {
+     "value": "filtering",
+     "label": "Filtering"
+    },
+    {
+     "value": "alerts",
+     "label": "Alerts"
+    },
+    {
+     "value": "inclusion_exclusion",
+     "label": "Inclusion/exclusion"
+    },
+    {
+     "value": "quantity_dependencies",
+     "label": "Quantity dependencies"
+    },
+    {
+     "value": "compatibility",
+     "label": "Compatibility"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "active_inactive_counts",
+     "label": "Active/inactive counts"
+    },
+    {
+     "key": "evaluation_scope_order",
+     "label": "Evaluation scope/order"
+    },
+    {
+     "key": "rule_examples",
+     "label": "Rule examples"
+    },
+    {
+     "key": "business_purpose",
+     "label": "Business purpose"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "product/catalog SME",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "C06",
+   "module": "C",
+   "axis": 2,
+   "label": "Is guided selling used?",
+   "detail": "YN; if yes: question tree, selection logic, channels, result ranking, maintenance owner and examples.",
+   "control": "single",
+   "optionSet": "YN",
+   "options": [
+    {
+     "value": "yes",
+     "label": "Yes"
+    },
+    {
+     "value": "no",
+     "label": "No"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "question_tree",
+     "label": "Question tree"
+    },
+    {
+     "key": "selection_logic",
+     "label": "Selection logic"
+    },
+    {
+     "key": "channels",
+     "label": "Channels"
+    },
+    {
+     "key": "result_ranking",
+     "label": "Result ranking"
+    },
+    {
+     "key": "maintenance_owner",
+     "label": "Maintenance owner"
+    },
+    {
+     "key": "examples",
+     "label": "Examples"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "product/catalog SME",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "C07",
+   "module": "C",
+   "axis": 2,
+   "label": "How are products governed and released?",
+   "detail": "MODE + lifecycle approval, effective dates, localization, channel availability, catalog versioning and retirement.",
+   "control": "single",
+   "optionSet": "MODE",
+   "options": [
+    {
+     "value": "manual",
+     "label": "Manual"
+    },
+    {
+     "value": "mostly_manual",
+     "label": "Mostly manual"
+    },
+    {
+     "value": "mixed_manual_and_automated",
+     "label": "Mixed manual and automated"
+    },
+    {
+     "value": "mostly_automated",
+     "label": "Mostly automated"
+    },
+    {
+     "value": "automated_with_exception_handling",
+     "label": "Automated with exception handling"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "lifecycle_approval",
+     "label": "+ lifecycle approval"
+    },
+    {
+     "key": "effective_dates",
+     "label": "Effective dates"
+    },
+    {
+     "key": "localization",
+     "label": "Localization"
+    },
+    {
+     "key": "channel_availability",
+     "label": "Channel availability"
+    },
+    {
+     "key": "catalog_versioning",
+     "label": "Catalog versioning"
+    },
+    {
+     "key": "retirement",
+     "label": "Retirement"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "product/catalog SME",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "C08",
+   "module": "C",
+   "axis": 2,
+   "label": "How should the catalog change?",
+   "detail": "Multi: retain SKU structure; simplify duplicates; introduce attributes; separate commercial/technical view; standardize families; redesign bundles. Capture affected family and business justification.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "retain_sku_structure",
+     "label": "Retain SKU structure"
+    },
+    {
+     "value": "simplify_duplicates",
+     "label": "Simplify duplicates"
+    },
+    {
+     "value": "introduce_attributes",
+     "label": "Introduce attributes"
+    },
+    {
+     "value": "separate_commercial_technical_view",
+     "label": "Separate commercial/technical view"
+    },
+    {
+     "value": "standardize_families",
+     "label": "Standardize families"
+    },
+    {
+     "value": "redesign_bundles",
+     "label": "Redesign bundles"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "affected_family",
+     "label": "Affected family"
+    },
+    {
+     "key": "business_justification",
+     "label": "Business justification"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "product/catalog SME",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "C09",
+   "module": "C",
+   "axis": 2,
+   "label": "Does configuration require an external engine?",
+   "detail": "YN + vendor, rules boundary, APIs, latency, licensing, retain/replace/dependency scope and vendor owner.",
+   "control": "single",
+   "optionSet": "YN",
+   "options": [
+    {
+     "value": "yes",
+     "label": "Yes"
+    },
+    {
+     "value": "no",
+     "label": "No"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "vendor",
+     "label": "Vendor"
+    },
+    {
+     "key": "rules_boundary",
+     "label": "Rules boundary"
+    },
+    {
+     "key": "apis",
+     "label": "APIs"
+    },
+    {
+     "key": "latency",
+     "label": "Latency"
+    },
+    {
+     "key": "licensing",
+     "label": "Licensing"
+    },
+    {
+     "key": "retain_replace_dependency_scope",
+     "label": "Retain/replace/dependency scope"
+    },
+    {
+     "key": "vendor_owner",
+     "label": "Vendor owner"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "product/catalog SME",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "C10",
+   "module": "C",
+   "axis": 2,
+   "label": "What difficult configurations must the target prove?",
+   "detail": "Repeatable scenario with input selection, valid/invalid outcomes, constraint explanation and linked source quote or configuration evidence.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "scenario_with_input_selection",
+     "label": "Scenario with input selection"
+    },
+    {
+     "key": "valid_invalid_outcomes",
+     "label": "Valid/invalid outcomes"
+    },
+    {
+     "key": "constraint_explanation",
+     "label": "Constraint explanation"
+    },
+    {
+     "key": "linked_source_quote_or_configuration_evidence",
+     "label": "Linked source quote or configuration evidence"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "product/catalog SME",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "P01",
+   "module": "P",
+   "axis": 3,
+   "label": "Which pricing methods are used?",
+   "detail": "Multi: list; cost-plus; block; slab/tier; volume; term; percent-of-total; contracted/account-specific; attribute-based; formula; usage; custom. Map each to product families.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "list",
+     "label": "List"
+    },
+    {
+     "value": "cost_plus",
+     "label": "Cost-plus"
+    },
+    {
+     "value": "block",
+     "label": "Block"
+    },
+    {
+     "value": "slab_tier",
+     "label": "Slab/tier"
+    },
+    {
+     "value": "volume",
+     "label": "Volume"
+    },
+    {
+     "value": "term",
+     "label": "Term"
+    },
+    {
+     "value": "percent_of_total",
+     "label": "Percent-of-total"
+    },
+    {
+     "value": "contracted_account_specific",
+     "label": "Contracted/account-specific"
+    },
+    {
+     "value": "attribute_based",
+     "label": "Attribute-based"
+    },
+    {
+     "value": "formula",
+     "label": "Formula"
+    },
+    {
+     "value": "usage",
+     "label": "Usage"
+    },
+    {
+     "value": "custom",
+     "label": "Custom"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "map_each_to_product_families",
+     "label": "Map each to product families"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "pricing architect/SME",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "P02",
+   "module": "P",
+   "axis": 3,
+   "label": "How many price rules exist and which are active?",
+   "detail": "COUNT active/inactive; conditions/actions; evaluation event/order; dependencies; business owner and examples. Link detailed logic register.",
+   "control": "count",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "active_inactive",
+     "label": "Active/inactive"
+    },
+    {
+     "key": "conditions_actions",
+     "label": "Conditions/actions"
+    },
+    {
+     "key": "evaluation_event_order",
+     "label": "Evaluation event/order"
+    },
+    {
+     "key": "dependencies",
+     "label": "Dependencies"
+    },
+    {
+     "key": "business_owner",
+     "label": "Business owner"
+    },
+    {
+     "key": "examples",
+     "label": "Examples"
+    },
+    {
+     "key": "link_detailed_logic_register",
+     "label": "Link detailed logic register"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "pricing architect/SME",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "P03",
+   "module": "P",
+   "axis": 3,
+   "label": "How are discounts and promotions applied?",
+   "detail": "Multi: manual; volume; term; partner/distributor; discretionary; promotion; rebate; customer agreement. Stacking order, exclusivity, caps and approval threshold.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "manual",
+     "label": "Manual"
+    },
+    {
+     "value": "volume",
+     "label": "Volume"
+    },
+    {
+     "value": "term",
+     "label": "Term"
+    },
+    {
+     "value": "partner_distributor",
+     "label": "Partner/distributor"
+    },
+    {
+     "value": "discretionary",
+     "label": "Discretionary"
+    },
+    {
+     "value": "promotion",
+     "label": "Promotion"
+    },
+    {
+     "value": "rebate",
+     "label": "Rebate"
+    },
+    {
+     "value": "customer_agreement",
+     "label": "Customer agreement"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "stacking_order",
+     "label": "Stacking order"
+    },
+    {
+     "key": "exclusivity",
+     "label": "Exclusivity"
+    },
+    {
+     "key": "caps",
+     "label": "Caps"
+    },
+    {
+     "key": "approval_threshold",
+     "label": "Approval threshold"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "pricing architect/SME",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "P04",
+   "module": "P",
+   "axis": 3,
+   "label": "Are customer-specific prices or agreements used?",
+   "detail": "YN + agreement count, account/contract scope, effective dates, precedence, tiering, currency and migration/retention decision.",
+   "control": "single",
+   "optionSet": "YN",
+   "options": [
+    {
+     "value": "yes",
+     "label": "Yes"
+    },
+    {
+     "value": "no",
+     "label": "No"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "agreement_count",
+     "label": "Agreement count"
+    },
+    {
+     "key": "account_contract_scope",
+     "label": "Account/contract scope"
+    },
+    {
+     "key": "effective_dates",
+     "label": "Effective dates"
+    },
+    {
+     "key": "precedence",
+     "label": "Precedence"
+    },
+    {
+     "key": "tiering",
+     "label": "Tiering"
+    },
+    {
+     "key": "currency",
+     "label": "Currency"
+    },
+    {
+     "key": "migration_retention_decision",
+     "label": "Migration/retention decision"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "pricing architect/SME",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "P05",
+   "module": "P",
+   "axis": 3,
+   "label": "Which pricing precision and currency rules apply?",
+   "detail": "Multi-currency YN, currency list, conversion owner, FX date policy, decimal precision, tax-inclusive/exclusive, rounding at unit/line/total.",
+   "control": "text",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "multi_currency_yn",
+     "label": "Multi-currency YN"
+    },
+    {
+     "key": "currency_list",
+     "label": "Currency list"
+    },
+    {
+     "key": "conversion_owner",
+     "label": "Conversion owner"
+    },
+    {
+     "key": "fx_date_policy",
+     "label": "FX date policy"
+    },
+    {
+     "key": "decimal_precision",
+     "label": "Decimal precision"
+    },
+    {
+     "key": "tax_inclusive_exclusive",
+     "label": "Tax-inclusive/exclusive"
+    },
+    {
+     "key": "rounding_at_unit_line_total",
+     "label": "Rounding at unit/line/total"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "pricing architect/SME",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "P06",
+   "module": "P",
+   "axis": 3,
+   "label": "Is a Quote Calculator Plugin or other pricing code used?",
+   "detail": "YN + JavaScript QCP, Apex, formula, external service. Capture repository/file reference, approximate size, hooks, purpose, dependencies, owner and tests. Never paste credentials.",
+   "control": "single",
+   "optionSet": "YN",
+   "options": [
+    {
+     "value": "yes",
+     "label": "Yes"
+    },
+    {
+     "value": "no",
+     "label": "No"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "javascript_qcp",
+     "label": "JavaScript QCP"
+    },
+    {
+     "key": "apex",
+     "label": "Apex"
+    },
+    {
+     "key": "formula",
+     "label": "Formula"
+    },
+    {
+     "key": "external_service",
+     "label": "External service"
+    },
+    {
+     "key": "repository_file_reference",
+     "label": "Repository/file reference"
+    },
+    {
+     "key": "approximate_size",
+     "label": "Approximate size"
+    },
+    {
+     "key": "hooks",
+     "label": "Hooks"
+    },
+    {
+     "key": "purpose",
+     "label": "Purpose"
+    },
+    {
+     "key": "dependencies",
+     "label": "Dependencies"
+    },
+    {
+     "key": "owner",
+     "label": "Owner"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "pricing architect/SME",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "P07",
+   "module": "P",
+   "axis": 3,
+   "label": "Which calculation behaviors are business-critical?",
+   "detail": "Multi: cross-line totals; bundle allocation; margin floors; partner waterfall; mixed UOM; proration; percent-of-total; custom uplift; external cost; multi-pass recalculation. Repeatable worked examples with input/output.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "cross_line_totals",
+     "label": "Cross-line totals"
+    },
+    {
+     "value": "bundle_allocation",
+     "label": "Bundle allocation"
+    },
+    {
+     "value": "margin_floors",
+     "label": "Margin floors"
+    },
+    {
+     "value": "partner_waterfall",
+     "label": "Partner waterfall"
+    },
+    {
+     "value": "mixed_uom",
+     "label": "Mixed UOM"
+    },
+    {
+     "value": "proration",
+     "label": "Proration"
+    },
+    {
+     "value": "percent_of_total",
+     "label": "Percent-of-total"
+    },
+    {
+     "value": "custom_uplift",
+     "label": "Custom uplift"
+    },
+    {
+     "value": "external_cost",
+     "label": "External cost"
+    },
+    {
+     "value": "multi_pass_recalculation",
+     "label": "Multi-pass recalculation"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "repeatable_worked_examples_with_input_output",
+     "label": "Repeatable worked examples with input/output"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "pricing architect/SME",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "P08",
+   "module": "P",
+   "axis": 3,
+   "label": "How do pricing changes take effect?",
+   "detail": "Single: immediate; effective-dated; manual release; mixed. Price protection for open quotes, renewals and contracted customers.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "immediate",
+     "label": "Immediate"
+    },
+    {
+     "value": "effective_dated",
+     "label": "Effective-dated"
+    },
+    {
+     "value": "manual_release",
+     "label": "Manual release"
+    },
+    {
+     "value": "mixed",
+     "label": "Mixed"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "price_protection_for_open_quotes",
+     "label": "Price protection for open quotes"
+    },
+    {
+     "key": "renewals",
+     "label": "Renewals"
+    },
+    {
+     "key": "contracted_customers",
+     "label": "Contracted customers"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "pricing architect/SME",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "P09",
+   "module": "P",
+   "axis": 3,
+   "label": "Can the team provide a representative quote pack?",
+   "detail": "YN; scenarios and evidence for standard/edge/negative outcomes, original inputs, output waterfall, expected result, currency and business-approved tolerance.",
+   "control": "single",
+   "optionSet": "YN",
+   "options": [
+    {
+     "value": "yes",
+     "label": "Yes"
+    },
+    {
+     "value": "no",
+     "label": "No"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "scenarios",
+     "label": "Scenarios"
+    },
+    {
+     "key": "evidence_for_standard_edge_negative_outcomes",
+     "label": "Evidence for standard/edge/negative outcomes"
+    },
+    {
+     "key": "original_inputs",
+     "label": "Original inputs"
+    },
+    {
+     "key": "output_waterfall",
+     "label": "Output waterfall"
+    },
+    {
+     "key": "expected_result",
+     "label": "Expected result"
+    },
+    {
+     "key": "currency",
+     "label": "Currency"
+    },
+    {
+     "key": "business_approved_tolerance",
+     "label": "Business-approved tolerance"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "pricing architect/SME",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "P10",
+   "module": "P",
+   "axis": 3,
+   "label": "What should pricing achieve in the future?",
+   "detail": "Multi: parity; simplify rules; common engine across channels; new models; faster calculation; transparent waterfall; delegated maintenance. PRIORITY per selected requirement.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "parity",
+     "label": "Parity"
+    },
+    {
+     "value": "simplify_rules",
+     "label": "Simplify rules"
+    },
+    {
+     "value": "common_engine_across_channels",
+     "label": "Common engine across channels"
+    },
+    {
+     "value": "new_models",
+     "label": "New models"
+    },
+    {
+     "value": "faster_calculation",
+     "label": "Faster calculation"
+    },
+    {
+     "value": "transparent_waterfall",
+     "label": "Transparent waterfall"
+    },
+    {
+     "value": "delegated_maintenance",
+     "label": "Delegated maintenance"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "priority_per_selected_requirement",
+     "label": "PRIORITY per selected requirement"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "pricing architect/SME",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "P11",
+   "module": "P",
+   "axis": 3,
+   "label": "Are pricing inputs held outside Salesforce?",
+   "detail": "Multi: ERP cost; exchange rates; inventory; customer eligibility; entitlement; tax; other. Source freshness, timeout fallback, caching and owner.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "erp_cost",
+     "label": "ERP cost"
+    },
+    {
+     "value": "exchange_rates",
+     "label": "Exchange rates"
+    },
+    {
+     "value": "inventory",
+     "label": "Inventory"
+    },
+    {
+     "value": "customer_eligibility",
+     "label": "Customer eligibility"
+    },
+    {
+     "value": "entitlement",
+     "label": "Entitlement"
+    },
+    {
+     "value": "tax",
+     "label": "Tax"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "source_freshness",
+     "label": "Source freshness"
+    },
+    {
+     "key": "timeout_fallback",
+     "label": "Timeout fallback"
+    },
+    {
+     "key": "caching",
+     "label": "Caching"
+    },
+    {
+     "key": "owner",
+     "label": "Owner"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "pricing architect/SME",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "Q01",
+   "module": "Q",
+   "axis": 4,
+   "label": "What is the quoting workload?",
+   "detail": "Numeric monthly quotes, peak daily quotes, typical/P95/max lines per quote, concurrent sellers, measurement period. Do not derive one from the other.",
+   "control": "number",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "monthly_quotes",
+     "label": "Monthly quotes"
+    },
+    {
+     "key": "peak_daily_quotes",
+     "label": "Peak daily quotes"
+    },
+    {
+     "key": "typical_p95_max_lines_per_quote",
+     "label": "Typical/P95/max lines per quote"
+    },
+    {
+     "key": "concurrent_sellers",
+     "label": "Concurrent sellers"
+    },
+    {
+     "key": "measurement_period",
+     "label": "Measurement period"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "sales operations",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "Q02",
+   "module": "Q",
+   "axis": 4,
+   "label": "What quote actions and structures are used?",
+   "detail": "Multi: groups; favorites; clone; multi-scenario; multiple quotes per opportunity; primary quote; alternatives; line mass edit; quote import; split quotes.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "groups",
+     "label": "Groups"
+    },
+    {
+     "value": "favorites",
+     "label": "Favorites"
+    },
+    {
+     "value": "clone",
+     "label": "Clone"
+    },
+    {
+     "value": "multi_scenario",
+     "label": "Multi-scenario"
+    },
+    {
+     "value": "multiple_quotes_per_opportunity",
+     "label": "Multiple quotes per opportunity"
+    },
+    {
+     "value": "primary_quote",
+     "label": "Primary quote"
+    },
+    {
+     "value": "alternatives",
+     "label": "Alternatives"
+    },
+    {
+     "value": "line_mass_edit",
+     "label": "Line mass edit"
+    },
+    {
+     "value": "quote_import",
+     "label": "Quote import"
+    },
+    {
+     "value": "split_quotes",
+     "label": "Split quotes"
+    }
+   ],
+   "subfields": [],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "sales operations",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "Q03",
+   "module": "Q",
+   "axis": 4,
+   "label": "How customized is the quote editing experience?",
+   "detail": "Standard with settings; additional fields; custom screens/components; external UI; mixed. Layouts, actions, validations, persona/channel differences.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "standard_with_settings",
+     "label": "Standard with settings"
+    },
+    {
+     "value": "additional_fields",
+     "label": "Additional fields"
+    },
+    {
+     "value": "custom_screens_components",
+     "label": "Custom screens/components"
+    },
+    {
+     "value": "external_ui",
+     "label": "External UI"
+    },
+    {
+     "value": "mixed",
+     "label": "Mixed"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "layouts",
+     "label": "Layouts"
+    },
+    {
+     "key": "actions",
+     "label": "Actions"
+    },
+    {
+     "key": "validations",
+     "label": "Validations"
+    },
+    {
+     "key": "persona_channel_differences",
+     "label": "Persona/channel differences"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "sales operations",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "Q04",
+   "module": "Q",
+   "axis": 4,
+   "label": "What selling channels use CPQ?",
+   "detail": "Multi: direct; partner; distributor; ecommerce; self-service; contact center; API/headless. Volumes, user model and scope per channel.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "direct",
+     "label": "Direct"
+    },
+    {
+     "value": "partner",
+     "label": "Partner"
+    },
+    {
+     "value": "distributor",
+     "label": "Distributor"
+    },
+    {
+     "value": "ecommerce",
+     "label": "Ecommerce"
+    },
+    {
+     "value": "self_service",
+     "label": "Self-service"
+    },
+    {
+     "value": "contact_center",
+     "label": "Contact center"
+    },
+    {
+     "value": "api_headless",
+     "label": "API/headless"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "volumes",
+     "label": "Volumes"
+    },
+    {
+     "key": "user_model",
+     "label": "User model"
+    },
+    {
+     "key": "scope_per_channel",
+     "label": "Scope per channel"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "sales operations",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "Q05",
+   "module": "Q",
+   "axis": 4,
+   "label": "How are quote and opportunity data synchronized?",
+   "detail": "Single: standard behavior; customized automation; manual; mixed. Field rules, timing, error ownership, competing automations.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "standard_behavior",
+     "label": "Standard behavior"
+    },
+    {
+     "value": "customized_automation",
+     "label": "Customized automation"
+    },
+    {
+     "value": "manual",
+     "label": "Manual"
+    },
+    {
+     "value": "mixed",
+     "label": "Mixed"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "field_rules",
+     "label": "Field rules"
+    },
+    {
+     "key": "timing",
+     "label": "Timing"
+    },
+    {
+     "key": "error_ownership",
+     "label": "Error ownership"
+    },
+    {
+     "key": "competing_automations",
+     "label": "Competing automations"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "sales operations",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "Q06",
+   "module": "Q",
+   "axis": 5,
+   "label": "How are approvals implemented?",
+   "detail": "Multi: standard approvals; Advanced Approvals package; Flow/custom; external; none. Steps, approver logic, parallel/sequential routes, package version if relevant.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "standard_approvals",
+     "label": "Standard approvals"
+    },
+    {
+     "value": "advanced_approvals_package",
+     "label": "Advanced Approvals package"
+    },
+    {
+     "value": "flow_custom",
+     "label": "Flow/custom"
+    },
+    {
+     "value": "external",
+     "label": "External"
+    },
+    {
+     "value": "none",
+     "label": "None"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "steps",
+     "label": "Steps"
+    },
+    {
+     "key": "approver_logic",
+     "label": "Approver logic"
+    },
+    {
+     "key": "parallel_sequential_routes",
+     "label": "Parallel/sequential routes"
+    },
+    {
+     "key": "package_version_if_relevant",
+     "label": "Package version if relevant"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "sales operations",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": true,
+   "rank": false
+  },
+  {
+   "id": "Q07",
+   "module": "Q",
+   "axis": 5,
+   "label": "What approval exceptions must be retained?",
+   "detail": "Multi: delegated approver; resubmission; smart reapproval; conditional escalation; SLA; recall; mobile approval; other. Include business rule and example.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "delegated_approver",
+     "label": "Delegated approver"
+    },
+    {
+     "value": "resubmission",
+     "label": "Resubmission"
+    },
+    {
+     "value": "smart_reapproval",
+     "label": "Smart reapproval"
+    },
+    {
+     "value": "conditional_escalation",
+     "label": "Conditional escalation"
+    },
+    {
+     "value": "sla",
+     "label": "SLA"
+    },
+    {
+     "value": "recall",
+     "label": "Recall"
+    },
+    {
+     "value": "mobile_approval",
+     "label": "Mobile approval"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "include_business_rule",
+     "label": "Include business rule"
+    },
+    {
+     "key": "example",
+     "label": "Example"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "sales operations",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "Q08",
+   "module": "Q",
+   "axis": 4,
+   "label": "What causes seller friction today?",
+   "detail": "Rank: slow calculation; product search; data re-entry; errors; approval delays; documents; amendments; other. Capture frequency and evidence; avoid implying all are present.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "slow_calculation",
+     "label": "Slow calculation"
+    },
+    {
+     "value": "product_search",
+     "label": "Product search"
+    },
+    {
+     "value": "data_re_entry",
+     "label": "Data re-entry"
+    },
+    {
+     "value": "errors",
+     "label": "Errors"
+    },
+    {
+     "value": "approval_delays",
+     "label": "Approval delays"
+    },
+    {
+     "value": "documents",
+     "label": "Documents"
+    },
+    {
+     "value": "amendments",
+     "label": "Amendments"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "frequency",
+     "label": "Frequency"
+    },
+    {
+     "key": "evidence",
+     "label": "Evidence"
+    },
+    {
+     "key": "avoid_implying_all_are_present",
+     "label": "Avoid implying all are present"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "sales operations",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": true
+  },
+  {
+   "id": "Q09",
+   "module": "Q",
+   "axis": 4,
+   "label": "Which quote performance outcomes are required?",
+   "detail": "Numeric P95 browse/configure/calculate/save target, quote-size class, network condition and pass/fail measurement method.",
+   "control": "number",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "p95_browse_configure_calculate_save_target",
+     "label": "P95 browse/configure/calculate/save target"
+    },
+    {
+     "key": "quote_size_class",
+     "label": "Quote-size class"
+    },
+    {
+     "key": "network_condition",
+     "label": "Network condition"
+    },
+    {
+     "key": "pass_fail_measurement_method",
+     "label": "Pass/fail measurement method"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "sales operations",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "Q10",
+   "module": "Q",
+   "axis": 4,
+   "label": "How should sellers transition?",
+   "detail": "Single: all at once; by persona; by BU; by product family; undecided. Record training needs, champions, accessibility and change constraints.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "all_at_once",
+     "label": "All at once"
+    },
+    {
+     "value": "by_persona",
+     "label": "By persona"
+    },
+    {
+     "value": "by_bu",
+     "label": "By BU"
+    },
+    {
+     "value": "by_product_family",
+     "label": "By product family"
+    },
+    {
+     "value": "undecided",
+     "label": "Undecided"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "training_needs",
+     "label": "Training needs"
+    },
+    {
+     "key": "champions",
+     "label": "Champions"
+    },
+    {
+     "key": "accessibility",
+     "label": "Accessibility"
+    },
+    {
+     "key": "change_constraints",
+     "label": "Change constraints"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "sales operations",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "K01",
+   "module": "K",
+   "axis": 5,
+   "label": "Which documents are generated?",
+   "detail": "Multi: quote; order form; SOW; agreement; amendment; renewal notice; other. COUNT active templates and archive templates.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "quote",
+     "label": "Quote"
+    },
+    {
+     "value": "order_form",
+     "label": "Order form"
+    },
+    {
+     "value": "sow",
+     "label": "SOW"
+    },
+    {
+     "value": "agreement",
+     "label": "Agreement"
+    },
+    {
+     "value": "amendment",
+     "label": "Amendment"
+    },
+    {
+     "value": "renewal_notice",
+     "label": "Renewal notice"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "count_active_templates",
+     "label": "COUNT active templates"
+    },
+    {
+     "key": "archive_templates",
+     "label": "Archive templates"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "legal/sales operations",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "K02",
+   "module": "K",
+   "axis": 5,
+   "label": "What template logic is used?",
+   "detail": "Multi: conditional sections; grouped lines; complex totals; multilingual; multiple brands/legal entities; annexes; rich text; external data. Provide redacted examples.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "conditional_sections",
+     "label": "Conditional sections"
+    },
+    {
+     "value": "grouped_lines",
+     "label": "Grouped lines"
+    },
+    {
+     "value": "complex_totals",
+     "label": "Complex totals"
+    },
+    {
+     "value": "multilingual",
+     "label": "Multilingual"
+    },
+    {
+     "value": "multiple_brands_legal_entities",
+     "label": "Multiple brands/legal entities"
+    },
+    {
+     "value": "annexes",
+     "label": "Annexes"
+    },
+    {
+     "value": "rich_text",
+     "label": "Rich text"
+    },
+    {
+     "value": "external_data",
+     "label": "External data"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "redacted_examples",
+     "label": "Redacted examples"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "legal/sales operations",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "K03",
+   "module": "K",
+   "axis": 5,
+   "label": "What generates and signs documents?",
+   "detail": "Repeatable tool: CPQ templates; Salesforce document tooling; Conga; DocuSign; Adobe; custom; other. Retain/replace/dependency and vendor owner.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "cpq_templates",
+     "label": "CPQ templates"
+    },
+    {
+     "key": "salesforce_document_tooling",
+     "label": "Salesforce document tooling"
+    },
+    {
+     "key": "conga",
+     "label": "Conga"
+    },
+    {
+     "key": "docusign",
+     "label": "DocuSign"
+    },
+    {
+     "key": "adobe",
+     "label": "Adobe"
+    },
+    {
+     "key": "custom",
+     "label": "Custom"
+    },
+    {
+     "key": "other",
+     "label": "Other"
+    },
+    {
+     "key": "retain_replace_dependency",
+     "label": "Retain/replace/dependency"
+    },
+    {
+     "key": "vendor_owner",
+     "label": "Vendor owner"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "legal/sales operations",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "K04",
+   "module": "K",
+   "axis": 5,
+   "label": "What contract lifecycle behavior is required?",
+   "detail": "Multi: clause library; redlining; approval; obligation tracking; repository; parent/child contracts; expiry alerts; other. SCOPE per capability.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "clause_library",
+     "label": "Clause library"
+    },
+    {
+     "value": "redlining",
+     "label": "Redlining"
+    },
+    {
+     "value": "approval",
+     "label": "Approval"
+    },
+    {
+     "value": "obligation_tracking",
+     "label": "Obligation tracking"
+    },
+    {
+     "value": "repository",
+     "label": "Repository"
+    },
+    {
+     "value": "parent_child_contracts",
+     "label": "Parent/child contracts"
+    },
+    {
+     "value": "expiry_alerts",
+     "label": "Expiry alerts"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "scope_per_capability",
+     "label": "SCOPE per capability"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "legal/sales operations",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "K05",
+   "module": "K",
+   "axis": 5,
+   "label": "Which document and contract records must remain accessible?",
+   "detail": "Single: active only; full history; legal retention subset; external archive. Retention, audit access, signer evidence and open envelopes at cutover.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "active_only",
+     "label": "Active only"
+    },
+    {
+     "value": "full_history",
+     "label": "Full history"
+    },
+    {
+     "value": "legal_retention_subset",
+     "label": "Legal retention subset"
+    },
+    {
+     "value": "external_archive",
+     "label": "External archive"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "retention",
+     "label": "Retention"
+    },
+    {
+     "key": "audit_access",
+     "label": "Audit access"
+    },
+    {
+     "key": "signer_evidence",
+     "label": "Signer evidence"
+    },
+    {
+     "key": "open_envelopes_at_cutover",
+     "label": "Open envelopes at cutover"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "legal/sales operations",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "K06",
+   "module": "K",
+   "axis": 5,
+   "label": "How will legal correctness be verified?",
+   "detail": "Reviewer, entity/language-specific sample, required clauses, output comparison method, acceptance owner.",
+   "control": "text",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "reviewer",
+     "label": "Reviewer"
+    },
+    {
+     "key": "entity_language_specific_sample",
+     "label": "Entity/language-specific sample"
+    },
+    {
+     "key": "required_clauses",
+     "label": "Required clauses"
+    },
+    {
+     "key": "output_comparison_method",
+     "label": "Output comparison method"
+    },
+    {
+     "key": "acceptance_owner",
+     "label": "Acceptance owner"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "legal/sales operations",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "A01",
+   "module": "A",
+   "axis": 6,
+   "label": "Which post-sale actions occur?",
+   "detail": "Multi: renew; upsell; downsell; cancel; suspend/resume; swap; transfer; split/merge; early termination; evergreen; none.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "renew",
+     "label": "Renew"
+    },
+    {
+     "value": "upsell",
+     "label": "Upsell"
+    },
+    {
+     "value": "downsell",
+     "label": "Downsell"
+    },
+    {
+     "value": "cancel",
+     "label": "Cancel"
+    },
+    {
+     "value": "suspend_resume",
+     "label": "Suspend/resume"
+    },
+    {
+     "value": "swap",
+     "label": "Swap"
+    },
+    {
+     "value": "transfer",
+     "label": "Transfer"
+    },
+    {
+     "value": "split_merge",
+     "label": "Split/merge"
+    },
+    {
+     "value": "early_termination",
+     "label": "Early termination"
+    },
+    {
+     "value": "evergreen",
+     "label": "Evergreen"
+    },
+    {
+     "value": "none",
+     "label": "None"
+    }
+   ],
+   "subfields": [],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "subscription/revenue operations",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": true,
+   "rank": false
+  },
+  {
+   "id": "A02",
+   "module": "A",
+   "axis": 6,
+   "label": "What is the installed base?",
+   "detail": "COUNT contracts, active subscriptions, assets, amendment/renewal records and monthly lifecycle transaction volumes. Clarify which objects represent entitlements.",
+   "control": "count",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "contracts",
+     "label": "Contracts"
+    },
+    {
+     "key": "active_subscriptions",
+     "label": "Active subscriptions"
+    },
+    {
+     "key": "assets",
+     "label": "Assets"
+    },
+    {
+     "key": "amendment_renewal_records",
+     "label": "Amendment/renewal records"
+    },
+    {
+     "key": "monthly_lifecycle_transaction_volumes",
+     "label": "Monthly lifecycle transaction volumes"
+    },
+    {
+     "key": "clarify_which_objects_represent_entitlements",
+     "label": "Clarify which objects represent entitlements"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "subscription/revenue operations",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "A03",
+   "module": "A",
+   "axis": 6,
+   "label": "How are renewals initiated and priced?",
+   "detail": "Multi: automated; seller initiated; customer initiated; external. Renewal grouping, uplift, coterm, term changes, price protection, notification and ownership.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "automated",
+     "label": "Automated"
+    },
+    {
+     "value": "seller_initiated",
+     "label": "Seller initiated"
+    },
+    {
+     "value": "customer_initiated",
+     "label": "Customer initiated"
+    },
+    {
+     "value": "external",
+     "label": "External"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "renewal_grouping",
+     "label": "Renewal grouping"
+    },
+    {
+     "key": "uplift",
+     "label": "Uplift"
+    },
+    {
+     "key": "coterm",
+     "label": "Coterm"
+    },
+    {
+     "key": "term_changes",
+     "label": "Term changes"
+    },
+    {
+     "key": "price_protection",
+     "label": "Price protection"
+    },
+    {
+     "key": "notification",
+     "label": "Notification"
+    },
+    {
+     "key": "ownership",
+     "label": "Ownership"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "subscription/revenue operations",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "A04",
+   "module": "A",
+   "axis": 6,
+   "label": "How complete is the lifecycle history?",
+   "detail": "Complete; missing selected amendments; opening balances only; inconsistent across products. Capture lineage from original sale through all changes, dated quantities/prices, orphan records and evidence.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "complete",
+     "label": "Complete"
+    },
+    {
+     "value": "missing_selected_amendments",
+     "label": "Missing selected amendments"
+    },
+    {
+     "value": "opening_balances_only",
+     "label": "Opening balances only"
+    },
+    {
+     "value": "inconsistent_across_products",
+     "label": "Inconsistent across products"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "lineage_from_original_sale_through_all_changes",
+     "label": "Lineage from original sale through all changes"
+    },
+    {
+     "key": "dated_quantities_prices",
+     "label": "Dated quantities/prices"
+    },
+    {
+     "key": "orphan_records",
+     "label": "Orphan records"
+    },
+    {
+     "key": "evidence",
+     "label": "Evidence"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "subscription/revenue operations",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "A05",
+   "module": "A",
+   "axis": 6,
+   "label": "How do midterm changes calculate?",
+   "detail": "Repeatable effective-date scenario: proration basis; quantity changes; uplift; credit/debit; backdating; coterm; multiple amendments; contracted price. Source and expected result required.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "effective_date_scenario_proration_basis",
+     "label": "Effective-date scenario: proration basis"
+    },
+    {
+     "key": "quantity_changes",
+     "label": "Quantity changes"
+    },
+    {
+     "key": "uplift",
+     "label": "Uplift"
+    },
+    {
+     "key": "credit_debit",
+     "label": "Credit/debit"
+    },
+    {
+     "key": "backdating",
+     "label": "Backdating"
+    },
+    {
+     "key": "coterm",
+     "label": "Coterm"
+    },
+    {
+     "key": "multiple_amendments",
+     "label": "Multiple amendments"
+    },
+    {
+     "key": "contracted_price",
+     "label": "Contracted price"
+    },
+    {
+     "key": "source",
+     "label": "Source"
+    },
+    {
+     "key": "expected_result_required",
+     "label": "Expected result required"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "subscription/revenue operations",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "A06",
+   "module": "A",
+   "axis": 6,
+   "label": "How are bundles represented after sale?",
+   "detail": "Single: component-level; parent only; mixed; external. Identify hierarchy, asset identifiers and lifecycle relationships.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "component_level",
+     "label": "Component-level"
+    },
+    {
+     "value": "parent_only",
+     "label": "Parent only"
+    },
+    {
+     "value": "mixed",
+     "label": "Mixed"
+    },
+    {
+     "value": "external",
+     "label": "External"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "hierarchy",
+     "label": "Hierarchy"
+    },
+    {
+     "key": "asset_identifiers",
+     "label": "Asset identifiers"
+    },
+    {
+     "key": "lifecycle_relationships",
+     "label": "Lifecycle relationships"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "subscription/revenue operations",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "A07",
+   "module": "A",
+   "axis": 6,
+   "label": "Which migration treatment is preferred?",
+   "detail": "Historical orders generating lifecycle records; direct asset creation subject to validation; retain legacy lifecycle processing temporarily; undecided. Architect must validate method and required related records.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "historical_orders_generating_lifecycle_records",
+     "label": "Historical orders generating lifecycle records"
+    },
+    {
+     "value": "direct_asset_creation_subject_to_validation",
+     "label": "Direct asset creation subject to validation"
+    },
+    {
+     "value": "retain_legacy_lifecycle_processing_temporarily",
+     "label": "Retain legacy lifecycle processing temporarily"
+    },
+    {
+     "value": "undecided",
+     "label": "Undecided"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "architect_must_validate_method",
+     "label": "Architect must validate method"
+    },
+    {
+     "key": "required_related_records",
+     "label": "Required related records"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "subscription/revenue operations",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "A08",
+   "module": "A",
+   "axis": 6,
+   "label": "What is the treatment of in-flight lifecycle transactions?",
+   "detail": "Repeatable cohort: pending amendment; renewal opportunity; unsigned quote; cancellation; future-dated order. Complete in legacy; recreate in target; migrate with validation; hold for decision.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "pending_amendment",
+     "label": "Pending amendment"
+    },
+    {
+     "key": "renewal_opportunity",
+     "label": "Renewal opportunity"
+    },
+    {
+     "key": "unsigned_quote",
+     "label": "Unsigned quote"
+    },
+    {
+     "key": "cancellation",
+     "label": "Cancellation"
+    },
+    {
+     "key": "future_dated_order",
+     "label": "Future-dated order"
+    },
+    {
+     "key": "complete_in_legacy",
+     "label": "Complete in legacy"
+    },
+    {
+     "key": "recreate_in_target",
+     "label": "Recreate in target"
+    },
+    {
+     "key": "migrate_with_validation",
+     "label": "Migrate with validation"
+    },
+    {
+     "key": "hold_for_decision",
+     "label": "Hold for decision"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "subscription/revenue operations",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "A09",
+   "module": "A",
+   "axis": 6,
+   "label": "Can business owners prove continuity after migration?",
+   "detail": "Golden scenarios for first renewal, post-migration amendment, cancellation, coterm, backdated event and mixed migrated/new products; include expected quantities, dates and amounts.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "first_renewal",
+     "label": "First renewal"
+    },
+    {
+     "key": "post_migration_amendment",
+     "label": "Post-migration amendment"
+    },
+    {
+     "key": "cancellation",
+     "label": "Cancellation"
+    },
+    {
+     "key": "coterm",
+     "label": "Coterm"
+    },
+    {
+     "key": "backdated_event",
+     "label": "Backdated event"
+    },
+    {
+     "key": "mixed_migrated_new_products",
+     "label": "Mixed migrated/new products"
+    },
+    {
+     "key": "include_expected_quantities",
+     "label": "Include expected quantities"
+    },
+    {
+     "key": "dates",
+     "label": "Dates"
+    },
+    {
+     "key": "amounts",
+     "label": "Amounts"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "subscription/revenue operations",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "A10",
+   "module": "A",
+   "axis": 6,
+   "label": "Which future lifecycle improvements are desired?",
+   "detail": "Multi: self-service; automation; unified asset view; consistent renewals; new monetization; other. PRIORITY and measurable outcome.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "self_service",
+     "label": "Self-service"
+    },
+    {
+     "value": "automation",
+     "label": "Automation"
+    },
+    {
+     "value": "unified_asset_view",
+     "label": "Unified asset view"
+    },
+    {
+     "value": "consistent_renewals",
+     "label": "Consistent renewals"
+    },
+    {
+     "value": "new_monetization",
+     "label": "New monetization"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "priority",
+     "label": "PRIORITY"
+    },
+    {
+     "key": "measurable_outcome",
+     "label": "Measurable outcome"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "subscription/revenue operations",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "O01",
+   "module": "O",
+   "axis": 7,
+   "label": "What creates an order and what is its scope?",
+   "detail": "Quote acceptance; contract activation; manual; external API; mixed. Partial orders, split orders, multiple locations/entities and handoff event.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "quote_acceptance",
+     "label": "Quote acceptance"
+    },
+    {
+     "value": "contract_activation",
+     "label": "Contract activation"
+    },
+    {
+     "value": "manual",
+     "label": "Manual"
+    },
+    {
+     "value": "external_api",
+     "label": "External API"
+    },
+    {
+     "value": "mixed",
+     "label": "Mixed"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "partial_orders",
+     "label": "Partial orders"
+    },
+    {
+     "key": "split_orders",
+     "label": "Split orders"
+    },
+    {
+     "key": "multiple_locations_entities",
+     "label": "Multiple locations/entities"
+    },
+    {
+     "key": "handoff_event",
+     "label": "Handoff event"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "order management",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "O02",
+   "module": "O",
+   "axis": 7,
+   "label": "How do order states flow downstream?",
+   "detail": "Repeatable source state, target state, event, fulfillment system, acknowledgement, failure/retry, owner.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "source_state",
+     "label": "Source state"
+    },
+    {
+     "key": "target_state",
+     "label": "Target state"
+    },
+    {
+     "key": "event",
+     "label": "Event"
+    },
+    {
+     "key": "fulfillment_system",
+     "label": "Fulfillment system"
+    },
+    {
+     "key": "failure_retry",
+     "label": "Failure/retry"
+    },
+    {
+     "key": "owner",
+     "label": "Owner"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "order management",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "O03",
+   "module": "O",
+   "axis": 7,
+   "label": "What fulfillment complexity exists?",
+   "detail": "Multi: commercial-to-technical decomposition; dependencies; provisioning; shipment; service activation; orchestration; none. SCOPE for any new orchestration.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "commercial_to_technical_decomposition",
+     "label": "Commercial-to-technical decomposition"
+    },
+    {
+     "value": "dependencies",
+     "label": "Dependencies"
+    },
+    {
+     "value": "provisioning",
+     "label": "Provisioning"
+    },
+    {
+     "value": "shipment",
+     "label": "Shipment"
+    },
+    {
+     "value": "service_activation",
+     "label": "Service activation"
+    },
+    {
+     "value": "orchestration",
+     "label": "Orchestration"
+    },
+    {
+     "value": "none",
+     "label": "None"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "scope_for_any_new_orchestration",
+     "label": "SCOPE for any new orchestration"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "order management",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": true,
+   "rank": false
+  },
+  {
+   "id": "O04",
+   "module": "O",
+   "axis": 7,
+   "label": "How are order changes handled?",
+   "detail": "Multi: cancel before activation; change in progress; partial fulfillment; future dating; backdating; returns; external change. Capture accepted behavior and constraints.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "cancel_before_activation",
+     "label": "Cancel before activation"
+    },
+    {
+     "value": "change_in_progress",
+     "label": "Change in progress"
+    },
+    {
+     "value": "partial_fulfillment",
+     "label": "Partial fulfillment"
+    },
+    {
+     "value": "future_dating",
+     "label": "Future dating"
+    },
+    {
+     "value": "backdating",
+     "label": "Backdating"
+    },
+    {
+     "value": "returns",
+     "label": "Returns"
+    },
+    {
+     "value": "external_change",
+     "label": "External change"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "accepted_behavior",
+     "label": "Accepted behavior"
+    },
+    {
+     "key": "constraints",
+     "label": "Constraints"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "order management",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "O05",
+   "module": "O",
+   "axis": 7,
+   "label": "Who owns asset creation and activation?",
+   "detail": "Salesforce; ERP; external platform; mixed. Trigger, lifecycle date, duplicate prevention and reconciliation.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "salesforce",
+     "label": "Salesforce"
+    },
+    {
+     "value": "erp",
+     "label": "ERP"
+    },
+    {
+     "value": "external_platform",
+     "label": "External platform"
+    },
+    {
+     "value": "mixed",
+     "label": "Mixed"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "trigger",
+     "label": "Trigger"
+    },
+    {
+     "key": "lifecycle_date",
+     "label": "Lifecycle date"
+    },
+    {
+     "key": "duplicate_prevention",
+     "label": "Duplicate prevention"
+    },
+    {
+     "key": "reconciliation",
+     "label": "Reconciliation"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "order management",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "O06",
+   "module": "O",
+   "axis": 7,
+   "label": "What open orders will exist at cutover?",
+   "detail": "COUNT and state distribution, handling approach, system of record, reconciliation owner and signed transition rule.",
+   "control": "count",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "and_state_distribution",
+     "label": "And state distribution"
+    },
+    {
+     "key": "handling_approach",
+     "label": "Handling approach"
+    },
+    {
+     "key": "system_of_record",
+     "label": "System of record"
+    },
+    {
+     "key": "reconciliation_owner",
+     "label": "Reconciliation owner"
+    },
+    {
+     "key": "signed_transition_rule",
+     "label": "Signed transition rule"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "order management",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "U01",
+   "module": "U",
+   "axis": 7,
+   "label": "What downstream finance boundary applies?",
+   "detail": "Repeatable invoicing, tax, collections, payment, revenue recognition, general ledger and reporting system; SCOPE per capability.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "invoicing",
+     "label": "Invoicing"
+    },
+    {
+     "key": "tax",
+     "label": "Tax"
+    },
+    {
+     "key": "collections",
+     "label": "Collections"
+    },
+    {
+     "key": "payment",
+     "label": "Payment"
+    },
+    {
+     "key": "revenue_recognition",
+     "label": "Revenue recognition"
+    },
+    {
+     "key": "general_ledger",
+     "label": "General ledger"
+    },
+    {
+     "key": "reporting_system",
+     "label": "Reporting system"
+    },
+    {
+     "key": "scope_per_capability",
+     "label": "SCOPE per capability"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "finance/billing architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "U02",
+   "module": "U",
+   "axis": 7,
+   "label": "How are billing timing and amounts determined?",
+   "detail": "Multi: upfront; arrears; milestone; installment; recurring; usage; hybrid. Frequency, bill-to/sold-to, PO, legal entity, billing account and currency.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "upfront",
+     "label": "Upfront"
+    },
+    {
+     "value": "arrears",
+     "label": "Arrears"
+    },
+    {
+     "value": "milestone",
+     "label": "Milestone"
+    },
+    {
+     "value": "installment",
+     "label": "Installment"
+    },
+    {
+     "value": "recurring",
+     "label": "Recurring"
+    },
+    {
+     "value": "usage",
+     "label": "Usage"
+    },
+    {
+     "value": "hybrid",
+     "label": "Hybrid"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "frequency",
+     "label": "Frequency"
+    },
+    {
+     "key": "bill_to_sold_to",
+     "label": "Bill-to/sold-to"
+    },
+    {
+     "key": "legal_entity",
+     "label": "Legal entity"
+    },
+    {
+     "key": "billing_account",
+     "label": "Billing account"
+    },
+    {
+     "key": "currency",
+     "label": "Currency"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "finance/billing architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "U03",
+   "module": "U",
+   "axis": 7,
+   "label": "What usage models are in scope?",
+   "detail": "Multi: none; metered; tiered; included allowance; minimum commitment; prepaid credit; drawdown; overage; true-up; rollover. Future requirement versus current use separately.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "none",
+     "label": "None"
+    },
+    {
+     "value": "metered",
+     "label": "Metered"
+    },
+    {
+     "value": "tiered",
+     "label": "Tiered"
+    },
+    {
+     "value": "included_allowance",
+     "label": "Included allowance"
+    },
+    {
+     "value": "minimum_commitment",
+     "label": "Minimum commitment"
+    },
+    {
+     "value": "prepaid_credit",
+     "label": "Prepaid credit"
+    },
+    {
+     "value": "drawdown",
+     "label": "Drawdown"
+    },
+    {
+     "value": "overage",
+     "label": "Overage"
+    },
+    {
+     "value": "true_up",
+     "label": "True-up"
+    },
+    {
+     "value": "rollover",
+     "label": "Rollover"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "future_requirement_versus_current_use_separately",
+     "label": "Future requirement versus current use separately"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "finance/billing architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": true,
+   "rank": false
+  },
+  {
+   "id": "U04",
+   "module": "U",
+   "axis": 7,
+   "label": "How are usage events rated and corrected?",
+   "detail": "If usage selected: meter/source, event volume, UOM, aggregation period, late/duplicate events, corrections, rating owner, reconciliation and audit examples.",
+   "control": "text",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "meter_source",
+     "label": "Meter/source"
+    },
+    {
+     "key": "event_volume",
+     "label": "Event volume"
+    },
+    {
+     "key": "uom",
+     "label": "UOM"
+    },
+    {
+     "key": "aggregation_period",
+     "label": "Aggregation period"
+    },
+    {
+     "key": "late_duplicate_events",
+     "label": "Late/duplicate events"
+    },
+    {
+     "key": "corrections",
+     "label": "Corrections"
+    },
+    {
+     "key": "rating_owner",
+     "label": "Rating owner"
+    },
+    {
+     "key": "reconciliation",
+     "label": "Reconciliation"
+    },
+    {
+     "key": "audit_examples",
+     "label": "Audit examples"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "finance/billing architect",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "U05",
+   "module": "U",
+   "axis": 7,
+   "label": "What financial adjustments must survive?",
+   "detail": "Multi: credit notes; debit notes; refunds; write-offs; tax changes; cancellations; invoice reruns; none. Owner and system responsibility.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "credit_notes",
+     "label": "Credit notes"
+    },
+    {
+     "value": "debit_notes",
+     "label": "Debit notes"
+    },
+    {
+     "value": "refunds",
+     "label": "Refunds"
+    },
+    {
+     "value": "write_offs",
+     "label": "Write-offs"
+    },
+    {
+     "value": "tax_changes",
+     "label": "Tax changes"
+    },
+    {
+     "value": "cancellations",
+     "label": "Cancellations"
+    },
+    {
+     "value": "invoice_reruns",
+     "label": "Invoice reruns"
+    },
+    {
+     "value": "none",
+     "label": "None"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "owner",
+     "label": "Owner"
+    },
+    {
+     "key": "system_responsibility",
+     "label": "System responsibility"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "finance/billing architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": true,
+   "rank": false
+  },
+  {
+   "id": "U06",
+   "module": "U",
+   "axis": 7,
+   "label": "What financial data must be migrated or reconciled?",
+   "detail": "Active schedules; open balances; invoice history; transaction history; none in migration. Data owner, retention location, continuity method and evidence.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "active_schedules",
+     "label": "Active schedules"
+    },
+    {
+     "value": "open_balances",
+     "label": "Open balances"
+    },
+    {
+     "value": "invoice_history",
+     "label": "Invoice history"
+    },
+    {
+     "value": "transaction_history",
+     "label": "Transaction history"
+    },
+    {
+     "value": "none_in_migration",
+     "label": "None in migration"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "data_owner",
+     "label": "Data owner"
+    },
+    {
+     "key": "retention_location",
+     "label": "Retention location"
+    },
+    {
+     "key": "continuity_method",
+     "label": "Continuity method"
+    },
+    {
+     "key": "evidence",
+     "label": "Evidence"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "finance/billing architect",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "U07",
+   "module": "U",
+   "axis": 7,
+   "label": "What is the target license/release dependency?",
+   "detail": "Record candidate feature, licensed entitlement evidence, release/availability source and architect validation. Unconfirmed features stay open dependencies.",
+   "control": "text",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "candidate_feature",
+     "label": "Candidate feature"
+    },
+    {
+     "key": "licensed_entitlement_evidence",
+     "label": "Licensed entitlement evidence"
+    },
+    {
+     "key": "release_availability_source",
+     "label": "Release/availability source"
+    },
+    {
+     "key": "architect_validation",
+     "label": "Architect validation"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "finance/billing architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "U08",
+   "module": "U",
+   "axis": 7,
+   "label": "What must finance sign off?",
+   "detail": "Repeatable totals, account mapping, invoice amount/date, tax, credit, downstream reconciliation and close-period constraints.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "totals",
+     "label": "Totals"
+    },
+    {
+     "key": "account_mapping",
+     "label": "Account mapping"
+    },
+    {
+     "key": "invoice_amount_date",
+     "label": "Invoice amount/date"
+    },
+    {
+     "key": "tax",
+     "label": "Tax"
+    },
+    {
+     "key": "credit",
+     "label": "Credit"
+    },
+    {
+     "key": "downstream_reconciliation",
+     "label": "Downstream reconciliation"
+    },
+    {
+     "key": "close_period_constraints",
+     "label": "Close-period constraints"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "finance/billing architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "I01",
+   "module": "I",
+   "axis": 8,
+   "label": "Which systems exchange CPQ data?",
+   "detail": "Multi: ERP; product master; pricing; commerce; partner portal; CLM; e-signature; billing; tax; payments; data platform; provisioning; other. Create one register row per actual interface, not merely per vendor.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "erp",
+     "label": "ERP"
+    },
+    {
+     "value": "product_master",
+     "label": "Product master"
+    },
+    {
+     "value": "pricing",
+     "label": "Pricing"
+    },
+    {
+     "value": "commerce",
+     "label": "Commerce"
+    },
+    {
+     "value": "partner_portal",
+     "label": "Partner portal"
+    },
+    {
+     "value": "clm",
+     "label": "CLM"
+    },
+    {
+     "value": "e_signature",
+     "label": "E-signature"
+    },
+    {
+     "value": "billing",
+     "label": "Billing"
+    },
+    {
+     "value": "tax",
+     "label": "Tax"
+    },
+    {
+     "value": "payments",
+     "label": "Payments"
+    },
+    {
+     "value": "data_platform",
+     "label": "Data platform"
+    },
+    {
+     "value": "provisioning",
+     "label": "Provisioning"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "create_one_register_row_per_actual_interface",
+     "label": "Create one register row per actual interface"
+    },
+    {
+     "key": "not_merely_per_vendor",
+     "label": "Not merely per vendor"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "integration architect",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "I02",
+   "module": "I",
+   "axis": 8,
+   "label": "What does each interface do?",
+   "detail": "Repeatable direction, objects, operation/event, current endpoints, payload/schema reference, business process and external owner.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "direction",
+     "label": "Direction"
+    },
+    {
+     "key": "objects",
+     "label": "Objects"
+    },
+    {
+     "key": "operation_event",
+     "label": "Operation/event"
+    },
+    {
+     "key": "current_endpoints",
+     "label": "Current endpoints"
+    },
+    {
+     "key": "payload_schema_reference",
+     "label": "Payload/schema reference"
+    },
+    {
+     "key": "business_process",
+     "label": "Business process"
+    },
+    {
+     "key": "external_owner",
+     "label": "External owner"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "integration architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "I03",
+   "module": "I",
+   "axis": 8,
+   "label": "How is each interface implemented?",
+   "detail": "Multi per interface: MuleSoft; other middleware; REST; SOAP; platform events; CDC; batch/file; direct DB; custom Apex; other. Protocol, auth method name and delivery pattern; no secrets.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "mulesoft",
+     "label": "MuleSoft"
+    },
+    {
+     "value": "other_middleware",
+     "label": "Other middleware"
+    },
+    {
+     "value": "rest",
+     "label": "REST"
+    },
+    {
+     "value": "soap",
+     "label": "SOAP"
+    },
+    {
+     "value": "platform_events",
+     "label": "Platform events"
+    },
+    {
+     "value": "cdc",
+     "label": "CDC"
+    },
+    {
+     "value": "batch_file",
+     "label": "Batch/file"
+    },
+    {
+     "value": "direct_db",
+     "label": "Direct DB"
+    },
+    {
+     "value": "custom_apex",
+     "label": "Custom Apex"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "protocol",
+     "label": "Protocol"
+    },
+    {
+     "key": "auth_method_name",
+     "label": "Auth method name"
+    },
+    {
+     "key": "delivery_pattern",
+     "label": "Delivery pattern"
+    },
+    {
+     "key": "no_secrets",
+     "label": "No secrets"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "integration architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "I04",
+   "module": "I",
+   "axis": 8,
+   "label": "What references legacy objects or semantics?",
+   "detail": "Per interface: SBQQ field/object, package action/API, calculation timing, custom endpoint or event schema; impact and proposed change.",
+   "control": "text",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "sbqq_field_object",
+     "label": "SBQQ field/object"
+    },
+    {
+     "key": "package_action_api",
+     "label": "Package action/API"
+    },
+    {
+     "key": "calculation_timing",
+     "label": "Calculation timing"
+    },
+    {
+     "key": "custom_endpoint_or_event_schema",
+     "label": "Custom endpoint or event schema"
+    },
+    {
+     "key": "impact",
+     "label": "Impact"
+    },
+    {
+     "key": "proposed_change",
+     "label": "Proposed change"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "integration architect",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "I05",
+   "module": "I",
+   "axis": 8,
+   "label": "What service levels and recovery behavior are required?",
+   "detail": "Numeric normal/peak volume, latency, availability, RTO/RPO if relevant; idempotency, retries, DLQ, replay, reconciliation, monitoring and support owner.",
+   "control": "number",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "normal_peak_volume",
+     "label": "Normal/peak volume"
+    },
+    {
+     "key": "latency",
+     "label": "Latency"
+    },
+    {
+     "key": "availability",
+     "label": "Availability"
+    },
+    {
+     "key": "rto_rpo_if_relevant",
+     "label": "RTO/RPO if relevant"
+    },
+    {
+     "key": "idempotency",
+     "label": "Idempotency"
+    },
+    {
+     "key": "retries",
+     "label": "Retries"
+    },
+    {
+     "key": "dlq",
+     "label": "DLQ"
+    },
+    {
+     "key": "replay",
+     "label": "Replay"
+    },
+    {
+     "key": "reconciliation",
+     "label": "Reconciliation"
+    },
+    {
+     "key": "monitoring",
+     "label": "Monitoring"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "integration architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "I06",
+   "module": "I",
+   "axis": 8,
+   "label": "What can constrain interface changes?",
+   "detail": "Multi: vendor lead time; ERP release window; API limits; licenses; private network; security review; other. Responsible party and committed date.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "vendor_lead_time",
+     "label": "Vendor lead time"
+    },
+    {
+     "value": "erp_release_window",
+     "label": "ERP release window"
+    },
+    {
+     "value": "api_limits",
+     "label": "API limits"
+    },
+    {
+     "value": "licenses",
+     "label": "Licenses"
+    },
+    {
+     "value": "private_network",
+     "label": "Private network"
+    },
+    {
+     "value": "security_review",
+     "label": "Security review"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "responsible_party",
+     "label": "Responsible party"
+    },
+    {
+     "key": "committed_date",
+     "label": "Committed date"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "integration architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "I07",
+   "module": "I",
+   "axis": 8,
+   "label": "Will APIs support multiple selling channels?",
+   "detail": "YN; channel-specific context, identity/authorization, pricing consistency, transaction ownership and performance.",
+   "control": "single",
+   "optionSet": "YN",
+   "options": [
+    {
+     "value": "yes",
+     "label": "Yes"
+    },
+    {
+     "value": "no",
+     "label": "No"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "channel_specific_context",
+     "label": "Channel-specific context"
+    },
+    {
+     "key": "identity_authorization",
+     "label": "Identity/authorization"
+    },
+    {
+     "key": "pricing_consistency",
+     "label": "Pricing consistency"
+    },
+    {
+     "key": "transaction_ownership",
+     "label": "Transaction ownership"
+    },
+    {
+     "key": "performance",
+     "label": "Performance"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "integration architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "I08",
+   "module": "I",
+   "axis": 8,
+   "label": "Are test endpoints and owners ready?",
+   "detail": "Environment availability, contract/schema, sample payloads, test account, external team commitment and acceptance evidence.",
+   "control": "text",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "environment_availability",
+     "label": "Environment availability"
+    },
+    {
+     "key": "contract_schema",
+     "label": "Contract/schema"
+    },
+    {
+     "key": "sample_payloads",
+     "label": "Sample payloads"
+    },
+    {
+     "key": "test_account",
+     "label": "Test account"
+    },
+    {
+     "key": "external_team_commitment",
+     "label": "External team commitment"
+    },
+    {
+     "key": "acceptance_evidence",
+     "label": "Acceptance evidence"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "integration architect",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "X01",
+   "module": "X",
+   "axis": 9,
+   "label": "What custom components depend on CPQ?",
+   "detail": "Multi: Apex; Flow; legacy workflow/Process Builder; validation; formula; LWC/Aura; Visualforce; triggers; external code; none. Counts and inventory per type.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "apex",
+     "label": "Apex"
+    },
+    {
+     "value": "flow",
+     "label": "Flow"
+    },
+    {
+     "value": "legacy_workflow_process_builder",
+     "label": "Legacy workflow/Process Builder"
+    },
+    {
+     "value": "validation",
+     "label": "Validation"
+    },
+    {
+     "value": "formula",
+     "label": "Formula"
+    },
+    {
+     "value": "lwc_aura",
+     "label": "LWC/Aura"
+    },
+    {
+     "value": "visualforce",
+     "label": "Visualforce"
+    },
+    {
+     "value": "triggers",
+     "label": "Triggers"
+    },
+    {
+     "value": "external_code",
+     "label": "External code"
+    },
+    {
+     "value": "none",
+     "label": "None"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "counts",
+     "label": "Counts"
+    },
+    {
+     "key": "per_type",
+     "label": "Per type"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "technical architect",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": true,
+   "rank": false
+  },
+  {
+   "id": "X02",
+   "module": "X",
+   "axis": 9,
+   "label": "How well are dependencies understood?",
+   "detail": "HEALTH; dependency graph, code references, callouts, field/object usage, trigger ordering and ownership.",
+   "control": "single",
+   "optionSet": "HEALTH",
+   "options": [
+    {
+     "value": "documented_and_tested",
+     "label": "Documented and tested"
+    },
+    {
+     "value": "documented_only",
+     "label": "Documented only"
+    },
+    {
+     "value": "partially_documented",
+     "label": "Partially documented"
+    },
+    {
+     "value": "undocumented",
+     "label": "Undocumented"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "dependency_graph",
+     "label": "Dependency graph"
+    },
+    {
+     "key": "code_references",
+     "label": "Code references"
+    },
+    {
+     "key": "callouts",
+     "label": "Callouts"
+    },
+    {
+     "key": "field_object_usage",
+     "label": "Field/object usage"
+    },
+    {
+     "key": "trigger_ordering",
+     "label": "Trigger ordering"
+    },
+    {
+     "key": "ownership",
+     "label": "Ownership"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "technical architect",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "X03",
+   "module": "X",
+   "axis": 9,
+   "label": "Which package-specific hooks are used?",
+   "detail": "Multi: QCP; page security plugin; custom actions; guided-selling plugin; document extensions; external calculation; other. Current purpose and redesign hypothesis.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "qcp",
+     "label": "QCP"
+    },
+    {
+     "value": "page_security_plugin",
+     "label": "Page security plugin"
+    },
+    {
+     "value": "custom_actions",
+     "label": "Custom actions"
+    },
+    {
+     "value": "guided_selling_plugin",
+     "label": "Guided-selling plugin"
+    },
+    {
+     "value": "document_extensions",
+     "label": "Document extensions"
+    },
+    {
+     "value": "external_calculation",
+     "label": "External calculation"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "current_purpose",
+     "label": "Current purpose"
+    },
+    {
+     "key": "redesign_hypothesis",
+     "label": "Redesign hypothesis"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "technical architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "X04",
+   "module": "X",
+   "axis": 9,
+   "label": "Which third-party packages are involved?",
+   "detail": "Repeatable vendor/package/version, business function, dependencies, licensing, compatibility confirmation and support owner.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "vendor_package_version",
+     "label": "Vendor/package/version"
+    },
+    {
+     "key": "business_function",
+     "label": "Business function"
+    },
+    {
+     "key": "dependencies",
+     "label": "Dependencies"
+    },
+    {
+     "key": "licensing",
+     "label": "Licensing"
+    },
+    {
+     "key": "compatibility_confirmation",
+     "label": "Compatibility confirmation"
+    },
+    {
+     "key": "support_owner",
+     "label": "Support owner"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "technical architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "X05",
+   "module": "X",
+   "axis": 9,
+   "label": "How are changes built and released?",
+   "detail": "Multi: source control; Salesforce CLI; Copado; Gearset; other CI/CD; change sets; manual. Branching, approvals and rollback.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "source_control",
+     "label": "Source control"
+    },
+    {
+     "value": "salesforce_cli",
+     "label": "Salesforce CLI"
+    },
+    {
+     "value": "copado",
+     "label": "Copado"
+    },
+    {
+     "value": "gearset",
+     "label": "Gearset"
+    },
+    {
+     "value": "other_ci_cd",
+     "label": "Other CI/CD"
+    },
+    {
+     "value": "change_sets",
+     "label": "Change sets"
+    },
+    {
+     "value": "manual",
+     "label": "Manual"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "branching",
+     "label": "Branching"
+    },
+    {
+     "key": "approvals",
+     "label": "Approvals"
+    },
+    {
+     "key": "rollback",
+     "label": "Rollback"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "technical architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "X06",
+   "module": "X",
+   "axis": 9,
+   "label": "Which reusable automated tests exist?",
+   "detail": "Multi: Apex; UI; API; pricing regression; data reconciliation; none. Coverage scope, reliability, execution time and repository reference.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "apex",
+     "label": "Apex"
+    },
+    {
+     "value": "ui",
+     "label": "UI"
+    },
+    {
+     "value": "api",
+     "label": "API"
+    },
+    {
+     "value": "pricing_regression",
+     "label": "Pricing regression"
+    },
+    {
+     "value": "data_reconciliation",
+     "label": "Data reconciliation"
+    },
+    {
+     "value": "none",
+     "label": "None"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "coverage_scope",
+     "label": "Coverage scope"
+    },
+    {
+     "key": "reliability",
+     "label": "Reliability"
+    },
+    {
+     "key": "execution_time",
+     "label": "Execution time"
+    },
+    {
+     "key": "repository_reference",
+     "label": "Repository reference"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "technical architect",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": true,
+   "rank": false
+  },
+  {
+   "id": "X07",
+   "module": "X",
+   "axis": 9,
+   "label": "What engineering constraints apply?",
+   "detail": "Multi: shared release train; code freeze; security gate; limited environments; restricted package install; other. Owner and lead time.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "shared_release_train",
+     "label": "Shared release train"
+    },
+    {
+     "value": "code_freeze",
+     "label": "Code freeze"
+    },
+    {
+     "value": "security_gate",
+     "label": "Security gate"
+    },
+    {
+     "value": "limited_environments",
+     "label": "Limited environments"
+    },
+    {
+     "value": "restricted_package_install",
+     "label": "Restricted package install"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "owner",
+     "label": "Owner"
+    },
+    {
+     "key": "lead_time",
+     "label": "Lead time"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "technical architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "X08",
+   "module": "X",
+   "axis": 9,
+   "label": "How should each custom component be treated?",
+   "detail": "Repeatable reuse unchanged after proof; reconfigure; redesign; rebuild; replace with native feature after proof; retire; undecided. Business justification and acceptance test.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "reuse_unchanged_after_proof",
+     "label": "Reuse unchanged after proof"
+    },
+    {
+     "key": "reconfigure",
+     "label": "Reconfigure"
+    },
+    {
+     "key": "redesign",
+     "label": "Redesign"
+    },
+    {
+     "key": "rebuild",
+     "label": "Rebuild"
+    },
+    {
+     "key": "replace_with_native_feature_after_proof",
+     "label": "Replace with native feature after proof"
+    },
+    {
+     "key": "retire",
+     "label": "Retire"
+    },
+    {
+     "key": "undecided",
+     "label": "Undecided"
+    },
+    {
+     "key": "business_justification",
+     "label": "Business justification"
+    },
+    {
+     "key": "acceptance_test",
+     "label": "Acceptance test"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "technical architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "D01",
+   "module": "D",
+   "axis": 10,
+   "label": "Which data must be available after go-live?",
+   "detail": "Multi: products; price books; accounts/contacts; quotes/lines; contracts; subscriptions; assets; orders/lines; agreements; usage; billing records; attachments; history. Per dataset: migrate; reference/archive; retain legacy; recreate; retire; undecided.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "products",
+     "label": "Products"
+    },
+    {
+     "value": "price_books",
+     "label": "Price books"
+    },
+    {
+     "value": "accounts_contacts",
+     "label": "Accounts/contacts"
+    },
+    {
+     "value": "quotes_lines",
+     "label": "Quotes/lines"
+    },
+    {
+     "value": "contracts",
+     "label": "Contracts"
+    },
+    {
+     "value": "subscriptions",
+     "label": "Subscriptions"
+    },
+    {
+     "value": "assets",
+     "label": "Assets"
+    },
+    {
+     "value": "orders_lines",
+     "label": "Orders/lines"
+    },
+    {
+     "value": "agreements",
+     "label": "Agreements"
+    },
+    {
+     "value": "usage",
+     "label": "Usage"
+    },
+    {
+     "value": "billing_records",
+     "label": "Billing records"
+    },
+    {
+     "value": "attachments",
+     "label": "Attachments"
+    },
+    {
+     "value": "history",
+     "label": "History"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "migrate",
+     "label": "Migrate"
+    },
+    {
+     "key": "reference_archive",
+     "label": "Reference/archive"
+    },
+    {
+     "key": "retain_legacy",
+     "label": "Retain legacy"
+    },
+    {
+     "key": "recreate",
+     "label": "Recreate"
+    },
+    {
+     "key": "retire",
+     "label": "Retire"
+    },
+    {
+     "key": "undecided",
+     "label": "Undecided"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "data architect",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "D02",
+   "module": "D",
+   "axis": 10,
+   "label": "What are dataset volumes and growth?",
+   "detail": "Per object: total/active, period, monthly change, file size, historical depth, source owner; exact versus estimate.",
+   "control": "text",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "total_active",
+     "label": "Total/active"
+    },
+    {
+     "key": "period",
+     "label": "Period"
+    },
+    {
+     "key": "monthly_change",
+     "label": "Monthly change"
+    },
+    {
+     "key": "file_size",
+     "label": "File size"
+    },
+    {
+     "key": "historical_depth",
+     "label": "Historical depth"
+    },
+    {
+     "key": "source_owner",
+     "label": "Source owner"
+    },
+    {
+     "key": "exact_versus_estimate",
+     "label": "Exact versus estimate"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "data architect",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "D03",
+   "module": "D",
+   "axis": 10,
+   "label": "What quality issues exist?",
+   "detail": "Multi: duplicates; missing mandatory fields; orphan relationships; invalid dates; inconsistent currency; broken bundle structure; incomplete history; obsolete products; conflicting prices; none proven. Measured counts/sample size, not impressions only.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "duplicates",
+     "label": "Duplicates"
+    },
+    {
+     "value": "missing_mandatory_fields",
+     "label": "Missing mandatory fields"
+    },
+    {
+     "value": "orphan_relationships",
+     "label": "Orphan relationships"
+    },
+    {
+     "value": "invalid_dates",
+     "label": "Invalid dates"
+    },
+    {
+     "value": "inconsistent_currency",
+     "label": "Inconsistent currency"
+    },
+    {
+     "value": "broken_bundle_structure",
+     "label": "Broken bundle structure"
+    },
+    {
+     "value": "incomplete_history",
+     "label": "Incomplete history"
+    },
+    {
+     "value": "obsolete_products",
+     "label": "Obsolete products"
+    },
+    {
+     "value": "conflicting_prices",
+     "label": "Conflicting prices"
+    },
+    {
+     "value": "none_proven",
+     "label": "None proven"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "measured_counts_sample_size",
+     "label": "Measured counts/sample size"
+    },
+    {
+     "key": "not_impressions_only",
+     "label": "Not impressions only"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "data architect",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": true,
+   "rank": false
+  },
+  {
+   "id": "D04",
+   "module": "D",
+   "axis": 10,
+   "label": "Who owns cleansing and data acceptance?",
+   "detail": "Per dataset: SI/customer/shared, named owner, rules, deadline and sign-off authority.",
+   "control": "text",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "si_customer_shared",
+     "label": "SI/customer/shared"
+    },
+    {
+     "key": "named_owner",
+     "label": "Named owner"
+    },
+    {
+     "key": "rules",
+     "label": "Rules"
+    },
+    {
+     "key": "deadline",
+     "label": "Deadline"
+    },
+    {
+     "key": "sign_off_authority",
+     "label": "Sign-off authority"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "data architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "D05",
+   "module": "D",
+   "axis": 10,
+   "label": "How will objects and fields map?",
+   "detail": "Open object/field mapping grid with source/target object, field, datatype, transform, defaults, lookup keys, validation and disposition. Target API names require validation.",
+   "control": "table",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "source_target_object",
+     "label": "Source/target object"
+    },
+    {
+     "key": "field",
+     "label": "Field"
+    },
+    {
+     "key": "datatype",
+     "label": "Datatype"
+    },
+    {
+     "key": "transform",
+     "label": "Transform"
+    },
+    {
+     "key": "defaults",
+     "label": "Defaults"
+    },
+    {
+     "key": "lookup_keys",
+     "label": "Lookup keys"
+    },
+    {
+     "key": "validation",
+     "label": "Validation"
+    },
+    {
+     "key": "disposition",
+     "label": "Disposition"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "data architect",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "D06",
+   "module": "D",
+   "axis": 10,
+   "label": "What history and audit evidence must be retained?",
+   "detail": "Single: full; active plus selected history; legally defined subset; archive only. Retention reason, access method, deletion restrictions and ownership.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "full",
+     "label": "Full"
+    },
+    {
+     "value": "active_plus_selected_history",
+     "label": "Active plus selected history"
+    },
+    {
+     "value": "legally_defined_subset",
+     "label": "Legally defined subset"
+    },
+    {
+     "value": "archive_only",
+     "label": "Archive only"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "retention_reason",
+     "label": "Retention reason"
+    },
+    {
+     "key": "access_method",
+     "label": "Access method"
+    },
+    {
+     "key": "deletion_restrictions",
+     "label": "Deletion restrictions"
+    },
+    {
+     "key": "ownership",
+     "label": "Ownership"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "data architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "D07",
+   "module": "D",
+   "axis": 10,
+   "label": "How will migration be executed?",
+   "detail": "Multi: ETL; APIs; data loader; accelerator; custom pipeline; undecided. Load dependencies, batch size hypothesis, retries, upsert keys, error quarantine and rerun behavior.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "etl",
+     "label": "ETL"
+    },
+    {
+     "value": "apis",
+     "label": "APIs"
+    },
+    {
+     "value": "data_loader",
+     "label": "Data loader"
+    },
+    {
+     "value": "accelerator",
+     "label": "Accelerator"
+    },
+    {
+     "value": "custom_pipeline",
+     "label": "Custom pipeline"
+    },
+    {
+     "value": "undecided",
+     "label": "Undecided"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "load_dependencies",
+     "label": "Load dependencies"
+    },
+    {
+     "key": "batch_size_hypothesis",
+     "label": "Batch size hypothesis"
+    },
+    {
+     "key": "retries",
+     "label": "Retries"
+    },
+    {
+     "key": "upsert_keys",
+     "label": "Upsert keys"
+    },
+    {
+     "key": "error_quarantine",
+     "label": "Error quarantine"
+    },
+    {
+     "key": "rerun_behavior",
+     "label": "Rerun behavior"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "data architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "D08",
+   "module": "D",
+   "axis": 10,
+   "label": "How will delta changes and freeze be managed?",
+   "detail": "Full freeze; incremental loads; dual-operation synchronization; phased cohort freeze; undecided. Window, change capture, cutoff timestamp/timezone and owner.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "full_freeze",
+     "label": "Full freeze"
+    },
+    {
+     "value": "incremental_loads",
+     "label": "Incremental loads"
+    },
+    {
+     "value": "dual_operation_synchronization",
+     "label": "Dual-operation synchronization"
+    },
+    {
+     "value": "phased_cohort_freeze",
+     "label": "Phased cohort freeze"
+    },
+    {
+     "value": "undecided",
+     "label": "Undecided"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "window",
+     "label": "Window"
+    },
+    {
+     "key": "change_capture",
+     "label": "Change capture"
+    },
+    {
+     "key": "cutoff_timestamp_timezone",
+     "label": "Cutoff timestamp/timezone"
+    },
+    {
+     "key": "owner",
+     "label": "Owner"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "data architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "D09",
+   "module": "D",
+   "axis": 10,
+   "label": "What reconciliation will prove success?",
+   "detail": "Counts; amounts; lineage; date/quantity balances; references; pricing; downstream totals; lifecycle scenarios. Thresholds, excluded records, owner and evidence.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "counts",
+     "label": "Counts"
+    },
+    {
+     "value": "amounts",
+     "label": "Amounts"
+    },
+    {
+     "value": "lineage",
+     "label": "Lineage"
+    },
+    {
+     "value": "date_quantity_balances",
+     "label": "Date/quantity balances"
+    },
+    {
+     "value": "references",
+     "label": "References"
+    },
+    {
+     "value": "pricing",
+     "label": "Pricing"
+    },
+    {
+     "value": "downstream_totals",
+     "label": "Downstream totals"
+    },
+    {
+     "value": "lifecycle_scenarios",
+     "label": "Lifecycle scenarios"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "thresholds",
+     "label": "Thresholds"
+    },
+    {
+     "key": "excluded_records",
+     "label": "Excluded records"
+    },
+    {
+     "key": "owner",
+     "label": "Owner"
+    },
+    {
+     "key": "evidence",
+     "label": "Evidence"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "data architect",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "D10",
+   "module": "D",
+   "axis": 10,
+   "label": "What happens to legacy data and the package?",
+   "detail": "Retain editable temporarily; read-only access; archive then decommission; undecided. Required retrieval, retention, dependencies, licensing validation and approved exit criteria.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "retain_editable_temporarily",
+     "label": "Retain editable temporarily"
+    },
+    {
+     "value": "read_only_access",
+     "label": "Read-only access"
+    },
+    {
+     "value": "archive_then_decommission",
+     "label": "Archive then decommission"
+    },
+    {
+     "value": "undecided",
+     "label": "Undecided"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "required_retrieval",
+     "label": "Required retrieval"
+    },
+    {
+     "key": "retention",
+     "label": "Retention"
+    },
+    {
+     "key": "dependencies",
+     "label": "Dependencies"
+    },
+    {
+     "key": "licensing_validation",
+     "label": "Licensing validation"
+    },
+    {
+     "key": "approved_exit_criteria",
+     "label": "Approved exit criteria"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "data architect",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "R01",
+   "module": "R",
+   "axis": 11,
+   "label": "What reports rely on CPQ records?",
+   "detail": "COUNT reports, dashboards, extracts and external datasets. Active usage, owner and linked objects/fields.",
+   "control": "count",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "reports",
+     "label": "Reports"
+    },
+    {
+     "key": "dashboards",
+     "label": "Dashboards"
+    },
+    {
+     "key": "extracts",
+     "label": "Extracts"
+    },
+    {
+     "key": "external_datasets",
+     "label": "External datasets"
+    },
+    {
+     "key": "active_usage",
+     "label": "Active usage"
+    },
+    {
+     "key": "owner",
+     "label": "Owner"
+    },
+    {
+     "key": "linked_objects_fields",
+     "label": "Linked objects/fields"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "revenue operations/BI",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "R02",
+   "module": "R",
+   "axis": 11,
+   "label": "Which business measures must continue?",
+   "detail": "Multi: pipeline; bookings; ARR/MRR; renewal; churn; discount/margin; quote cycle; approvals; usage; other. Capture agreed formula, grain, date and source.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "pipeline",
+     "label": "Pipeline"
+    },
+    {
+     "value": "bookings",
+     "label": "Bookings"
+    },
+    {
+     "value": "arr_mrr",
+     "label": "ARR/MRR"
+    },
+    {
+     "value": "renewal",
+     "label": "Renewal"
+    },
+    {
+     "value": "churn",
+     "label": "Churn"
+    },
+    {
+     "value": "discount_margin",
+     "label": "Discount/margin"
+    },
+    {
+     "value": "quote_cycle",
+     "label": "Quote cycle"
+    },
+    {
+     "value": "approvals",
+     "label": "Approvals"
+    },
+    {
+     "value": "usage",
+     "label": "Usage"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "agreed_formula",
+     "label": "Agreed formula"
+    },
+    {
+     "key": "grain",
+     "label": "Grain"
+    },
+    {
+     "key": "date",
+     "label": "Date"
+    },
+    {
+     "key": "source",
+     "label": "Source"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "revenue operations/BI",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "R03",
+   "module": "R",
+   "axis": 11,
+   "label": "How will legacy and new results be compared?",
+   "detail": "Single: parallel reports; consolidated warehouse; bridge mapping; new baseline; undecided. Historical comparability and restatement decisions.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "parallel_reports",
+     "label": "Parallel reports"
+    },
+    {
+     "value": "consolidated_warehouse",
+     "label": "Consolidated warehouse"
+    },
+    {
+     "value": "bridge_mapping",
+     "label": "Bridge mapping"
+    },
+    {
+     "value": "new_baseline",
+     "label": "New baseline"
+    },
+    {
+     "value": "undecided",
+     "label": "Undecided"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "historical_comparability",
+     "label": "Historical comparability"
+    },
+    {
+     "key": "restatement_decisions",
+     "label": "Restatement decisions"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "revenue operations/BI",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "R04",
+   "module": "R",
+   "axis": 11,
+   "label": "What analytics platforms consume data?",
+   "detail": "Multi: native Salesforce; Tableau; CRM Analytics; Power BI; warehouse; spreadsheets; other. Refresh and interface dependencies.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "native_salesforce",
+     "label": "Native Salesforce"
+    },
+    {
+     "value": "tableau",
+     "label": "Tableau"
+    },
+    {
+     "value": "crm_analytics",
+     "label": "CRM Analytics"
+    },
+    {
+     "value": "power_bi",
+     "label": "Power BI"
+    },
+    {
+     "value": "warehouse",
+     "label": "Warehouse"
+    },
+    {
+     "value": "spreadsheets",
+     "label": "Spreadsheets"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "refresh",
+     "label": "Refresh"
+    },
+    {
+     "key": "interface_dependencies",
+     "label": "Interface dependencies"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "revenue operations/BI",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "R05",
+   "module": "R",
+   "axis": 11,
+   "label": "How will reporting acceptance be measured?",
+   "detail": "Sample period, report/metric baseline, tolerance, reconciliation logic and business approver.",
+   "control": "text",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "sample_period",
+     "label": "Sample period"
+    },
+    {
+     "key": "report_metric_baseline",
+     "label": "Report/metric baseline"
+    },
+    {
+     "key": "tolerance",
+     "label": "Tolerance"
+    },
+    {
+     "key": "reconciliation_logic",
+     "label": "Reconciliation logic"
+    },
+    {
+     "key": "business_approver",
+     "label": "Business approver"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "revenue operations/BI",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "S01",
+   "module": "S",
+   "axis": 12,
+   "label": "Which access boundaries apply?",
+   "detail": "Multi: BU; region; legal entity; partner account; role; product; price/cost; margin; sensitive customer fields. Record visibility and edit rules per persona.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "bu",
+     "label": "BU"
+    },
+    {
+     "value": "region",
+     "label": "Region"
+    },
+    {
+     "value": "legal_entity",
+     "label": "Legal entity"
+    },
+    {
+     "value": "partner_account",
+     "label": "Partner account"
+    },
+    {
+     "value": "role",
+     "label": "Role"
+    },
+    {
+     "value": "product",
+     "label": "Product"
+    },
+    {
+     "value": "price_cost",
+     "label": "Price/cost"
+    },
+    {
+     "value": "margin",
+     "label": "Margin"
+    },
+    {
+     "value": "sensitive_customer_fields",
+     "label": "Sensitive customer fields"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "visibility",
+     "label": "Visibility"
+    },
+    {
+     "key": "edit_rules_per_persona",
+     "label": "Edit rules per persona"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "security/platform owner",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "S02",
+   "module": "S",
+   "axis": 12,
+   "label": "Which security capabilities are used or required?",
+   "detail": "Multi: SSO; MFA; permission sets/groups; field access; encryption; audit logging; monitoring; data masking; other. Distinguish current use, future need, licensed entitlement.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "sso",
+     "label": "SSO"
+    },
+    {
+     "value": "mfa",
+     "label": "MFA"
+    },
+    {
+     "value": "permission_sets_groups",
+     "label": "Permission sets/groups"
+    },
+    {
+     "value": "field_access",
+     "label": "Field access"
+    },
+    {
+     "value": "encryption",
+     "label": "Encryption"
+    },
+    {
+     "value": "audit_logging",
+     "label": "Audit logging"
+    },
+    {
+     "value": "monitoring",
+     "label": "Monitoring"
+    },
+    {
+     "value": "data_masking",
+     "label": "Data masking"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "distinguish_current_use",
+     "label": "Distinguish current use"
+    },
+    {
+     "key": "future_need",
+     "label": "Future need"
+    },
+    {
+     "key": "licensed_entitlement",
+     "label": "Licensed entitlement"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "security/platform owner",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "S03",
+   "module": "S",
+   "axis": 12,
+   "label": "What data handling requirements apply?",
+   "detail": "Multi: PII; commercial confidential; financial; regulated data; cross-border restrictions; other. Customer-approved classification, permitted evidence storage and retention. Do not infer compliance.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "pii",
+     "label": "PII"
+    },
+    {
+     "value": "commercial_confidential",
+     "label": "Commercial confidential"
+    },
+    {
+     "value": "financial",
+     "label": "Financial"
+    },
+    {
+     "value": "regulated_data",
+     "label": "Regulated data"
+    },
+    {
+     "value": "cross_border_restrictions",
+     "label": "Cross-border restrictions"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "customer_approved_classification",
+     "label": "Customer-approved classification"
+    },
+    {
+     "key": "permitted_evidence_storage",
+     "label": "Permitted evidence storage"
+    },
+    {
+     "key": "retention",
+     "label": "Retention"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "security/platform owner",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "S04",
+   "module": "S",
+   "axis": 12,
+   "label": "What resilience and support outcomes are required?",
+   "detail": "Numeric availability, support hours/timezone, criticality, recovery objective, backup/restore responsibility and incident escalation.",
+   "control": "number",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "availability",
+     "label": "Availability"
+    },
+    {
+     "key": "support_hours_timezone",
+     "label": "Support hours/timezone"
+    },
+    {
+     "key": "criticality",
+     "label": "Criticality"
+    },
+    {
+     "key": "recovery_objective",
+     "label": "Recovery objective"
+    },
+    {
+     "key": "backup_restore_responsibility",
+     "label": "Backup/restore responsibility"
+    },
+    {
+     "key": "incident_escalation",
+     "label": "Incident escalation"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "security/platform owner",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "S05",
+   "module": "S",
+   "axis": 12,
+   "label": "What architecture and security approvals are needed?",
+   "detail": "Repeatable review, assessor, evidence, deadline, decision and unresolved conditions.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "review",
+     "label": "Review"
+    },
+    {
+     "key": "assessor",
+     "label": "Assessor"
+    },
+    {
+     "key": "evidence",
+     "label": "Evidence"
+    },
+    {
+     "key": "deadline",
+     "label": "Deadline"
+    },
+    {
+     "key": "decision",
+     "label": "Decision"
+    },
+    {
+     "key": "unresolved_conditions",
+     "label": "Unresolved conditions"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "security/platform owner",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "S06",
+   "module": "S",
+   "axis": 12,
+   "label": "What operational monitoring must be in place?",
+   "detail": "Multi: pricing failures; integration errors; failed jobs; quote latency; access anomalies; migration exceptions; asset reconciliation; other. Alert and support owner.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "pricing_failures",
+     "label": "Pricing failures"
+    },
+    {
+     "value": "integration_errors",
+     "label": "Integration errors"
+    },
+    {
+     "value": "failed_jobs",
+     "label": "Failed jobs"
+    },
+    {
+     "value": "quote_latency",
+     "label": "Quote latency"
+    },
+    {
+     "value": "access_anomalies",
+     "label": "Access anomalies"
+    },
+    {
+     "value": "migration_exceptions",
+     "label": "Migration exceptions"
+    },
+    {
+     "value": "asset_reconciliation",
+     "label": "Asset reconciliation"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "alert",
+     "label": "Alert"
+    },
+    {
+     "key": "support_owner",
+     "label": "Support owner"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "security/platform owner",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "T01",
+   "module": "T",
+   "axis": 12,
+   "label": "What rollout approach is preferred?",
+   "detail": "Single: one cutover; BU/region waves; product waves; channel waves; new business first with legacy renewals retained; undecided. Reason, risk appetite and decision owner.",
+   "control": "single",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "one_cutover",
+     "label": "One cutover"
+    },
+    {
+     "value": "bu_region_waves",
+     "label": "BU/region waves"
+    },
+    {
+     "value": "product_waves",
+     "label": "Product waves"
+    },
+    {
+     "value": "channel_waves",
+     "label": "Channel waves"
+    },
+    {
+     "value": "new_business_first_with_legacy_renewals_retained",
+     "label": "New business first with legacy renewals retained"
+    },
+    {
+     "value": "undecided",
+     "label": "Undecided"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "reason",
+     "label": "Reason"
+    },
+    {
+     "key": "risk_appetite",
+     "label": "Risk appetite"
+    },
+    {
+     "key": "decision_owner",
+     "label": "Decision owner"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "program/test lead",
+   "criticality": "gate",
+   "customerVisible": true,
+   "quickStart": true,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "T02",
+   "module": "T",
+   "axis": 12,
+   "label": "What test scenarios and expected results exist?",
+   "detail": "Repeatable golden transaction, normal/edge/negative, persona/channel, dataset, expected output, tolerance, owner and evidence.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "golden_transaction",
+     "label": "Golden transaction"
+    },
+    {
+     "key": "normal_edge_negative",
+     "label": "Normal/edge/negative"
+    },
+    {
+     "key": "persona_channel",
+     "label": "Persona/channel"
+    },
+    {
+     "key": "dataset",
+     "label": "Dataset"
+    },
+    {
+     "key": "expected_output",
+     "label": "Expected output"
+    },
+    {
+     "key": "tolerance",
+     "label": "Tolerance"
+    },
+    {
+     "key": "owner",
+     "label": "Owner"
+    },
+    {
+     "key": "evidence",
+     "label": "Evidence"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "program/test lead",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "T03",
+   "module": "T",
+   "axis": 12,
+   "label": "Who owns each test stage?",
+   "detail": "Repeatable unit; functional; integration; migration rehearsal; pricing parity; performance; security; UAT; regression. RACI, environment and entry/exit criteria.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "unit",
+     "label": "Unit"
+    },
+    {
+     "key": "functional",
+     "label": "Functional"
+    },
+    {
+     "key": "integration",
+     "label": "Integration"
+    },
+    {
+     "key": "migration_rehearsal",
+     "label": "Migration rehearsal"
+    },
+    {
+     "key": "pricing_parity",
+     "label": "Pricing parity"
+    },
+    {
+     "key": "performance",
+     "label": "Performance"
+    },
+    {
+     "key": "security",
+     "label": "Security"
+    },
+    {
+     "key": "uat",
+     "label": "UAT"
+    },
+    {
+     "key": "regression",
+     "label": "Regression"
+    },
+    {
+     "key": "raci",
+     "label": "RACI"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "program/test lead",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "T04",
+   "module": "T",
+   "axis": 12,
+   "label": "What data migration rehearsals are required?",
+   "detail": "Integer planned rehearsals, volume class, duration target, reconciliation scope and accountable owner.",
+   "control": "number",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "planned_rehearsals",
+     "label": "Planned rehearsals"
+    },
+    {
+     "key": "volume_class",
+     "label": "Volume class"
+    },
+    {
+     "key": "duration_target",
+     "label": "Duration target"
+    },
+    {
+     "key": "reconciliation_scope",
+     "label": "Reconciliation scope"
+    },
+    {
+     "key": "accountable_owner",
+     "label": "Accountable owner"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "program/test lead",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "T05",
+   "module": "T",
+   "axis": 12,
+   "label": "What are cutover and rollback conditions?",
+   "detail": "Tasks and dependency order, freeze, final delta, go/no-go criteria, business owner, rollback/forward recovery triggers and transaction reconciliation after go-live.",
+   "control": "text",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "tasks",
+     "label": "Tasks"
+    },
+    {
+     "key": "dependency_order",
+     "label": "Dependency order"
+    },
+    {
+     "key": "freeze",
+     "label": "Freeze"
+    },
+    {
+     "key": "final_delta",
+     "label": "Final delta"
+    },
+    {
+     "key": "go_no_go_criteria",
+     "label": "Go/no-go criteria"
+    },
+    {
+     "key": "business_owner",
+     "label": "Business owner"
+    },
+    {
+     "key": "rollback_forward_recovery_triggers",
+     "label": "Rollback/forward recovery triggers"
+    },
+    {
+     "key": "transaction_reconciliation_after_go_live",
+     "label": "Transaction reconciliation after go-live"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "program/test lead",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "T06",
+   "module": "T",
+   "axis": 12,
+   "label": "How will users become ready?",
+   "detail": "Multi: persona training; champions; sandbox practice; job aids; train-the-trainer; office hours; other. Counts, languages, owner, training acceptance.",
+   "control": "multi",
+   "optionSet": null,
+   "options": [
+    {
+     "value": "persona_training",
+     "label": "Persona training"
+    },
+    {
+     "value": "champions",
+     "label": "Champions"
+    },
+    {
+     "value": "sandbox_practice",
+     "label": "Sandbox practice"
+    },
+    {
+     "value": "job_aids",
+     "label": "Job aids"
+    },
+    {
+     "value": "train_the_trainer",
+     "label": "Train-the-trainer"
+    },
+    {
+     "value": "office_hours",
+     "label": "Office hours"
+    },
+    {
+     "value": "other",
+     "label": "Other"
+    }
+   ],
+   "subfields": [
+    {
+     "key": "counts",
+     "label": "Counts"
+    },
+    {
+     "key": "languages",
+     "label": "Languages"
+    },
+    {
+     "key": "owner",
+     "label": "Owner"
+    },
+    {
+     "key": "training_acceptance",
+     "label": "Training acceptance"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "program/test lead",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "T07",
+   "module": "T",
+   "axis": 12,
+   "label": "What support follows go-live?",
+   "detail": "Hypercare duration, coverage hours/timezone, support tiers, incident targets, knowledge transfer and BAU exit criteria.",
+   "control": "text",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "hypercare_duration",
+     "label": "Hypercare duration"
+    },
+    {
+     "key": "coverage_hours_timezone",
+     "label": "Coverage hours/timezone"
+    },
+    {
+     "key": "support_tiers",
+     "label": "Support tiers"
+    },
+    {
+     "key": "incident_targets",
+     "label": "Incident targets"
+    },
+    {
+     "key": "knowledge_transfer",
+     "label": "Knowledge transfer"
+    },
+    {
+     "key": "bau_exit_criteria",
+     "label": "BAU exit criteria"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "program/test lead",
+   "criticality": "normal",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "T08",
+   "module": "T",
+   "axis": 12,
+   "label": "What proposal and delivery constraints should we honor?",
+   "detail": "Delivery locations, permitted onsite/offshore mix, working hours, customer/vendor responsibilities, procurement timing, rate currency and commercial exclusions. Internal commercial fields remain restricted.",
+   "control": "text",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "delivery_locations",
+     "label": "Delivery locations"
+    },
+    {
+     "key": "permitted_onsite_offshore_mix",
+     "label": "Permitted onsite/offshore mix"
+    },
+    {
+     "key": "working_hours",
+     "label": "Working hours"
+    },
+    {
+     "key": "customer_vendor_responsibilities",
+     "label": "Customer/vendor responsibilities"
+    },
+    {
+     "key": "procurement_timing",
+     "label": "Procurement timing"
+    },
+    {
+     "key": "rate_currency",
+     "label": "Rate currency"
+    },
+    {
+     "key": "commercial_exclusions",
+     "label": "Commercial exclusions"
+    },
+    {
+     "key": "internal_commercial_fields_remain_restricted",
+     "label": "Internal commercial fields remain restricted"
+    }
+   ],
+   "evidenceRequired": false,
+   "defaultOwnerRole": "program/test lead",
+   "criticality": "normal",
+   "customerVisible": false,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "T09",
+   "module": "T",
+   "axis": 12,
+   "label": "What decisions and assumptions remain open?",
+   "detail": "Repeatable decision/assumption, impact, owner, due date, validation plan, possible scope/cost/schedule effect and customer-visible flag.",
+   "control": "repeatable",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "decision_assumption",
+     "label": "Decision/assumption"
+    },
+    {
+     "key": "impact",
+     "label": "Impact"
+    },
+    {
+     "key": "owner",
+     "label": "Owner"
+    },
+    {
+     "key": "due_date",
+     "label": "Due date"
+    },
+    {
+     "key": "validation_plan",
+     "label": "Validation plan"
+    },
+    {
+     "key": "possible_scope_cost_schedule_effect",
+     "label": "Possible scope/cost/schedule effect"
+    },
+    {
+     "key": "customer_visible_flag",
+     "label": "Customer-visible flag"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "program/test lead",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  },
+  {
+   "id": "T10",
+   "module": "T",
+   "axis": 12,
+   "label": "Who approves the assessment baseline?",
+   "detail": "Named engagement lead, architect and customer approver; approval state, date, comments, unresolved exceptions. Acknowledgement is not legal acceptance of a contract.",
+   "control": "text",
+   "optionSet": null,
+   "options": [],
+   "subfields": [
+    {
+     "key": "named_engagement_lead",
+     "label": "Named engagement lead"
+    },
+    {
+     "key": "architect",
+     "label": "Architect"
+    },
+    {
+     "key": "customer_approver",
+     "label": "Customer approver"
+    },
+    {
+     "key": "approval_state",
+     "label": "Approval state"
+    },
+    {
+     "key": "date",
+     "label": "Date"
+    },
+    {
+     "key": "comments",
+     "label": "Comments"
+    },
+    {
+     "key": "unresolved_exceptions",
+     "label": "Unresolved exceptions"
+    }
+   ],
+   "evidenceRequired": true,
+   "defaultOwnerRole": "program/test lead",
+   "criticality": "high",
+   "customerVisible": true,
+   "quickStart": false,
+   "noneExclusive": false,
+   "rank": false
+  }
+ ],
+ "quickStart": [
+  "B01",
+  "B02",
+  "B03",
+  "B06",
+  "L01",
+  "L03",
+  "L04",
+  "L05",
+  "L06",
+  "C01",
+  "C03",
+  "P01",
+  "P06",
+  "Q01",
+  "A01",
+  "A04",
+  "I01",
+  "D01",
+  "X01",
+  "T01"
+ ]
+}
