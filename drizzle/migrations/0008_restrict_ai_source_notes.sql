@@ -1,0 +1,2 @@
+ALTER POLICY "review read" ON public.ai_discovery_reviews USING (public.is_internal_member(project_id));
+COMMENT ON TABLE public.ai_discovery_reviews IS 'Internal discovery source notes and AI drafts. Approved result-only content is included in analyst-generated client exports; raw notes are never shared with customer roles.';
