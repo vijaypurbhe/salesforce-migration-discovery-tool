@@ -202,7 +202,7 @@ function Estimate() {
 function Narrative() {
   const { assessment, project, me } = useAssessment();
   const qc = useQueryClient();
-  const s = useAssessmentTable<{ id: string; section_no: number; body: string; internal_only: boolean; approved: boolean }>("proposal_sections", assessment.id);
+  const s = useAssessmentTable<{ id: string; section_no: number; body: string; internal_only: boolean; approved: boolean }>("proposal_sections", assessment.id, { order: "section_no" });
   const get = (n: number) => s.data?.find((x) => x.section_no === n);
   const up = async (n: number, patch: Record<string, unknown>) => {
     const cur = get(n);
