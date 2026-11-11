@@ -203,19 +203,24 @@ function Narrative() {
   const { assessment, project, me } = useAssessment();
   const qc = useQueryClient();
   const s = useAssessmentTable<{ id: string; section_no: number; body: string; internal_only: boolean; approved: boolean }>("proposal_sections", assessment.id, { order: "section_no" });
+  const [saving, setSaving] = useState(false);
   const get = (n: number) => s.data?.find((x) => x.section_no === n);
   const up = async (n: number, patch: Record<string, unknown>) => {
+    setSaving(true);
     const cur = get(n);
     const { error } = await db.from("proposal_sections").upsert({ assessment_id: assessment.id, project_id: project.id, section_no: n, body: cur?.body ?? "", internal_only: cur?.internal_only ?? n === 8, approved: cur?.approved ?? false, ...patch }, { onConflict: "assessment_id,section_no" });
-    if (error) toast.error(error.message); else qc.invalidateQueries({ queryKey: ["proposal_sections", assessment.id] });
+    if (error) toast.error(error.message); else await qc.invalidateQueries({ queryKey: ["proposal_sections", assessment.id] });
+    setSaving(false);
   };
+  if (s.isLoading) return <p className="py-6 text-muted-foreground">Loading proposal narrative…</p>;
+  if (s.isError) return <p role="alert" className="py-6 text-destructive">Proposal narrative could not be loaded.</p>;
   return (
     <div className="mt-4 space-y-3">
       {SECTIONS.map((t, i) => { const r = get(i + 1); return (
         <div key={i} className="card-elevated p-4">
           <div className="flex flex-wrap items-center gap-3 mb-2"><h3 className="font-semibold text-sm">{i + 1}. {t}</h3>
             {me.canEditInternal && <><label className="flex items-center gap-1.5 text-xs ml-auto"><Switch checked={r?.internal_only ?? i + 1 === 8} onCheckedChange={(v) => up(i + 1, { internal_only: v })} />Internal only</label>
-            <label className="flex items-center gap-1.5 text-xs"><Switch checked={!!r?.approved} onCheckedChange={(v) => up(i + 1, { approved: v })} />Approved</label></>}</div>
+            <label className="flex items-center gap-1.5 text-xs"><Switch disabled={saving} checked={!!r?.approved} onCheckedChange={(v) => up(i + 1, { approved: v })} />Approved</label></>}</div>
           <Textarea rows={4} disabled={!me.canEditInternal} defaultValue={r?.body ?? ""} placeholder={i === 11 ? "Generated automatically in exports from requirement → evidence → mapping → finding → work package links. Add commentary here." : "Draft from evidence; link statements to requirement / finding codes."} onBlur={(e) => e.target.value !== (r?.body ?? "") && up(i + 1, { body: e.target.value, approved: false })} />
         </div>); })}
     </div>
