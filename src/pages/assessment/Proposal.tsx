@@ -239,6 +239,7 @@ function Export() {
     try {
       const pack = await buildPack(assessment.id, "customer", false);
       setPdf(packToPdf(pack as ProposalDocument, SECTIONS));
+      if (user) await db.from("audit_events").insert({ project_id: project.id, assessment_id: assessment.id, actor: user.id, action: "export.generated", object_type: "export", object_id: "pdf", summary: `customer pdf · ${pack.hash.slice(0, 12)}` });
       toast.success("Client proposal PDF ready");
     } catch (error) { toast.error((error as Error).message); }
     finally { setBusy(false); }

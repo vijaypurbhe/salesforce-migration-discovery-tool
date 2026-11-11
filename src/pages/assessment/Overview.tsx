@@ -15,6 +15,7 @@ import { PageHeader, Pill, Stat, fmtDate, fmtPct } from "@/components/app/bits";
 import { db, must } from "@/lib/db";
 import { STAGES, type Assignment, type Finding } from "@/lib/models";
 import { priorityBand } from "@/domain/scoring";
+import { discoveryCompleted, proposalCreated } from "@/domain/assessmentFlow";
 
 export default function Overview() {
   const { assessment, answers, evidencedIds, me, project } = useAssessment();
@@ -28,10 +29,10 @@ export default function Overview() {
   const save = async () => {
     const { error } = await db.from("assessments").update(form).eq("id", assessment.id);
     if (error) toast.error(error.message); else {
-      if (assessment.stage === "discovery" && ["architect_review", "customer_validation", "proposal", "baselined"].includes(form.stage)) {
+      if (discoveryCompleted(assessment.stage, form.stage)) {
         window.__lovableEvents?.track?.("project.discovery_completed", { is_demo: project.is_demo });
       }
-      if (assessment.stage !== "proposal" && form.stage === "proposal") {
+      if (proposalCreated(assessment.stage, form.stage)) {
         window.__lovableEvents?.track?.("project.proposal_created", { is_demo: project.is_demo });
       }
       toast.success("Assessment updated"); qc.invalidateQueries({ queryKey: ["assessment", assessment.id] });
