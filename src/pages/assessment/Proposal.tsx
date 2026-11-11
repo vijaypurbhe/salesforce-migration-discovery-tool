@@ -19,6 +19,7 @@ import { estimatePackage, estimateProgramme, roleCost, staffing, validateLine, t
 import { PageHeader, Pill, EmptyState, Stat } from "@/components/app/bits";
 import { buildPack, CUSTOMER_EXCLUSIONS, packToHtml, packToXlsx, type Audience } from "@/lib/exportPack";
 import { download } from "@/lib/csv";
+import { packToPdf, deliverProposal, type ProposalDocument } from "@/lib/proposalPdf";
 
 export const SECTIONS = [
   "Executive problem statement and customer outcomes", "Evidence-backed current landscape and scope boundary", "Required future outcomes and candidate target architecture",
@@ -201,20 +202,25 @@ function Estimate() {
 function Narrative() {
   const { assessment, project, me } = useAssessment();
   const qc = useQueryClient();
-  const s = useAssessmentTable<{ id: string; section_no: number; body: string; internal_only: boolean; approved: boolean }>("proposal_sections", assessment.id);
+  const s = useAssessmentTable<{ id: string; section_no: number; body: string; internal_only: boolean; approved: boolean }>("proposal_sections", assessment.id, { order: "section_no" });
+  const [saving, setSaving] = useState(false);
   const get = (n: number) => s.data?.find((x) => x.section_no === n);
   const up = async (n: number, patch: Record<string, unknown>) => {
+    setSaving(true);
     const cur = get(n);
     const { error } = await db.from("proposal_sections").upsert({ assessment_id: assessment.id, project_id: project.id, section_no: n, body: cur?.body ?? "", internal_only: cur?.internal_only ?? n === 8, approved: cur?.approved ?? false, ...patch }, { onConflict: "assessment_id,section_no" });
-    if (error) toast.error(error.message); else qc.invalidateQueries({ queryKey: ["proposal_sections", assessment.id] });
+    if (error) toast.error(error.message); else await qc.invalidateQueries({ queryKey: ["proposal_sections", assessment.id] });
+    setSaving(false);
   };
+  if (s.isLoading) return <p className="py-6 text-muted-foreground">Loading proposal narrative…</p>;
+  if (s.isError) return <p role="alert" className="py-6 text-destructive">Proposal narrative could not be loaded.</p>;
   return (
     <div className="mt-4 space-y-3">
       {SECTIONS.map((t, i) => { const r = get(i + 1); return (
         <div key={i} className="card-elevated p-4">
           <div className="flex flex-wrap items-center gap-3 mb-2"><h3 className="font-semibold text-sm">{i + 1}. {t}</h3>
             {me.canEditInternal && <><label className="flex items-center gap-1.5 text-xs ml-auto"><Switch checked={r?.internal_only ?? i + 1 === 8} onCheckedChange={(v) => up(i + 1, { internal_only: v })} />Internal only</label>
-            <label className="flex items-center gap-1.5 text-xs"><Switch checked={!!r?.approved} onCheckedChange={(v) => up(i + 1, { approved: v })} />Approved</label></>}</div>
+            <label className="flex items-center gap-1.5 text-xs"><Switch disabled={saving} checked={!!r?.approved} onCheckedChange={(v) => up(i + 1, { approved: v })} />Approved</label></>}</div>
           <Textarea rows={4} disabled={!me.canEditInternal} defaultValue={r?.body ?? ""} placeholder={i === 11 ? "Generated automatically in exports from requirement → evidence → mapping → finding → work package links. Add commentary here." : "Draft from evidence; link statements to requirement / finding codes."} onBlur={(e) => e.target.value !== (r?.body ?? "") && up(i + 1, { body: e.target.value, approved: false })} />
         </div>); })}
     </div>
@@ -227,6 +233,17 @@ function Export() {
   const [aud, setAud] = useState<Audience>("customer");
   const [com, setCom] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [pdf, setPdf] = useState<Blob | null>(null);
+  const preparePdf = async () => {
+    setBusy(true); setPdf(null);
+    try {
+      const pack = await buildPack(assessment.id, "customer", false);
+      setPdf(packToPdf(pack as ProposalDocument, SECTIONS));
+      if (user) await db.from("audit_events").insert({ project_id: project.id, assessment_id: assessment.id, actor: user.id, action: "export.generated", object_type: "export", object_id: "pdf", summary: `customer pdf · ${pack.hash.slice(0, 12)}` });
+      toast.success("Client proposal PDF ready");
+    } catch (error) { toast.error((error as Error).message); }
+    finally { setBusy(false); }
+  };
   const go = async (fmt: "html" | "xlsx" | "json") => {
     setBusy(true);
     try {
@@ -245,7 +262,9 @@ function Export() {
         <div><Label>Audience</Label><Select value={aud} onValueChange={(v) => setAud(v as Audience)}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent><SelectItem value="customer">Customer assessment report</SelectItem>{me.isInternal && <SelectItem value="internal">Internal proposal pack</SelectItem>}</SelectContent></Select></div>
         {aud === "internal" && me.canViewCommercials && <label className="flex items-center gap-2 text-sm"><Switch checked={com} onCheckedChange={setCom} />Include commercial tables (estimate, rates)</label>}
         <div className="flex flex-wrap gap-2">
-          <Button disabled={busy} onClick={() => go("html")}><FileText className="h-4 w-4 mr-1" />Printable report / PDF</Button>
+          {aud === "customer" && <Button disabled={busy} onClick={preparePdf}><FileText className="h-4 w-4 mr-1" />Prepare client PDF</Button>}
+          {pdf && aud === "customer" && <Button variant="outline" onClick={() => deliverProposal(pdf, `${assessment.code}-client-proposal.pdf`)}><Download className="h-4 w-4 mr-1" />Download client PDF</Button>}
+          <Button disabled={busy} variant="outline" onClick={() => go("html")}><FileText className="h-4 w-4 mr-1" />Printable report</Button>
           <Button disabled={busy} variant="outline" onClick={() => go("xlsx")}><Download className="h-4 w-4 mr-1" />Workbook (XLSX)</Button>
           <Button disabled={busy} variant="outline" onClick={() => go("json")}><Download className="h-4 w-4 mr-1" />Structured JSON</Button>
         </div>

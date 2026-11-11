@@ -2,6 +2,7 @@ import * as XLSX from "xlsx";
 import { db, must, sha256Hex } from "./db";
 import { INTERNAL_QUESTION_IDS, QUESTION_BY_ID } from "@/domain/questionBank";
 import { safeCell } from "./csv";
+import { aiResultSchema } from "./aiFindings";
 
 export type Audience = "customer" | "internal";
 export const CUSTOMER_EXCLUSIONS = [
@@ -19,6 +20,7 @@ export async function buildPack(assessmentId: string, audience: Audience, includ
     q("answers"), q("register_items"), q("requirements"), q("mappings"), q("findings"), q("complexity_scores"), q("readiness_gates"), q("strategy_scenarios"), q("work_packages"), q("evidence_files"), q("proposal_sections"),
   ]);
   const cust = audience === "customer";
+  const reviews = await q("ai_discovery_reviews");
   const vis = (rows: Record<string, any>[]) => (cust ? rows.filter((r) => r.visibility !== "internal" && !r.archived) : rows);
   const pack: Record<string, any> = {
     generated_at: new Date().toISOString(), audience,
@@ -29,6 +31,7 @@ export async function buildPack(assessmentId: string, audience: Audience, includ
     complexity: cx, readiness: gates, strategies: strat, work_packages: vis(wps),
     evidence: (cust ? ev.filter((e) => e.classification !== "internal" && e.classification !== "confidential") : ev).map((e) => ({ file: e.original_filename, question: e.question_id, version: e.version, status: e.status, checksum: e.checksum, classification: e.classification })),
     proposal_sections: cust ? sections.filter((s) => s.approved && !s.internal_only) : sections,
+    ai_discovery: reviews.filter(r => r.result && (!cust || r.approved)).map(r => ({ result: aiResultSchema.parse(r.result), approved: r.approved, created_at: r.created_at })),
   };
   if (!cust) {
     pack.internal_notes = await q("internal_notes");

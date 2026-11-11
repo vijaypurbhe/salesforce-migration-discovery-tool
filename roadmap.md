@@ -1,2 +1,5 @@
 - [x] Verify email-only entry, real assessment saving and private-link reopening without Google or passwords.
 - [ ] Finish and verify the rebuilt discovery app, including authenticated assessment saving and exports.
+- [x] Add and verify saved AI discovery findings analysis through AI Gateway.
+- [x] Track successful email entry, discovery completion, and proposal creation.
+- [x] Add and verify a polished client PDF with findings and next steps.

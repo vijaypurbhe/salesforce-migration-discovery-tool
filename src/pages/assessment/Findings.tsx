@@ -20,6 +20,7 @@ import { PageHeader, Pill, EmptyState, type Tone } from "@/components/app/bits";
 import { FitPill } from "@/components/app/ToneFit";
 import { CommentsSheet } from "@/components/discovery/QuestionActions";
 import { download, toCsv } from "@/lib/csv";
+import { AiFindingsPanel } from "@/components/discovery/AiFindingsPanel";
 
 const BAND_TONE: Record<string, Tone> = { Blocker: "destructive", P1: "destructive", P2: "warning", P3: "info", P4: "muted", Unscored: "outline" };
 const STATUSES = ["open", "in_review", "accepted", "closed", "reopened"];
@@ -74,6 +75,7 @@ export default function Findings() {
           {me.canEditInternal && <Button variant="outline" size="sm" onClick={() => setEdit({ title: "", kinds: ["gap"], status: "open", fit_status: "validation_pending", confidence: "self_reported", visibility: "customer", linked_question_ids: [], impact: null, urgency: null, delivery_risk: null, dependency_criticality: null })}><Plus className="h-4 w-4 mr-1" />Manual finding</Button>}
           {me.canEditInternal && <Button size="sm" onClick={run} disabled={running}><Play className="h-4 w-4 mr-1" />{running ? "Running…" : "Run analysis"}</Button>}
         </>} />
+      <AiFindingsPanel />
       {review > 0 && <div className="mb-4 rounded-md border border-warning/40 bg-warning-soft p-3 text-sm flex gap-2"><AlertTriangle className="h-4 w-4 text-warning mt-0.5" aria-hidden />{review} finding(s) need review because their source answers changed since the last decision.</div>}
       <div className="flex flex-wrap gap-2 mb-3">
         <Input aria-label="Search findings" className="w-64" placeholder="Search…" value={q} onChange={(e) => setQ(e.target.value)} />

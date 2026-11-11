@@ -494,6 +494,50 @@ export type Database = {
         }
         Relationships: []
       }
+      ai_discovery_reviews: {
+        Row: {
+          approved: boolean
+          assessment_id: string
+          created_at: string
+          created_by: string
+          id: string
+          model: string | null
+          notes: string
+          project_id: string
+          result: Json | null
+        }
+        Insert: {
+          approved?: boolean
+          assessment_id: string
+          created_at?: string
+          created_by?: string
+          id?: string
+          model?: string | null
+          notes: string
+          project_id: string
+          result?: Json | null
+        }
+        Update: {
+          approved?: boolean
+          assessment_id?: string
+          created_at?: string
+          created_by?: string
+          id?: string
+          model?: string | null
+          notes?: string
+          project_id?: string
+          result?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ai_discovery_reviews_assessment_id_project_id_fkey"
+            columns: ["assessment_id", "project_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id", "project_id"]
+          },
+        ]
+      }
       analysis_runs: {
         Row: {
           assessment_id: string

@@ -15,6 +15,7 @@ import { PageHeader, Pill, Stat, fmtDate, fmtPct } from "@/components/app/bits";
 import { db, must } from "@/lib/db";
 import { STAGES, type Assignment, type Finding } from "@/lib/models";
 import { priorityBand } from "@/domain/scoring";
+import { discoveryCompleted, proposalCreated } from "@/domain/assessmentFlow";
 
 export default function Overview() {
   const { assessment, answers, evidencedIds, me, project } = useAssessment();
@@ -27,7 +28,15 @@ export default function Overview() {
   useEffect(() => setForm({ stage: assessment.stage, target_product_name: assessment.target_product_name, target_release: assessment.target_release, entitlement_notes: assessment.entitlement_notes, name: assessment.name }), [assessment]);
   const save = async () => {
     const { error } = await db.from("assessments").update(form).eq("id", assessment.id);
-    if (error) toast.error(error.message); else { toast.success("Assessment updated"); qc.invalidateQueries({ queryKey: ["assessment", assessment.id] }); }
+    if (error) toast.error(error.message); else {
+      if (discoveryCompleted(assessment.stage, form.stage)) {
+        window.__lovableEvents?.track?.("project.discovery_completed", { is_demo: project.is_demo });
+      }
+      if (proposalCreated(assessment.stage, form.stage)) {
+        window.__lovableEvents?.track?.("project.proposal_created", { is_demo: project.is_demo });
+      }
+      toast.success("Assessment updated"); qc.invalidateQueries({ queryKey: ["assessment", assessment.id] });
+    }
   };
   const f = findings.data ?? [];
   const blockers = f.filter((x) => x.status !== "closed" && (x.is_blocker || priorityBand(x) === "P1")).length;
