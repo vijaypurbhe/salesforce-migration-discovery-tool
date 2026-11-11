@@ -1,1 +1,2 @@
 Email labels must not be used as authorization: private assessment access requires server-validated identity or an independent secure access token.
+Private workspace links use random 256-bit capabilities stored hashed server-side; exchanges issue isolated managed sessions so existing project RLS remains authoritative.
