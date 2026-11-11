@@ -60,7 +60,7 @@ export default function Surveys() {
       </tr>)}</tbody></table></div>}
     </section>
     {review && <section className="border-t pt-6 space-y-4"><div className="flex justify-between gap-3"><h2 className="font-semibold">Responses: {review.recipient_label}</h2><Button variant="ghost" onClick={() => setReview(null)}>Close review</Button></div>
-      {Object.entries(review.responses).map(([id, r]) => <article key={id} className="border-b py-4 space-y-2"><h3 className="font-medium">{id} · {QUESTION_BY_ID[id]?.label}</h3><Pill>{r.state.replaceAll("_", " ")}</Pill>{r.value && <pre className="whitespace-pre-wrap break-words text-xs bg-secondary p-3 rounded-md">{JSON.stringify(r.value, null, 2)}</pre>}{r.notes && <p className="text-sm whitespace-pre-wrap">{r.notes}</p>}{r.na_reason && <p className="text-sm">{r.na_reason}</p>}</article>)}
+      {Object.entries(review.responses).map(([id, r]) => <article key={id} className="border-b py-4 space-y-2"><h3 className="font-medium">{id} · {QUESTION_BY_ID[id]?.label}</h3><Pill>{r.state.replace(/_/g, " ")}</Pill>{r.value && <pre className="whitespace-pre-wrap break-words text-xs bg-secondary p-3 rounded-md">{JSON.stringify(r.value, null, 2)}</pre>}{r.notes && <p className="text-sm whitespace-pre-wrap">{r.notes}</p>}{r.na_reason && <p className="text-sm">{r.na_reason}</p>}</article>)}
       {me.canEditInternal && review.submitted_at && !review.imported_at && <><p className="text-sm text-muted-foreground">Existing assessment answers are preserved. New answers will be added as self-reported discovery for your review.</p><Button disabled={busy} onClick={() => importAnswers(review)}>Import responses into discovery</Button></>}
     </section>}
   </div>;

@@ -1,7 +1,7 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 import { z } from "npm:zod@3.25.76";
-import { createCapability, isCapability } from "../workspace-access/capability.ts";
+import { createCapability, isCapability } from "./capability.ts";
 import { surveyIsOpen, allowedSurveyQuestion } from "./policy.ts";
 import bank from "./questions.json" with { type: "json" };
 
