@@ -43,6 +43,13 @@
       "when": 1794357534295,
       "tag": "0005_private_workspace_access",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1794357713928,
+      "tag": "0006_creator_read_after_insert",
+      "breakpoints": true
     }
   ]
 }
