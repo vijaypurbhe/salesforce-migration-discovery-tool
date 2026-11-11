@@ -1,5 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
+import { createCapability, isCapability } from "./capability.ts";
 
 const reply = (status: number, body: unknown) => new Response(JSON.stringify(body), {
   status, headers: { ...corsHeaders, "Content-Type": "application/json", "Cache-Control": "no-store" },
@@ -21,7 +22,7 @@ Deno.serve(async req => {
     if (body.action === "create") {
       if (typeof body.email !== "string" || body.email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) return reply(400, { error: "Enter a valid email address" });
       email = body.email.trim().toLowerCase();
-      token = Array.from(crypto.getRandomValues(new Uint8Array(32)), x => x.toString(16).padStart(2, "0")).join("");
+      token = createCapability();
       // Synthetic auth identity is unrelated to the unverified email label.
       const authEmail = `workspace-${crypto.randomUUID()}@access.invalid`;
       const { data, error } = await admin.auth.admin.createUser({ email: authEmail, email_confirm: true });
@@ -34,7 +35,7 @@ Deno.serve(async req => {
       await admin.from("user_profiles").update({ email, display_name: email.split("@")[0] }).eq("id", uid);
       return await sessionFor(authEmail, token, email);
     }
-    if (body.action !== "resume" || typeof body.token !== "string" || !/^[a-f0-9]{64}$/.test(body.token)) return reply(400, { error: "Invalid private access link" });
+    if (body.action !== "resume" || !isCapability(body.token)) return reply(400, { error: "Invalid private access link" });
     token = body.token;
     const { data: access, error } = await admin.from("private_workspace_access").select("user_id,email_label").eq("token_hash", await hash(token)).is("revoked_at", null).maybeSingle();
     if (error || !access) return reply(401, { error: "This private access link is invalid or revoked" });

@@ -1,2 +1,2 @@
-- [ ] Verify email-only entry and private-link reopening without Google or passwords.
+- [x] Verify email-only entry, real assessment saving and private-link reopening without Google or passwords.
 - [ ] Finish and verify the rebuilt discovery app, including authenticated assessment saving and exports.
