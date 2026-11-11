@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 const NAV = [
   { to: "", label: "Overview", icon: LayoutDashboard, internal: false },
   { to: "discovery", label: "Discovery", icon: Compass, internal: false },
+  { to: "surveys", label: "Customer surveys", icon: Users, internal: true },
   { to: "registers", label: "Inventories & evidence", icon: Database, internal: false },
   { to: "mapping", label: "Mapping studio", icon: Network, internal: true },
   { to: "findings", label: "Delta & gap analysis", icon: GitCompare, internal: false },
