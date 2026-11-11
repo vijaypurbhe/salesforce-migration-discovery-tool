@@ -1,2 +1,2 @@
-- [ ] Replace Google/password login with email-only entry; clarify safe access to saved private assessments.
+- [x] Verify email-only entry, real assessment saving and private-link reopening without Google or passwords.
 - [ ] Finish and verify the rebuilt discovery app, including authenticated assessment saving and exports.

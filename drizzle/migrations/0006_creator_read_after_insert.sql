@@ -1,0 +1,1 @@
+CREATE POLICY "customer creator read" ON public.customers FOR SELECT TO authenticated USING (created_by = auth.uid());
