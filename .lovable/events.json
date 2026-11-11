@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "events": {
+    "project.email_entered": {
+      "event_schema_version": 1,
+      "description": "An email-labeled private workspace was successfully created; no email is collected.",
+      "privacy": {
+        "contains_pii": false,
+        "purpose": "product_analytics"
+      },
+      "properties_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      }
+    }
+  }
+}
