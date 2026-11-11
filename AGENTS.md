@@ -4,3 +4,4 @@ AI discovery inference runs only in an authenticated Edge Function using the AI 
 Customer proposal exports include only approved AI analyses and approved public narrative; source notes remain internal to avoid accidental disclosure.
 Assessment funnel events fire at successful existing handlers: workspace creation and saved stage transitions, without email or personal properties.
 PDF proposals are generated from the audience-filtered data pack, not screenshots, to retain searchable text and safe pagination.
+Customer surveys use assessment-scoped hashed capabilities and isolated response drafts, never workspace sessions; analysts explicitly import answers without overwriting existing discovery.

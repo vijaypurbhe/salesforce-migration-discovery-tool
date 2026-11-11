@@ -21,6 +21,8 @@ import Team from "@/pages/assessment/Team";
 import Admin from "@/pages/Admin";
 import Glossary from "@/pages/Glossary";
 import NotFound from "@/pages/NotFound";
+import CustomerSurvey from "@/pages/CustomerSurvey";
+import Surveys from "@/pages/assessment/Surveys";
 
 const qc = new QueryClient({ defaultOptions: { queries: { staleTime: 15_000, refetchOnWindowFocus: false, retry: 1 } } });
 
@@ -40,6 +42,7 @@ export default function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/auth" element={<AuthPage />} />
+              <Route path="/survey" element={<CustomerSurvey />} />
               <Route path="/reset-password" element={<Navigate to="/auth" replace />} />
               <Route element={<Protected><AppShell /></Protected>}>
                 <Route path="/" element={<Portfolio />} />
@@ -47,6 +50,7 @@ export default function App() {
                 <Route path="/a/:assessmentId" element={<AssessmentLayout />}>
                   <Route index element={<Overview />} />
                   <Route path="discovery" element={<Discovery />} />
+                  <Route path="surveys" element={<Surveys />} />
                   <Route path="registers" element={<Registers />} />
                   <Route path="mapping" element={<MappingStudio />} />
                   <Route path="findings" element={<Findings />} />

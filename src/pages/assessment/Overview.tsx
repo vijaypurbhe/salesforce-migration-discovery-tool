@@ -47,7 +47,7 @@ export default function Overview() {
     <div>
       <PageHeader kicker={`${assessment.code} · template ${assessment.template_version} · ${assessment.rubric_version}`} title={assessment.name}
         description={<>Target label: <b>{assessment.target_product_name}</b>{assessment.target_release ? ` · release ${assessment.target_release}` : ""}. Product naming is editable and does not establish entitlement.</>}
-        actions={<Button asChild><Link to="discovery">Continue discovery</Link></Button>} />
+        actions={<div className="flex flex-wrap gap-2">{me.canEditInternal && <Button variant="outline" asChild><Link to="surveys">Send customer survey</Link></Button>}<Button asChild><Link to="discovery">Continue discovery</Link></Button></div>} />
       <div className="grid sm:grid-cols-2 xl:grid-cols-5 gap-3">
         <Stat label="Answer coverage" value={fmtPct(cov.answerPct)} sub={`${cov.answered}/${cov.applicable} applicable answered`} />
         <Stat label="Unknown / needs validation" value={cov.answeredUnknown} sub="stay in the denominator" tone={cov.answeredUnknown ? "warning" : undefined} />

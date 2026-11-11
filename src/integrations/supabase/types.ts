@@ -1245,6 +1245,68 @@ export type Database = {
           },
         ]
       }
+      customer_surveys: {
+        Row: {
+          assessment_id: string
+          created_at: string
+          created_by: string
+          expires_at: string
+          id: string
+          imported_at: string | null
+          question_ids: string[]
+          recipient_label: string
+          respondent_email: string | null
+          responses: Json
+          revoked_at: string | null
+          row_version: number
+          scope: string
+          submitted_at: string | null
+          token_hash: string
+        }
+        Insert: {
+          assessment_id: string
+          created_at?: string
+          created_by: string
+          expires_at?: string
+          id?: string
+          imported_at?: string | null
+          question_ids: string[]
+          recipient_label?: string
+          respondent_email?: string | null
+          responses?: Json
+          revoked_at?: string | null
+          row_version?: number
+          scope: string
+          submitted_at?: string | null
+          token_hash: string
+        }
+        Update: {
+          assessment_id?: string
+          created_at?: string
+          created_by?: string
+          expires_at?: string
+          id?: string
+          imported_at?: string | null
+          question_ids?: string[]
+          recipient_label?: string
+          respondent_email?: string | null
+          responses?: Json
+          revoked_at?: string | null
+          row_version?: number
+          scope?: string
+          submitted_at?: string | null
+          token_hash?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "customer_surveys_assessment_id_fkey"
+            columns: ["assessment_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       customers: {
         Row: {
           archived: boolean
@@ -2730,6 +2792,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      import_customer_survey: { Args: { p_survey: string }; Returns: Json }
       is_client_admin: { Args: { _client_id: string }; Returns: boolean }
       is_internal_member: { Args: { _project: string }; Returns: boolean }
       is_project_lead: { Args: { _project: string }; Returns: boolean }
