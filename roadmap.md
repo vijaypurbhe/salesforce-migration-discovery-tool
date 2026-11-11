@@ -3,3 +3,4 @@
 - [x] Add and verify saved AI discovery findings analysis through AI Gateway.
 - [x] Track successful email entry, discovery completion, and proposal creation.
 - [x] Add and verify a polished client PDF with findings and next steps.
+- [ ] Add secure customer survey sharing, saved responses, and assessment import; verify customer and analyst flows.
