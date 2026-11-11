@@ -21,7 +21,10 @@ export default function AuthPage() {
   }, [nav]);
   const start = async (event: React.FormEvent) => {
     event.preventDefault(); setBusy(true);
-    try { setPrivateLink(await openPrivateWorkspace({ action: "create", email })); }
+    try {
+      setPrivateLink(await openPrivateWorkspace({ action: "create", email }));
+      window.__lovableEvents?.track?.("project.email_entered", {});
+    }
     catch (e) { toast.error((e as Error).message); }
     finally { setBusy(false); }
   };

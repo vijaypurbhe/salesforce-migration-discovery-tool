@@ -21,7 +21,7 @@ Deno.serve(async (req) => {
     if (!parsed.success) return reply(400, { error: "Select saved findings and consent to AI processing." });
     const { data: review } = await client.from("ai_discovery_reviews").select("*").eq("id", parsed.data.review_id).single();
     if (!review) return reply(404, { error: "Findings not accessible." });
-    const { data: allowed } = await client.rpc("can_edit_internal", { pid: review.project_id });
+    const { data: allowed } = await client.rpc("can_edit_internal", { _project: review.project_id });
     if (!allowed) return reply(403, { error: "Only assessment editors may analyze findings." });
     // Claim the saved version once: ambiguous outcomes must never be automatically replayed.
     const { data: claimed, error: claimError } = await client.from("ai_discovery_reviews").update({ model: "openai/gpt-6-astra" }).eq("id", review.id).is("model", null).select("id").maybeSingle();
