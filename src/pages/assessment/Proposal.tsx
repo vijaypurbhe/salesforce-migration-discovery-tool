@@ -19,6 +19,7 @@ import { estimatePackage, estimateProgramme, roleCost, staffing, validateLine, t
 import { PageHeader, Pill, EmptyState, Stat } from "@/components/app/bits";
 import { buildPack, CUSTOMER_EXCLUSIONS, packToHtml, packToXlsx, type Audience } from "@/lib/exportPack";
 import { download } from "@/lib/csv";
+import { packToPdf, deliverProposal, type ProposalDocument } from "@/lib/proposalPdf";
 
 export const SECTIONS = [
   "Executive problem statement and customer outcomes", "Evidence-backed current landscape and scope boundary", "Required future outcomes and candidate target architecture",
@@ -227,6 +228,16 @@ function Export() {
   const [aud, setAud] = useState<Audience>("customer");
   const [com, setCom] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [pdf, setPdf] = useState<Blob | null>(null);
+  const preparePdf = async () => {
+    setBusy(true); setPdf(null);
+    try {
+      const pack = await buildPack(assessment.id, "customer", false);
+      setPdf(packToPdf(pack as ProposalDocument, SECTIONS));
+      toast.success("Client proposal PDF ready");
+    } catch (error) { toast.error((error as Error).message); }
+    finally { setBusy(false); }
+  };
   const go = async (fmt: "html" | "xlsx" | "json") => {
     setBusy(true);
     try {
@@ -245,7 +256,9 @@ function Export() {
         <div><Label>Audience</Label><Select value={aud} onValueChange={(v) => setAud(v as Audience)}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent><SelectItem value="customer">Customer assessment report</SelectItem>{me.isInternal && <SelectItem value="internal">Internal proposal pack</SelectItem>}</SelectContent></Select></div>
         {aud === "internal" && me.canViewCommercials && <label className="flex items-center gap-2 text-sm"><Switch checked={com} onCheckedChange={setCom} />Include commercial tables (estimate, rates)</label>}
         <div className="flex flex-wrap gap-2">
-          <Button disabled={busy} onClick={() => go("html")}><FileText className="h-4 w-4 mr-1" />Printable report / PDF</Button>
+          {aud === "customer" && <Button disabled={busy} onClick={preparePdf}><FileText className="h-4 w-4 mr-1" />Prepare client PDF</Button>}
+          {pdf && aud === "customer" && <Button variant="outline" onClick={() => deliverProposal(pdf, `${assessment.code}-client-proposal.pdf`)}><Download className="h-4 w-4 mr-1" />Download client PDF</Button>}
+          <Button disabled={busy} variant="outline" onClick={() => go("html")}><FileText className="h-4 w-4 mr-1" />Printable report</Button>
           <Button disabled={busy} variant="outline" onClick={() => go("xlsx")}><Download className="h-4 w-4 mr-1" />Workbook (XLSX)</Button>
           <Button disabled={busy} variant="outline" onClick={() => go("json")}><Download className="h-4 w-4 mr-1" />Structured JSON</Button>
         </div>
