@@ -33,6 +33,26 @@
         "additionalProperties": false,
         "properties": {}
       }
+    },
+    "project.proposal_created": {
+      "event_schema_version": 1,
+      "description": "Assessment successfully transitions into the proposal stage.",
+      "privacy": {
+        "contains_pii": false,
+        "purpose": "product_analytics"
+      },
+      "properties_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "is_demo"
+        ],
+        "properties": {
+          "is_demo": {
+            "type": "boolean"
+          }
+        }
+      }
     }
   }
 }
