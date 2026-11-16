@@ -252,3 +252,21 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## Firebase Hosting
+
+Deploy from the repository root using Node.js 22 or newer:
+
+```sh
+npm install
+npx firebase-tools login
+npm run deploy:firebase
+```
+
+The existing Firebase project alias is `salesforce-cpq-discovery`. If you use a different Firebase project, run `npx firebase-tools use <your-project-id>` before deployment.
+
+`firebase.json` serves the compiled `dist` folder, automatically runs `npm run build` before uploading, and sends app routes to `index.html`. Do not deploy the source `public` folder or run Firebase initialization again: Firebase's generated setup page is not the application.
+
+Keep the project's local `.env` file available when building; Vite embeds its public `VITE_` configuration into the compiled app. Never place private credentials in `VITE_` variables. Firebase Hosting serves the frontend only; existing Lovable Cloud services remain hosted separately.
+
+After deployment, open the Hosting URL printed by the command and refresh an app route such as `/survey`. If Firebase still shows its setup page, confirm the command ran in this repository and that the opened URL belongs to the selected Firebase project/site.
