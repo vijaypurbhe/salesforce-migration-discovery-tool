@@ -5,3 +5,4 @@ Customer proposal exports include only approved AI analyses and approved public 
 Assessment funnel events fire at successful existing handlers: workspace creation and saved stage transitions, without email or personal properties.
 PDF proposals are generated from the audience-filtered data pack, not screenshots, to retain searchable text and safe pagination.
 Customer surveys use assessment-scoped hashed capabilities and isolated response drafts, never workspace sessions; analysts explicitly import answers without overwriting existing discovery.
+Firebase Hosting serves Vite's dist output, builds before deployment, and rewrites client routes to index.html so deployments never serve Firebase's setup page and deep links survive refresh.
